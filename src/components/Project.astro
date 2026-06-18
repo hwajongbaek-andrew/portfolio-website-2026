@@ -1,0 +1,357 @@
+---
+interface Props {
+	name: string;
+	headline?: string;
+	meta?: string;
+	ctaHref?: string;
+	videoSrc?: string;
+	videoLoopEnd?: number;
+	mockupSrc?: string;
+	mockupAlt?: string;
+	mockupTop?: string;
+	mockupWidth?: string;
+	screenTop?: string;
+	screenLeft?: string;
+	screenWidth?: string;
+	screenHeight?: string;
+	phones?: string[];
+	phonesAlt?: string;
+	isActive?: boolean;
+}
+
+const {
+	name,
+	headline,
+	meta,
+	ctaHref = "#",
+	videoSrc,
+	videoLoopEnd,
+	mockupSrc,
+	mockupAlt = "",
+	mockupTop,
+	mockupWidth,
+	screenTop,
+	screenLeft,
+	screenWidth,
+	screenHeight,
+	phones,
+	phonesAlt = "",
+	isActive = false,
+} = Astro.props;
+
+const mockupVars: Record<string, string> = {};
+if (mockupTop) mockupVars["--mockup-top"] = mockupTop;
+if (mockupWidth) mockupVars["--mockup-width"] = mockupWidth;
+if (screenTop) mockupVars["--screen-top"] = screenTop;
+if (screenLeft) mockupVars["--screen-left"] = screenLeft;
+if (screenWidth) mockupVars["--screen-width"] = screenWidth;
+if (screenHeight) mockupVars["--screen-height"] = screenHeight;
+---
+
+<article class:list={["slide", { "is-active": isActive }]} style={mockupVars}>
+	<div class="slide-frame">
+		{mockupSrc && (
+			<div class="project-mockup">
+				<img src={mockupSrc} alt={mockupAlt} class="project-mockup-frame" />
+				{videoSrc && (
+					<video class="project-mockup-video" autoplay loop muted playsinline data-loop-end={videoLoopEnd}>
+						<source src={videoSrc} type="video/mp4" />
+					</video>
+				)}
+			</div>
+		)}
+
+		{phones && phones.length > 0 && (
+			<div class="project-phones">
+				{phones.map((src, i) => (
+					<img
+						src={src}
+						alt={phonesAlt}
+						class={`project-phone project-phone-${i + 1}`}
+					/>
+				))}
+			</div>
+		)}
+
+		<div class="slide-meta">
+			<p class="slide-name">{name}</p>
+			{headline && <p class="slide-headline">{headline}</p>}
+			{meta && <p class="slide-tag">{meta}</p>}
+
+			<a href={ctaHref} class="project-cta" aria-label={`View ${name}`}>
+				<span class="project-cta-label">{name}</span>
+				<svg class="project-cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<line x1="5" y1="12" x2="19" y2="12"></line>
+					<polyline points="12 5 19 12 12 19"></polyline>
+				</svg>
+			</a>
+		</div>
+	</div>
+</article>
+
+<style>
+	/* Slide transition — simple opacity crossfade.
+	   No transform, no will-change, no pre-position frames. Only the
+	   compositor's opacity channel is animated, which is essentially
+	   free for the GPU. */
+	.slide {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 300ms ease-out;
+	}
+
+	.slide.is-active {
+		opacity: 1;
+		pointer-events: auto;
+		z-index: 2;
+	}
+
+	.slide-frame {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background: var(--accent-gradient, linear-gradient(to bottom, #F99E67, #FAB771));
+		overflow: hidden;
+	}
+
+	.project-mockup {
+		position: absolute;
+		top: var(--mockup-top, 60%);
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: var(--mockup-width, 48%);
+		max-width: 760px;
+		cursor: pointer;
+		transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform;
+	}
+
+	.project-mockup:hover {
+		transform: translate(-50%, -50%) scale(1.04);
+	}
+
+	.project-mockup-frame {
+		display: block;
+		width: 100%;
+		height: auto;
+		position: relative;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.project-mockup-video {
+		position: absolute;
+		z-index: 2;
+		object-fit: cover;
+		top: var(--screen-top, 1.5%);
+		left: var(--screen-left, 7%);
+		width: var(--screen-width, 86%);
+		height: var(--screen-height, 43.5%);
+		border-radius: 4px;
+		display: block;
+	}
+
+	/* Phone stack mode (project 3) */
+	.project-phones {
+		position: absolute;
+		inset: 0;
+		pointer-events: auto;
+		cursor: pointer;
+	}
+
+	.project-phone {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		height: auto;
+		display: block;
+		transform-origin: center center;
+		transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform;
+	}
+
+	.project-phone-1 {
+		width: 24%;
+		max-width: 360px;
+		z-index: 3;
+		transform: translate(-50%, -50%);
+	}
+
+	.project-phone-2 {
+		width: 18%;
+		max-width: 270px;
+		z-index: 2;
+		transform: translate(-50%, -50%);
+	}
+
+	.project-phone-3 {
+		width: 12%;
+		max-width: 180px;
+		z-index: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	.project-phones:hover .project-phone-1 {
+		transform: translate(-110%, -20%) rotate(-12deg);
+	}
+
+	.project-phones:hover .project-phone-2 {
+		transform: translate(-50%, -50%) rotate(0deg) scale(1.25);
+	}
+
+	.project-phones:hover .project-phone-3 {
+		transform: translate(10%, -50%) rotate(12deg) scale(1.5);
+	}
+
+	/* Slide meta — overlaid in the top-left corner.
+	   Typography uses dark text on the warm peach gradient — verified
+	   WCAG AAA contrast (~7:1 minimum). */
+	.slide-meta {
+		position: absolute;
+		top: 48px;
+		left: 48px;
+		z-index: 5;
+		max-width: min(560px, 60%);
+		pointer-events: none;
+	}
+
+	.slide-name {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm); /* 14px */
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: rgba(26, 26, 26, 0.82); /* #1A1A1A @ 82% — passes AA for small bold */
+		margin: 0 0 16px;
+	}
+
+	.slide-headline {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-display-md); /* 40px desktop, 32px mobile */
+		font-weight: 600;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--text-primary); /* #1A1A1A — passes AAA */
+		margin: 0 0 16px;
+	}
+
+	.slide-tag {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md); /* 16px — accessibility-friendly body size */
+		font-weight: 500;
+		line-height: 1.5; /* WCAG-recommended body line-height */
+		color: rgba(26, 26, 26, 0.78);
+		margin: 0;
+	}
+
+	/* CTA button — now part of the meta group, aligned with the project
+	   info at the top. `pointer-events: auto` since the parent disables it. */
+	.project-cta {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		background: white;
+		height: 48px;
+		border-radius: 24px;
+		padding: 0 12px;
+		margin-top: 28px;
+		text-decoration: none;
+		color: var(--text-accent, #C2410C);
+		pointer-events: auto;
+		box-shadow:
+			0 0 0 0 rgba(255, 255, 255, 0),
+			0 4px 20px rgba(0, 0, 0, 0.08);
+		transition: box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			padding 400ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.project-cta:hover {
+		padding: 0 12px 0 20px;
+		box-shadow:
+			0 0 0 5px rgba(255, 255, 255, 0.35),
+			0 6px 24px rgba(0, 0, 0, 0.12);
+	}
+
+	.project-cta-icon {
+		width: 24px;
+		height: 24px;
+		flex-shrink: 0;
+	}
+
+	.project-cta-label {
+		white-space: nowrap;
+		overflow: hidden;
+		max-width: 0;
+		opacity: 0;
+		margin-right: 0;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 500;
+		color: #1A1A1A;
+		transition: max-width 0.4s ease,
+			opacity 0.4s ease,
+			margin-right 0.4s ease;
+	}
+
+	.project-cta:hover .project-cta-label {
+		max-width: 200px;
+		opacity: 1;
+		margin-right: 8px;
+	}
+
+	@media (max-width: 768px) {
+		.slide-meta {
+			top: 88px; /* clear the mobile pill nav (top: 20px + ~52 height + gap) */
+			left: 20px;
+			right: 20px;
+			max-width: none;
+		}
+
+		.slide-headline {
+			font-size: var(--text-display-sm);
+		}
+
+		.slide-tag {
+			font-size: var(--text-body-sm);
+		}
+
+		.project-cta {
+			margin-top: 20px;
+		}
+
+		.project-mockup {
+			width: 90%;
+			top: 50%;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.slide {
+			transition: none;
+		}
+
+		.project-mockup,
+		.project-mockup:hover,
+		.project-phone {
+			transition: none;
+		}
+
+		.project-mockup-video {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLVideoElement>('video[data-loop-end]').forEach((video) => {
+		const loopEnd = parseFloat(video.dataset.loopEnd ?? '');
+		if (Number.isNaN(loopEnd)) return;
+		video.addEventListener('timeupdate', () => {
+			if (video.currentTime >= loopEnd) {
+				video.currentTime = 0;
+			}
+		});
+	});
+</script>

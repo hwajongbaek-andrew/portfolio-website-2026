@@ -1,0 +1,121 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<aside class="sidebar">
+	<div class="sidebar-top">
+		<a href="/" class="sidebar-logo-link" aria-label="Andrew Baek — home">
+			<span class="sidebar-logo" role="img" aria-label="Andrew Baek"></span>
+		</a>
+		<p class="sidebar-tagline">
+			Product designer, Toronto.<br />
+			Building with AI.
+		</p>
+	</div>
+
+	<nav class="sidebar-nav" aria-label="Primary">
+		<a href="#work" class="sidebar-link sidebar-link-active">Work</a>
+		<a href="#about" class="sidebar-link">About</a>
+		<a href="#contact" class="sidebar-link">Contact</a>
+	</nav>
+
+	<div class="sidebar-bottom">
+		<p class="sidebar-availability">Currently @ MedMe Health</p>
+		<ThemeToggle />
+	</div>
+</aside>
+
+<style>
+	.sidebar {
+		width: 320px;
+		height: 100vh;
+		padding: 36px 32px 32px;
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		background-color: var(--bg-primary);
+		border-right: 1px solid var(--border);
+		transition: background-color 300ms ease, border-color 300ms ease;
+		z-index: 50;
+	}
+
+	.sidebar-top {
+		margin-bottom: 48px;
+	}
+
+	.sidebar-logo-link {
+		display: block;
+		text-decoration: none;
+		margin-bottom: 20px;
+	}
+
+	.sidebar-logo {
+		display: block;
+		width: 100%;
+		max-width: 220px;
+		aspect-ratio: 1630.06 / 150;
+		background-color: var(--text-primary);
+		-webkit-mask: url('/images/logo.svg') center / contain no-repeat;
+		mask: url('/images/logo.svg') center / contain no-repeat;
+		transition: background-color 300ms ease;
+	}
+
+	.sidebar-tagline {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		line-height: 1.55;
+		color: var(--text-secondary);
+		margin: 0;
+	}
+
+	.sidebar-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		margin-bottom: auto;
+	}
+
+	.sidebar-link {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 500;
+		color: var(--text-secondary);
+		text-decoration: none;
+		padding: 10px 14px;
+		border-radius: 10px;
+		transition: color var(--transition-fast),
+			background-color var(--transition-fast);
+	}
+
+	.sidebar-link:hover {
+		color: var(--text-primary);
+	}
+
+	.sidebar-link-active {
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+	}
+
+	.sidebar-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+		padding-top: 32px;
+		border-top: 1px solid var(--border);
+		transition: border-color 300ms ease;
+	}
+
+	.sidebar-availability {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-accent);
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.sidebar {
+			display: none;
+		}
+	}
+</style>

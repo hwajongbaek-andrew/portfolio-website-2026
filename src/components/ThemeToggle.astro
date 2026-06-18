@@ -1,0 +1,110 @@
+<button type="button" aria-label="Toggle theme" class="theme-toggle" data-theme-toggle>
+	<span class="toggle-thumb">
+		<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+		</svg>
+		<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<circle cx="12" cy="12" r="4"/>
+			<path d="M12 2v2"/>
+			<path d="M12 20v2"/>
+			<path d="m4.93 4.93 1.41 1.41"/>
+			<path d="m17.66 17.66 1.41 1.41"/>
+			<path d="M2 12h2"/>
+			<path d="M20 12h2"/>
+			<path d="m6.34 17.66-1.41 1.41"/>
+			<path d="m19.07 4.93-1.41 1.41"/>
+		</svg>
+	</span>
+</button>
+
+<style>
+	.theme-toggle {
+		position: relative;
+		width: 78px;
+		height: 42px;
+		border-radius: 999px;
+		background-color: #FFFFFF;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		flex-shrink: 0;
+		transition: background-color 300ms ease;
+	}
+
+	:global([data-theme="dark"]) .theme-toggle {
+		background-color: #333333;
+	}
+
+	.toggle-thumb {
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		background-color: #ECECEC;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 300ms ease, background-color 300ms ease;
+	}
+
+	:global([data-theme="dark"]) .toggle-thumb {
+		transform: translateX(36px);
+		background-color: #444444;
+	}
+
+	.icon-moon,
+	.icon-sun {
+		width: 20px;
+		height: 20px;
+		color: var(--text-accent);
+		transition: color 300ms ease;
+	}
+
+	:global([data-theme="dark"]) .icon-moon,
+	:global([data-theme="dark"]) .icon-sun {
+		color: #FFFFFF;
+	}
+
+	.icon-moon { display: block; }
+	.icon-sun { display: none; }
+
+	:global([data-theme="dark"]) .icon-moon { display: none; }
+	:global([data-theme="dark"]) .icon-sun { display: block; }
+
+	@media (max-width: 768px) {
+		.theme-toggle {
+			width: 56px;
+			height: 34px;
+		}
+
+		.toggle-thumb {
+			top: 3px;
+			left: 3px;
+			width: 28px;
+			height: 28px;
+		}
+
+		:global([data-theme="dark"]) .toggle-thumb {
+			transform: translateX(22px);
+		}
+
+		.icon-moon,
+		.icon-sun {
+			width: 16px;
+			height: 16px;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((toggle) => {
+		toggle.addEventListener('click', () => {
+			const current = document.documentElement.getAttribute('data-theme');
+			const next = current === 'dark' ? 'light' : 'dark';
+			document.documentElement.setAttribute('data-theme', next);
+			localStorage.setItem('theme', next);
+		});
+	});
+</script>

@@ -1,5 +1,49 @@
 ---
+import "../styles/global.css";
+import Sidebar from "../components/Sidebar.astro";
+import MobileNav from "../components/MobileNav.astro";
+import Project from "../components/Project.astro";
+import Pagination from "../components/Pagination.astro";
 
+const projects = [
+	{
+		name: "Milkyway Glass",
+		headline: "Reimagining e-commerce UX & retention",
+		meta: "Product design, retention strategy",
+		ctaHref: "#",
+		mockupSrc: "/images/Laptop Mockup.png",
+		mockupAlt: "Milkyway Glass website preview on a laptop",
+		videoSrc: "/videos/Portfolio-MK-Desktop.mp4",
+		videoLoopEnd: 23,
+	},
+	{
+		name: "O3 Drinkware",
+		headline: "Brand-to-product commerce experience",
+		meta: "Responsive web, brand design",
+		ctaHref: "#",
+		mockupSrc: "/images/RS-Mockup.png",
+		mockupAlt: "O3 Drinkware website preview on a desktop monitor",
+		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
+		mockupTop: "calc(50% + 40px)",
+		mockupWidth: "55%",
+		screenTop: "calc(3% + 10px)",
+		screenLeft: "calc(4% - 2px)",
+		screenWidth: "92%",
+		screenHeight: "calc(65% - 40px)",
+	},
+	{
+		name: "Seeders",
+		headline: "Ecosystem design for home gardeners",
+		meta: "Mobile product, multi-sided UX",
+		ctaHref: "#",
+		phones: [
+			"/images/Seeders_Mockup_E01.png",
+			"/images/Seeders_Mockup_E02.png",
+			"/images/Seeders_Mockup_E03.png",
+		],
+		phonesAlt: "Seeders mobile app screens",
+	},
+];
 ---
 
 <html lang="en">
@@ -7,11 +51,26 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Andrew Baek — Product Designer</title>
+		<script is:inline>
+			const stored = localStorage.getItem('theme');
+			const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			const theme = stored || (systemDark ? 'dark' : 'light');
+			document.documentElement.setAttribute('data-theme', theme);
+		</script>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Sidebar />
+		<MobileNav />
+		<main>
+			<div class="showcase">
+				{projects.map((project, i) => (
+					<Project {...project} isActive={i === 0} />
+				))}
+			</div>
+			<Pagination total={projects.length} labels={projects.map((p) => p.name)} />
+		</main>
 	</body>
 </html>

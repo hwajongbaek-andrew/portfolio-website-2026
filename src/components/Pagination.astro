@@ -1,0 +1,226 @@
+---
+interface Props {
+	total: number;
+	labels?: string[];
+}
+const { total, labels } = Astro.props;
+const indices = Array.from({ length: total }, (_, i) => i);
+const padded = (n: number) => String(n + 1).padStart(2, "0");
+---
+
+<nav class="pagination" aria-label="Project pagination">
+	<div class="pagination-row">
+		<button class="pagination-arrow" data-direction="prev" aria-label="Previous project">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="19" y1="12" x2="5" y2="12"></line>
+				<polyline points="12 19 5 12 12 5"></polyline>
+			</svg>
+		</button>
+
+		<div class="pagination-counter">
+			<span class="pagination-current" data-pagination-current>01</span>
+			<span class="pagination-divider">/</span>
+			<span class="pagination-total">{padded(total - 1)}</span>
+		</div>
+
+		<button class="pagination-arrow" data-direction="next" aria-label="Next project">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="5" y1="12" x2="19" y2="12"></line>
+				<polyline points="12 5 19 12 12 19"></polyline>
+			</svg>
+		</button>
+	</div>
+
+	<ol class="pagination-dots" role="tablist">
+		{indices.map((i) => (
+			<li>
+				<button
+					class:list={["pagination-dot", { "is-active": i === 0 }]}
+					data-index={i}
+					role="tab"
+					aria-label={labels?.[i] ? `View ${labels[i]}` : `View project ${i + 1}`}
+				></button>
+			</li>
+		))}
+	</ol>
+</nav>
+
+<style>
+	.pagination {
+		position: absolute;
+		bottom: 32px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		z-index: 20;
+		pointer-events: none;
+	}
+
+	.pagination-row,
+	.pagination-dots {
+		pointer-events: auto;
+	}
+
+	.pagination-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 18px;
+		padding: 8px 14px;
+		background-color: rgba(255, 255, 255, 0.92);
+		border-radius: 999px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	:global([data-theme="dark"]) .pagination-row {
+		background-color: rgba(40, 40, 40, 0.85);
+	}
+
+	.pagination-arrow {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border: none;
+		background: transparent;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: var(--text-primary);
+		transition: background-color var(--transition-fast);
+	}
+
+	.pagination-arrow:hover {
+		background-color: var(--bg-secondary);
+	}
+
+	.pagination-arrow svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.pagination-counter {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-primary);
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.02em;
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+	}
+
+	.pagination-divider,
+	.pagination-total {
+		color: var(--text-muted);
+	}
+
+	.pagination-dots {
+		list-style: none;
+		display: inline-flex;
+		gap: 8px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.pagination-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		border: none;
+		background-color: rgba(255, 255, 255, 0.5);
+		padding: 0;
+		cursor: pointer;
+		transition: background-color var(--transition-fast),
+			transform var(--transition-fast),
+			width var(--transition-fast);
+	}
+
+	.pagination-dot:hover {
+		background-color: rgba(255, 255, 255, 0.75);
+	}
+
+	.pagination-dot.is-active {
+		background-color: #ffffff;
+		width: 22px;
+		border-radius: 999px;
+	}
+
+	@media (max-width: 768px) {
+		.pagination {
+			bottom: 20px;
+		}
+	}
+</style>
+
+<script>
+	const slides = Array.from(document.querySelectorAll<HTMLElement>(".slide"));
+	const dots = Array.from(
+		document.querySelectorAll<HTMLButtonElement>(".pagination-dot")
+	);
+	const arrows = Array.from(
+		document.querySelectorAll<HTMLButtonElement>(".pagination-arrow")
+	);
+	const currentLabel = document.querySelector<HTMLElement>(
+		"[data-pagination-current]"
+	);
+
+	const total = slides.length;
+	let current = 0;
+
+	/* Pause videos in inactive slides — autoplay keeps them running
+	   in the background otherwise, which is the main CPU drain. */
+	function syncVideos(activeIndex: number) {
+		slides.forEach((slide, i) => {
+			const video = slide.querySelector<HTMLVideoElement>("video");
+			if (!video) return;
+			if (i === activeIndex) {
+				const p = video.play();
+				if (p && typeof p.catch === "function") p.catch(() => {});
+			} else {
+				video.pause();
+			}
+		});
+	}
+
+	function setSlide(target: number) {
+		if (total === 0) return;
+		const next = ((target % total) + total) % total;
+		if (next === current) return;
+
+		slides.forEach((s, i) => s.classList.toggle("is-active", i === next));
+		dots.forEach((d, i) => d.classList.toggle("is-active", i === next));
+		if (currentLabel) {
+			currentLabel.textContent = String(next + 1).padStart(2, "0");
+		}
+
+		syncVideos(next);
+		current = next;
+	}
+
+	dots.forEach((dot) =>
+		dot.addEventListener("click", () =>
+			setSlide(parseInt(dot.dataset.index ?? "0", 10))
+		)
+	);
+
+	arrows.forEach((arrow) =>
+		arrow.addEventListener("click", () => {
+			const delta = arrow.dataset.direction === "next" ? 1 : -1;
+			setSlide(current + delta);
+		})
+	);
+
+	window.addEventListener("keydown", (e) => {
+		if (e.key === "ArrowLeft") setSlide(current - 1);
+		else if (e.key === "ArrowRight") setSlide(current + 1);
+	});
+
+	/* Initial sync: pause the videos that aren't on the first (active) slide. */
+	syncVideos(current);
+</script>

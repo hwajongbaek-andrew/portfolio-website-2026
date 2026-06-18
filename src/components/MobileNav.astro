@@ -1,0 +1,68 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<nav class="mobile-nav" aria-label="Primary mobile">
+	<div class="mobile-nav-pill">
+		<a href="#work" class="mobile-nav-link mobile-nav-link-active">Work</a>
+		<a href="#about" class="mobile-nav-link">About</a>
+		<a href="#contact" class="mobile-nav-link">Contact</a>
+		<ThemeToggle />
+	</div>
+</nav>
+
+<style>
+	/* Hidden by default (desktop). Shown only ≤768px. */
+	.mobile-nav {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.mobile-nav {
+			display: flex;
+			position: fixed;
+			top: 20px;
+			left: 0;
+			right: 0;
+			justify-content: center;
+			align-items: center;
+			z-index: 100;
+			pointer-events: none;
+			padding: 0 16px;
+		}
+
+		.mobile-nav-pill {
+			pointer-events: auto;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			padding: 4px;
+			background-color: var(--nav-pill-bg);
+			border: 1px solid var(--border);
+			border-radius: 999px;
+			box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+			max-width: 100%;
+		}
+
+		.mobile-nav-link {
+			font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+			font-size: var(--text-body-sm);
+			font-weight: 500;
+			color: var(--text-secondary);
+			text-decoration: none;
+			padding: 8px 14px;
+			border-radius: 999px;
+			transition: color var(--transition-fast),
+				background-color var(--transition-fast);
+		}
+
+		.mobile-nav-link:hover {
+			color: var(--text-primary);
+		}
+
+		.mobile-nav-link-active {
+			color: var(--text-primary);
+			background-color: var(--bg-elevated);
+		}
+	}
+</style>

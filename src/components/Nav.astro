@@ -1,0 +1,126 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<nav class="nav">
+	<div class="nav-pill">
+		<a href="#home" class="nav-link nav-active">Home</a>
+		<a href="#work" class="nav-link">
+			Work
+			<span class="nav-dot" aria-hidden="true"></span>
+		</a>
+		<a href="#about" class="nav-link">About</a>
+		<a href="#contact" class="nav-link">Contact</a>
+		<ThemeToggle />
+	</div>
+</nav>
+
+<style>
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding-block: 24px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+		z-index: 100;
+		pointer-events: none;
+	}
+
+	/* The blur lives on a pseudo-element so we can fade it out at the
+	   bottom edge with a mask gradient. The pill (a child) renders above
+	   the pseudo-element and isn't affected by the mask. */
+	.nav::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+		-webkit-mask-image: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 1) 40%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		mask-image: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 1) 40%,
+			rgba(0, 0, 0, 0) 100%
+		);
+	}
+
+	.nav-pill {
+		pointer-events: auto;
+	}
+
+	.nav-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background-color: var(--nav-pill-bg);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 6px;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+	}
+
+	.nav-link {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 10px 20px;
+		font-family: "Poppins", sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+		text-decoration: none;
+		border-radius: 999px;
+		transition:
+			color var(--transition-fast),
+			background-color var(--transition-fast);
+	}
+
+	.nav-link:hover {
+		color: var(--text-primary);
+		background-color: var(--bg-elevated);
+	}
+
+	.nav-active {
+		color: var(--text-primary);
+		background-color: var(--bg-elevated);
+	}
+
+	:global([data-theme="dark"]) .nav-active {
+		background-color: #333333;
+	}
+
+	.nav-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: var(--text-accent);
+		display: inline-block;
+	}
+
+	@media (max-width: 768px) {
+		.nav {
+			padding-inline: 16px;
+		}
+
+		.nav-pill {
+			gap: 4px;
+			padding: 4px;
+			max-width: 100%;
+		}
+
+		.nav-link {
+			padding: 8px 12px;
+			font-size: 13px;
+		}
+	}
+</style>

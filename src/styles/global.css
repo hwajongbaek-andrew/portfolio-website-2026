@@ -1,0 +1,349 @@
+@import "tailwindcss";
+/* ============================================
+   Andrew Baek Portfolio: Global Styles
+   This file defines all design tokens.
+   Always reference DESIGN.md when modifying.
+   ============================================ */
+
+   @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap');
+
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   
+   /* ============================================
+      Design Tokens (CSS Custom Properties)
+      ============================================ */
+   
+   @layer base {
+     :root {
+       /* Colors — light mode defaults */
+       --bg-primary: #FFFFFF;
+       --bg-secondary: rgba(0, 0, 0, 0.03);
+       --bg-elevated: #FFFFFF;
+
+       --text-primary: #1A1A1A;
+       --text-secondary: #666666;
+       --text-muted: #999999;
+
+       --border: rgba(0, 0, 0, 0.08);
+       --card-border: transparent;
+
+       --accent: #E5A77A;
+       --accent-hover: #D8945E;
+       --accent-gradient: linear-gradient(to bottom, #F99E67, #FAB771);
+       --text-accent: #C2410C;
+
+       --nav-pill-bg: #F3F5F6;
+
+       /* Spacing scale */
+       --space-xs: 8px;
+       --space-sm: 16px;
+       --space-md: 24px;
+       --space-lg: 48px;
+       --space-xl: 96px;
+       --space-2xl: 160px;
+   
+       /* Type sizes (desktop) */
+       --text-display-xl: 72px;
+       --text-display-lg: 56px;
+       --text-display-md: 40px;
+       --text-display-sm: 28px;
+       --text-body-lg: 20px;
+       --text-body-md: 16px;
+       --text-body-sm: 14px;
+       --text-label: 13px;
+   
+       /* Line heights */
+       --leading-display-tight: 1.05;
+       --leading-display: 1.15;
+       --leading-body: 1.6;
+   
+       /* Layout */
+       --container-max: 1200px;
+      --container-padding: 24px;
+   
+       /* Motion */
+       --transition-fast: 200ms ease-out;
+       --transition-default: 300ms ease-out;
+     }
+   
+     /* Dark mode tokens — explicit attribute */
+     [data-theme="dark"] {
+       --bg-primary: #333333;
+       --bg-secondary: rgba(255, 255, 255, 0.06);
+       --bg-elevated: #404040;
+       --text-primary: #F5F5F5;
+       --text-secondary: #A8A8A8;
+       --text-muted: #7A7A7A;
+       --border: rgba(255, 255, 255, 0.10);
+       --card-border: transparent;
+       --accent: #E5A77A;
+       --accent-hover: #D8945E;
+       --accent-gradient: linear-gradient(to bottom, #F99E67, #FAB771);
+       --text-accent: #FB923C;
+
+       --nav-pill-bg: #2A2A2A;
+     }
+
+     /* Dark mode tokens — system preference fallback (no explicit data-theme) */
+     @media (prefers-color-scheme: dark) {
+       :root:not([data-theme]) {
+         --bg-primary: #333333;
+         --bg-secondary: rgba(255, 255, 255, 0.06);
+         --bg-elevated: #404040;
+         --text-primary: #F5F5F5;
+         --text-secondary: #A8A8A8;
+         --text-muted: #7A7A7A;
+         --border: rgba(255, 255, 255, 0.10);
+         --card-border: transparent;
+         --accent: #E5A77A;
+         --accent-hover: #D8945E;
+         --accent-gradient: linear-gradient(to bottom, #F99E67, #FAB771);
+         --text-accent: #FB923C;
+
+         --nav-pill-bg: #2A2A2A;
+       }
+     }
+
+     /* Mobile token overrides */
+     @media (max-width: 768px) {
+       :root {
+         --container-padding: 20px;
+         --text-display-xl: 48px;
+         --text-display-lg: 40px;
+         --text-display-md: 32px;
+         --text-display-sm: 24px;
+         --space-xl: 64px;
+         --space-2xl: 96px;
+       }
+     }
+   
+     /* ============================================
+        Base Styles
+        ============================================ */
+   
+     html {
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       height: 100%;
+     }
+
+     /* App shell: viewport-locked, no scroll. Sidebar + main side-by-side. */
+     body {
+       background-color: var(--bg-primary);
+       color: var(--text-primary);
+       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+       font-size: var(--text-body-md);
+       line-height: var(--leading-body);
+       font-weight: 400;
+       margin: 0;
+       height: 100vh;
+       overflow: hidden;
+       display: flex;
+       transition: background-color 300ms ease, color 300ms ease;
+     }
+
+     main {
+       flex: 1 1 auto;
+       position: relative;
+       overflow: hidden;
+       background-color: var(--bg-primary);
+       transition: background-color 300ms ease;
+     }
+
+     .showcase {
+       position: relative;
+       width: 100%;
+       height: 100%;
+       overflow: hidden;
+     }
+
+     /* On mobile the sidebar collapses into a fixed pill (see Sidebar.astro)
+        and is removed from flow, so main can keep filling the viewport. */
+     @media (max-width: 768px) {
+       main {
+         width: 100%;
+       }
+     }
+   
+     h1, h2, h3, h4 {
+       font-family: 'Instrument Serif', Georgia, serif;
+       font-weight: 400;
+       color: var(--text-primary);
+       letter-spacing: -0.01em;
+     }
+   
+     h1 {
+       font-size: var(--text-display-xl);
+       line-height: var(--leading-display-tight);
+     }
+   
+     h2 {
+       font-size: var(--text-display-lg);
+       line-height: var(--leading-display);
+     }
+   
+     h3 {
+       font-size: var(--text-display-md);
+       line-height: var(--leading-display);
+     }
+   
+     h4 {
+       font-size: var(--text-display-sm);
+       line-height: var(--leading-display);
+     }
+   
+     p {
+       color: var(--text-primary);
+       line-height: var(--leading-body);
+     }
+   
+     a {
+       color: inherit;
+       text-decoration: none;
+       transition: color var(--transition-fast);
+     }
+   
+     /* Reduced motion */
+     @media (prefers-reduced-motion: reduce) {
+       *, *::before, *::after {
+         animation-duration: 0.01ms !important;
+         transition-duration: 0.01ms !important;
+       }
+       html { scroll-behavior: auto; }
+     }
+   }
+   
+   /* ============================================
+      Reusable Component Classes
+      ============================================ */
+   
+   @layer components {
+   
+     /* Container: use this on any section that needs the standard layout width */
+     .container-default {
+       max-width: var(--container-max);
+       margin: 0 auto;
+       padding-left: var(--container-padding);
+       padding-right: var(--container-padding);
+     }
+   
+     /* Section: use this as a wrapper for major page sections */
+     .section {
+       padding-top: var(--space-xl);
+       padding-bottom: var(--space-xl);
+     }
+   
+     /* Section label (eyebrow above headings) */
+     .section-label {
+       font-size: var(--text-label);
+       font-weight: 500;
+       text-transform: uppercase;
+       letter-spacing: 0.08em;
+       color: var(--text-secondary);
+       margin-bottom: var(--space-sm);
+     }
+   
+     /* Animated underline link */
+     .link-underline {
+       position: relative;
+       display: inline-block;
+     }
+   
+     .link-underline::after {
+       content: '';
+       position: absolute;
+       left: 0;
+       bottom: -2px;
+       width: 100%;
+       height: 1px;
+       background-color: var(--text-accent);
+       transform: scaleX(0);
+       transform-origin: left;
+       transition: transform var(--transition-fast);
+     }
+   
+     .link-underline:hover::after {
+       transform: scaleX(1);
+     }
+   
+     /* Card pattern (used on project cards and elsewhere) */
+     .card {
+       background-color: var(--bg-secondary);
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      padding: 48px;
+       transition: transform var(--transition-default),
+                   box-shadow var(--transition-default);
+     }
+
+    .card-large {
+      background-color: var(--bg-secondary);
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      padding: 64px;
+      transition: transform var(--transition-default),
+                  box-shadow var(--transition-default);
+    }
+   
+     .card:hover {
+       transform: scale(1.01);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+     }
+
+    .card-large:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 32px;
+      }
+
+      .card-large {
+        padding: 40px;
+      }
+    }
+   
+     /* Body text size variants */
+     .text-lead {
+       font-size: var(--text-body-lg);
+       line-height: 1.5;
+       color: var(--text-primary);
+     }
+   
+     .text-meta {
+       font-size: var(--text-body-sm);
+       color: var(--text-secondary);
+     }
+   }
+   
+   /* ============================================
+      Utility Classes
+      ============================================ */
+   
+   @layer utilities {
+   
+     .font-serif {
+       font-family: 'Instrument Serif', Georgia, serif;
+     }
+   
+     .font-sans {
+       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+     }
+   
+     /* Color utilities mapped to tokens */
+     .bg-primary { background-color: var(--bg-primary); }
+     .bg-secondary { background-color: var(--bg-secondary); }
+     .bg-elevated { background-color: var(--bg-elevated); }
+   
+     .text-default { color: var(--text-primary); }
+     .text-secondary { color: var(--text-secondary); }
+     .text-muted { color: var(--text-muted); }
+     .text-accent { color: var(--text-accent); }
+   
+     .border-default { border-color: var(--border); }
+   }
+

@@ -1,0 +1,126 @@
+<section class="hero-section container-default">
+	<div class="hero-card">
+		<div class="hero-text">
+			<div class="hero-logo" role="img" aria-label="Andrew Baek"></div>
+			<h2 class="hero-tagline">Product designer, Toronto.</h2>
+			<h2 class="hero-tagline">
+				<span class="rotating-tagline">Industrial design background. Building with AI.</span>
+			</h2>
+			<p class="hero-availability">
+				Currently graphic designer at MedMe Health, building toward product.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero-section {
+		min-height: clamp(400px, 60vh, 600px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 160px;
+	}
+
+	.hero-card {
+		background-color: transparent;
+		border: none;
+		padding: var(--space-lg) 0;
+		text-align: center;
+		width: 100%;
+	}
+
+	.hero-text {
+		max-width: 720px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero-logo {
+		display: block;
+		width: 100%;
+		max-width: 480px;
+		aspect-ratio: 1630.06 / 150;
+		margin: 0 auto var(--space-lg);
+		background-color: var(--text-primary);
+		-webkit-mask: url('/images/logo.svg') center / contain no-repeat;
+		mask: url('/images/logo.svg') center / contain no-repeat;
+		transition: background-color 300ms ease;
+	}
+
+	.hero-tagline {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		line-height: var(--leading-body);
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.rotating-tagline {
+		display: inline-block;
+		transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 500ms ease-out,
+			filter 500ms ease-out;
+		will-change: transform, opacity, filter;
+	}
+
+	.rotating-tagline.fade-out {
+		transform: translateY(-10px);
+		opacity: 0;
+		filter: blur(6px);
+	}
+
+	.rotating-tagline.fade-prep {
+		transform: translateY(10px);
+		opacity: 0;
+		filter: blur(6px);
+		transition: none;
+	}
+
+	.hero-availability {
+		margin-top: var(--space-lg);
+		font-size: var(--text-body-sm);
+		line-height: var(--leading-body);
+		color: var(--text-accent);
+	}
+
+	@media (max-width: 768px) {
+		.hero-logo {
+			max-width: 320px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.rotating-tagline,
+		.rotating-tagline.fade-out,
+		.rotating-tagline.fade-prep {
+			transition: none;
+			transform: none;
+			opacity: 1;
+			filter: none;
+		}
+	}
+</style>
+
+<script>
+	const variations = [
+		"Industrial design background. Building with AI.",
+		"Designing with taste. Shipping with AI.",
+		"Design fundamentals meet AI velocity."
+	];
+	const el = document.querySelector('.rotating-tagline');
+	let i = 0;
+	if (el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		setInterval(() => {
+			el.classList.add('fade-out');
+			setTimeout(() => {
+				i = (i + 1) % variations.length;
+				el.textContent = variations[i];
+				el.classList.remove('fade-out');
+				el.classList.add('fade-prep');
+				void (el as HTMLElement).offsetWidth;
+				el.classList.remove('fade-prep');
+			}, 500);
+		}, 4000);
+	}
+</script>
