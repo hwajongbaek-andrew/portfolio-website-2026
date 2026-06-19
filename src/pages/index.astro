@@ -1,78 +1,116 @@
 ---
-import "../styles/global.css";
-import Sidebar from "../components/Sidebar.astro";
-import MobileNav from "../components/MobileNav.astro";
-import ProjectList from "../components/ProjectList.astro";
-import Project from "../components/Project.astro";
-import Pagination from "../components/Pagination.astro";
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
-const projects = [
+const recentProjects = [
 	{
 		name: "Milkyway Glass",
-		headline: "Reimagining e-commerce UX & retention",
-		meta: "Product design, retention strategy",
-		ctaHref: "#",
-		mockupSrc: "/images/Laptop Mockup.png",
-		mockupAlt: "Milkyway Glass website preview on a laptop",
-		videoSrc: "/videos/Portfolio-MK-Desktop.mp4",
-		videoLoopEnd: 23,
+		category: "E-commerce UX",
+		year: "2024",
+		thumbnail: "/images/Laptop Mockup.png",
+		thumbnailAlt: "Milkyway Glass on a laptop",
+		href: "/projects",
 	},
 	{
 		name: "O3 Drinkware",
-		headline: "Brand-to-product commerce experience",
-		meta: "Responsive web, brand design",
-		ctaHref: "#",
-		mockupSrc: "/images/RS-Mockup.png",
-		mockupAlt: "O3 Drinkware website preview on a desktop monitor",
-		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
-		mockupTop: "calc(55% + 40px)",
-		mockupWidth: "48%",
-		screenTop: "calc(3% + 10px)",
-		screenLeft: "calc(4% - 2px)",
-		screenWidth: "92%",
-		screenHeight: "calc(65% - 40px)",
-	},
-	{
-		name: "Seeders",
-		headline: "Ecosystem design for home gardeners",
-		meta: "Mobile product, multi-sided UX",
-		ctaHref: "#",
-		phones: [
-			"/images/Seeders_Mockup_E01.png",
-			"/images/Seeders_Mockup_E02.png",
-			"/images/Seeders_Mockup_E03.png",
-		],
-		phonesAlt: "Seeders mobile app screens",
+		category: "Responsive web",
+		year: "2024",
+		thumbnail: "/images/RS-Mockup.png",
+		thumbnailAlt: "O3 Drinkware on a desktop monitor",
+		href: "/projects",
 	},
 ];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Andrew Baek — Product Designer</title>
-		<script is:inline>
-			const stored = localStorage.getItem('theme');
-			const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			const theme = stored || (systemDark ? 'dark' : 'light');
-			document.documentElement.setAttribute('data-theme', theme);
-		</script>
-	</head>
-	<body>
-		<Sidebar />
-		<MobileNav />
-		<ProjectList projects={projects.map((p) => p.name)} />
-		<main>
-			<div class="showcase">
-				{projects.map((project, i) => (
-					<Project {...project} isActive={i === 0} />
-				))}
-			</div>
-			<Pagination total={projects.length} labels={projects.map((p) => p.name)} />
-		</main>
-	</body>
-</html>
+<DashboardLayout title="Andrew Baek — Product Designer">
+	<header class="page-header">
+		<h1 class="page-title">Designing products people actually use.</h1>
+		<p class="page-subtitle">
+			Product designer in Toronto with an industrial design background.
+			Currently shipping at MedMe Health and building toward product with
+			AI in the loop.
+		</p>
+		<div class="page-actions">
+			<a href="/about" class="page-button">About</a>
+			<a href="/contact" class="page-button">
+				<svg class="page-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+					<polyline points="22,6 12,13 2,6"/>
+				</svg>
+				Email
+			</a>
+		</div>
+	</header>
+
+	<section class="home-section">
+		<div class="home-section-head">
+			<h2 class="home-section-title">Recent Work</h2>
+			<a href="/projects" class="home-section-link">
+				All projects
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="5" y1="12" x2="19" y2="12"/>
+					<polyline points="12 5 19 12 12 19"/>
+				</svg>
+			</a>
+		</div>
+		<div class="home-grid">
+			{recentProjects.map((project) => <ProjectCard {...project} />)}
+		</div>
+	</section>
+</DashboardLayout>
+
+<style>
+	.home-section {
+		margin-bottom: 56px;
+	}
+
+	.home-section-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		margin-bottom: 20px;
+	}
+
+	.home-section-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-display-sm);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0;
+		letter-spacing: -0.02em;
+	}
+
+	.home-section-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: color var(--transition-fast);
+	}
+
+	.home-section-link:hover {
+		color: var(--text-primary);
+	}
+
+	.home-section-link svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.home-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	@media (max-width: 768px) {
+		.home-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

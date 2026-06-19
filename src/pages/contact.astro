@@ -1,0 +1,126 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="Contact — Andrew Baek">
+	<header class="page-header">
+		<h1 class="page-title">Contact</h1>
+		<p class="page-subtitle">
+			Always open to collaborating on interesting product and design
+			problems. Drop a line.
+		</p>
+		<div class="page-actions">
+			<a href="mailto:hwajongbaek@gmail.com" class="page-button">
+				<svg class="page-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+					<polyline points="22,6 12,13 2,6"/>
+				</svg>
+				E-Mail
+			</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="page-button">
+				LinkedIn
+				<svg class="page-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="7" y1="17" x2="17" y2="7"/>
+					<polyline points="7 7 17 7 17 17"/>
+				</svg>
+			</a>
+		</div>
+	</header>
+
+	<section class="contact-card">
+		<h2 class="contact-card-title">Send a message</h2>
+		<form class="contact-form">
+			<label class="contact-field">
+				<span class="contact-label">Name</span>
+				<input type="text" placeholder="Jane Smith" class="contact-input" />
+			</label>
+			<label class="contact-field">
+				<span class="contact-label">Email</span>
+				<input type="email" placeholder="jane@example.com" class="contact-input" />
+			</label>
+			<label class="contact-field">
+				<span class="contact-label">Your message</span>
+				<textarea placeholder="Tell me about your project…" class="contact-input contact-textarea" rows="5"></textarea>
+			</label>
+			<button type="submit" class="contact-submit">Send message</button>
+		</form>
+	</section>
+</DashboardLayout>
+
+<style>
+	.contact-card {
+		border: 1px solid var(--border);
+		border-radius: 20px;
+		padding: 28px;
+		background-color: var(--bg-primary);
+	}
+
+	.contact-card-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 20px;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.contact-field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.contact-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+	}
+
+	.contact-input {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		padding: 12px 14px;
+		outline: none;
+		transition: border-color var(--transition-fast),
+			background-color var(--transition-fast);
+		width: 100%;
+		box-sizing: border-box;
+		resize: vertical;
+	}
+
+	.contact-input:focus {
+		border-color: var(--text-muted);
+	}
+
+	.contact-textarea {
+		min-height: 120px;
+		line-height: 1.5;
+	}
+
+	.contact-submit {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 600;
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		padding: 12px 16px;
+		cursor: pointer;
+		transition: background-color var(--transition-fast);
+	}
+
+	.contact-submit:hover {
+		background-color: var(--bg-elevated);
+	}
+</style>

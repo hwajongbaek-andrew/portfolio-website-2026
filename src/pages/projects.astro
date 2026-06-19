@@ -1,0 +1,64 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+	{
+		name: "Milkyway Glass",
+		category: "E-commerce UX & retention",
+		year: "2024",
+		thumbnail: "/images/Laptop Mockup.png",
+		thumbnailAlt: "Milkyway Glass on a laptop",
+		href: "#",
+	},
+	{
+		name: "O3 Drinkware",
+		category: "Brand-to-product commerce",
+		year: "2024",
+		thumbnail: "/images/RS-Mockup.png",
+		thumbnailAlt: "O3 Drinkware on a desktop monitor",
+		href: "#",
+	},
+	{
+		name: "Seeders",
+		category: "Multi-sided platform UX",
+		year: "2021",
+		thumbnail: "/images/Seeders_Mockup_E04.jpg",
+		thumbnailAlt: "Seeders mobile app screens",
+		href: "#",
+	},
+	{
+		name: "Exit Tracker",
+		category: "Wayfinding & utility UX",
+		year: "2021",
+		href: "#",
+	},
+];
+---
+
+<DashboardLayout title="Projects — Andrew Baek">
+	<header class="page-header">
+		<h1 class="page-title">Projects</h1>
+		<p class="page-subtitle">
+			Designing memorable digital experiences with measurable impact.
+		</p>
+	</header>
+
+	<div class="projects-grid">
+		{projects.map((project) => <ProjectCard {...project} />)}
+	</div>
+</DashboardLayout>
+
+<style>
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	@media (max-width: 768px) {
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

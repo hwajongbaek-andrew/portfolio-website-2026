@@ -1,0 +1,63 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="About — Andrew Baek">
+	<header class="page-header">
+		<h1 class="page-title">About</h1>
+		<p class="page-subtitle">
+			I'm a product designer in Toronto with an industrial design
+			background. I design e-commerce and consumer products where
+			strategic thinking and visual craft both matter.
+		</p>
+	</header>
+
+	<section class="about-section">
+		<h2 class="about-section-title">Right now</h2>
+		<p class="about-text">
+			Currently shipping at <strong>MedMe Health</strong> as a graphic
+			designer, building toward product design with AI tooling as a
+			daily co-pilot.
+		</p>
+	</section>
+
+	<section class="about-section">
+		<h2 class="about-section-title">Background</h2>
+		<p class="about-text">
+			Trained in industrial design — sketching, prototyping, and shipping
+			physical objects. That craft mindset shapes how I approach digital
+			products now: tight loops, deliberate decisions, taste before
+			tooling.
+		</p>
+	</section>
+</DashboardLayout>
+
+<style>
+	.about-section {
+		margin-bottom: 48px;
+		max-width: 560px;
+	}
+
+	.about-section-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+		margin: 0 0 12px;
+	}
+
+	.about-text {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		line-height: 1.6;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.about-text strong {
+		color: var(--text-accent);
+		font-weight: 600;
+	}
+</style>

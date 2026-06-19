@@ -1,0 +1,158 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+
+interface StackItem {
+	name: string;
+	sublabel: string;
+	letter: string;
+	color: string;
+}
+
+interface StackCategory {
+	title: string;
+	items: StackItem[];
+}
+
+const stack: StackCategory[] = [
+	{
+		title: "Design",
+		items: [
+			{ name: "Figma", sublabel: "Design tool", letter: "F", color: "#F24E1E" },
+			{ name: "Framer", sublabel: "Web design platform", letter: "F", color: "#0055FF" },
+		],
+	},
+	{
+		title: "Productivity",
+		items: [
+			{ name: "Notion", sublabel: "Docs & wiki", letter: "N", color: "#1A1A1A" },
+			{ name: "Linear", sublabel: "Project management", letter: "L", color: "#5E6AD2" },
+			{ name: "Slack", sublabel: "Team collaboration", letter: "S", color: "#4A154B" },
+			{ name: "Arc", sublabel: "Browser", letter: "A", color: "#FE5A4D" },
+		],
+	},
+	{
+		title: "Development",
+		items: [
+			{ name: "VS Code", sublabel: "Code editor", letter: "V", color: "#007ACC" },
+			{ name: "GitHub", sublabel: "Source control", letter: "G", color: "#1A1A1A" },
+			{ name: "Vercel", sublabel: "Hosting", letter: "V", color: "#1A1A1A" },
+			{ name: "Astro", sublabel: "Web framework", letter: "A", color: "#FF5D01" },
+		],
+	},
+	{
+		title: "Artificial Intelligence",
+		items: [
+			{ name: "Claude", sublabel: "Reasoning & code", letter: "C", color: "#D97757" },
+			{ name: "ChatGPT", sublabel: "General assistant", letter: "G", color: "#10A37F" },
+			{ name: "Cursor", sublabel: "AI-first editor", letter: "C", color: "#1A1A1A" },
+		],
+	},
+];
+---
+
+<DashboardLayout title="Stack — Andrew Baek">
+	<header class="page-header">
+		<h1 class="page-title">Stack</h1>
+		<p class="page-subtitle">
+			Tools and resources I use daily.
+		</p>
+	</header>
+
+	<div class="stack-list">
+		{stack.map((section) => (
+			<section class="stack-section">
+				<h2 class="stack-section-title">{section.title}</h2>
+				<div class="stack-grid">
+					{section.items.map((item) => (
+						<div class="stack-item">
+							<span class="stack-item-icon" style={`background-color: ${item.color}`}>{item.letter}</span>
+							<div class="stack-item-text">
+								<p class="stack-item-name">{item.name}</p>
+								<p class="stack-item-sub">{item.sublabel}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+		))}
+	</div>
+</DashboardLayout>
+
+<style>
+	.stack-list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.stack-section {
+		border: 1px solid var(--border);
+		border-radius: 20px;
+		padding: 24px 24px 28px;
+		background-color: var(--bg-primary);
+	}
+
+	.stack-section-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 20px;
+	}
+
+	.stack-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px 24px;
+	}
+
+	.stack-item {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	.stack-item-icon {
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 18px;
+		font-weight: 600;
+		flex-shrink: 0;
+	}
+
+	.stack-item-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.stack-item-name {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.stack-item-sub {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.3;
+	}
+
+	@media (max-width: 768px) {
+		.stack-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

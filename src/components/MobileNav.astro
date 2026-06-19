@@ -1,18 +1,36 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const navItems = [
+	{ label: "Home", href: "/" },
+	{ label: "Projects", href: "/projects" },
+	{ label: "Stack", href: "/stack" },
+	{ label: "About", href: "/about" },
+];
+
+const isActive = (href: string) => {
+	if (href === "/") return pathname === "/";
+	return pathname === href || pathname.startsWith(href + "/");
+};
 ---
 
 <nav class="mobile-nav" aria-label="Primary mobile">
 	<div class="mobile-nav-pill">
-		<a href="#work" class="mobile-nav-link mobile-nav-link-active">Work</a>
-		<a href="#about" class="mobile-nav-link">About</a>
-		<a href="#contact" class="mobile-nav-link">Contact</a>
+		{navItems.map((item) => (
+			<a
+				href={item.href}
+				class:list={["mobile-nav-link", { "is-active": isActive(item.href) }]}
+			>
+				{item.label}
+			</a>
+		))}
 		<ThemeToggle />
 	</div>
 </nav>
 
 <style>
-	/* Hidden by default (desktop). Shown only ≤768px. */
 	.mobile-nav {
 		display: none;
 	}
@@ -35,7 +53,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 			pointer-events: auto;
 			display: inline-flex;
 			align-items: center;
-			gap: 4px;
+			gap: 2px;
 			padding: 4px;
 			background-color: var(--nav-pill-bg);
 			border: 1px solid var(--border);
@@ -46,11 +64,11 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 		.mobile-nav-link {
 			font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-			font-size: var(--text-body-sm);
+			font-size: 13px;
 			font-weight: 500;
 			color: var(--text-secondary);
 			text-decoration: none;
-			padding: 8px 14px;
+			padding: 7px 12px;
 			border-radius: 999px;
 			transition: color var(--transition-fast),
 				background-color var(--transition-fast);
@@ -60,7 +78,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 			color: var(--text-primary);
 		}
 
-		.mobile-nav-link-active {
+		.mobile-nav-link.is-active {
 			color: var(--text-primary);
 			background-color: var(--bg-elevated);
 		}
