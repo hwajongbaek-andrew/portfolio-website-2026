@@ -118,10 +118,10 @@ if (screenHeight) mockupVars["--screen-height"] = screenHeight;
 
 	.project-mockup {
 		position: absolute;
-		top: var(--mockup-top, 60%);
-		left: 50%;
+		top: var(--mockup-top, 72%);
+		left: calc(50% + var(--content-shift-x, 0px));
 		transform: translate(-50%, -50%);
-		width: var(--mockup-width, 48%);
+		width: var(--mockup-width, 42%);
 		max-width: 760px;
 		cursor: pointer;
 		transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -164,7 +164,7 @@ if (screenHeight) mockupVars["--screen-height"] = screenHeight;
 	.project-phone {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: calc(50% + var(--content-shift-x, 0px));
 		height: auto;
 		display: block;
 		transform-origin: center center;
@@ -211,9 +211,9 @@ if (screenHeight) mockupVars["--screen-height"] = screenHeight;
 	.slide-meta {
 		position: absolute;
 		top: 48px;
-		left: 48px;
+		left: calc(var(--sidebar-footprint, 0px) + 44px); /* clear floating sidebar with 44px gap */
 		z-index: 5;
-		max-width: min(560px, 60%);
+		max-width: min(560px, calc(100% - var(--sidebar-footprint, 0px) - var(--right-pill-footprint, 0px) - 88px));
 		pointer-events: none;
 	}
 
@@ -323,7 +323,11 @@ if (screenHeight) mockupVars["--screen-height"] = screenHeight;
 
 		.project-mockup {
 			width: 90%;
-			top: 50%;
+			top: 58%;
+		}
+
+		.project-phone {
+			top: 56%;
 		}
 	}
 

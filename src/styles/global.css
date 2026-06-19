@@ -66,6 +66,14 @@
        /* Motion */
        --transition-fast: 200ms ease-out;
        --transition-default: 300ms ease-out;
+
+       /* Floating pill footprints (used to recenter showcase content).
+          sidebar = 16 + 300 = 316 → half-footprint 158
+          project-list = 16 + 260 = 276 → half-footprint 138
+          net shift = (sidebar - project-list) / 2 = (316 - 276) / 2 = 20 */
+       --sidebar-footprint: 316px;
+       --right-pill-footprint: 276px;
+       --content-shift-x: calc((var(--sidebar-footprint) - var(--right-pill-footprint)) / 2);
      }
    
      /* Dark mode tokens — explicit attribute */
@@ -116,6 +124,10 @@
          --text-display-sm: 24px;
          --space-xl: 64px;
          --space-2xl: 96px;
+
+         /* Floating pills are hidden / repositioned on mobile, so no shift. */
+         --sidebar-footprint: 0px;
+         --right-pill-footprint: 0px;
        }
      }
    

@@ -49,7 +49,7 @@ const padded = (n: number) => String(n + 1).padStart(2, "0");
 	.pagination {
 		position: absolute;
 		bottom: 32px;
-		left: 50%;
+		left: calc(50% + var(--content-shift-x, 0px));
 		transform: translateX(-50%);
 		display: flex;
 		flex-direction: column;
@@ -166,6 +166,9 @@ const padded = (n: number) => String(n + 1).padStart(2, "0");
 	const arrows = Array.from(
 		document.querySelectorAll<HTMLButtonElement>(".pagination-arrow")
 	);
+	const listItems = Array.from(
+		document.querySelectorAll<HTMLButtonElement>(".project-list-item")
+	);
 	const currentLabel = document.querySelector<HTMLElement>(
 		"[data-pagination-current]"
 	);
@@ -195,6 +198,10 @@ const padded = (n: number) => String(n + 1).padStart(2, "0");
 
 		slides.forEach((s, i) => s.classList.toggle("is-active", i === next));
 		dots.forEach((d, i) => d.classList.toggle("is-active", i === next));
+		listItems.forEach((item) => {
+			const idx = parseInt(item.dataset.slideTarget ?? "0", 10);
+			item.classList.toggle("is-active", idx === next);
+		});
 		if (currentLabel) {
 			currentLabel.textContent = String(next + 1).padStart(2, "0");
 		}
@@ -214,6 +221,12 @@ const padded = (n: number) => String(n + 1).padStart(2, "0");
 			const delta = arrow.dataset.direction === "next" ? 1 : -1;
 			setSlide(current + delta);
 		})
+	);
+
+	listItems.forEach((item) =>
+		item.addEventListener("click", () =>
+			setSlide(parseInt(item.dataset.slideTarget ?? "0", 10))
+		)
 	);
 
 	window.addEventListener("keydown", (e) => {

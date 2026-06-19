@@ -27,16 +27,22 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 <style>
 	.sidebar {
-		width: 320px;
-		height: 100vh;
-		padding: 36px 32px 32px;
+		position: fixed;
+		top: 16px;
+		left: 16px;
+		bottom: 16px;
+		width: 300px;
+		padding: 32px 26px 26px;
 		display: flex;
 		flex-direction: column;
-		flex-shrink: 0;
 		background-color: var(--bg-primary);
-		border-right: 1px solid var(--border);
-		transition: background-color 300ms ease, border-color 300ms ease;
+		border: 1px solid var(--border);
+		border-radius: 32px;
+		box-shadow:
+			0 12px 40px rgba(0, 0, 0, 0.08),
+			0 4px 12px rgba(0, 0, 0, 0.04);
 		z-index: 50;
+		transition: background-color 300ms ease, border-color 300ms ease;
 	}
 
 	.sidebar-top {

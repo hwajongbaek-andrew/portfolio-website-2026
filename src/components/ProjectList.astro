@@ -1,0 +1,119 @@
+---
+interface Props {
+	projects: string[];
+}
+
+const { projects } = Astro.props;
+---
+
+<aside class="project-list" aria-label="Projects">
+	<p class="project-list-label">Projects</p>
+	<ol class="project-list-items">
+		{projects.map((name, i) => (
+			<li>
+				<button
+					type="button"
+					class:list={["project-list-item", { "is-active": i === 0 }]}
+					data-slide-target={i}
+					aria-label={`View ${name}`}
+				>
+					<span class="project-list-index">{String(i + 1).padStart(2, "0")}</span>
+					<span class="project-list-name">{name}</span>
+				</button>
+			</li>
+		))}
+	</ol>
+</aside>
+
+<style>
+	.project-list {
+		position: fixed;
+		top: 50%;
+		right: 16px;
+		transform: translateY(-50%);
+		width: 260px;
+		padding: 24px 18px 18px;
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border);
+		border-radius: 32px;
+		box-shadow:
+			0 12px 40px rgba(0, 0, 0, 0.08),
+			0 4px 12px rgba(0, 0, 0, 0.04);
+		z-index: 50;
+		transition: background-color 300ms ease, border-color 300ms ease;
+	}
+
+	.project-list-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+		margin: 0 0 16px;
+		padding: 0 12px;
+	}
+
+	.project-list-items {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.project-list-item {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		padding: 12px 14px;
+		border: none;
+		background: transparent;
+		text-align: left;
+		border-radius: 12px;
+		cursor: pointer;
+		color: var(--text-secondary);
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 500;
+		transition: color var(--transition-fast),
+			background-color var(--transition-fast);
+	}
+
+	.project-list-item:hover {
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+	}
+
+	.project-list-item.is-active {
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+	}
+
+	.project-list-index {
+		font-size: var(--text-body-sm);
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+		font-weight: 500;
+		flex-shrink: 0;
+	}
+
+	.project-list-item.is-active .project-list-index {
+		color: var(--text-accent);
+	}
+
+	.project-list-name {
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	@media (max-width: 768px) {
+		.project-list {
+			display: none;
+		}
+	}
+</style>

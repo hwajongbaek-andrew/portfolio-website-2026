@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Sidebar from "../components/Sidebar.astro";
 import MobileNav from "../components/MobileNav.astro";
+import ProjectList from "../components/ProjectList.astro";
 import Project from "../components/Project.astro";
 import Pagination from "../components/Pagination.astro";
 
@@ -24,8 +25,8 @@ const projects = [
 		mockupSrc: "/images/RS-Mockup.png",
 		mockupAlt: "O3 Drinkware website preview on a desktop monitor",
 		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
-		mockupTop: "calc(50% + 40px)",
-		mockupWidth: "55%",
+		mockupTop: "calc(55% + 40px)",
+		mockupWidth: "48%",
 		screenTop: "calc(3% + 10px)",
 		screenLeft: "calc(4% - 2px)",
 		screenWidth: "92%",
@@ -64,6 +65,7 @@ const projects = [
 	<body>
 		<Sidebar />
 		<MobileNav />
+		<ProjectList projects={projects.map((p) => p.name)} />
 		<main>
 			<div class="showcase">
 				{projects.map((project, i) => (
