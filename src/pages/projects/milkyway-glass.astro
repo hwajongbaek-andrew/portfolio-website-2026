@@ -1,24 +1,25 @@
 ---
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 
-const stats = [
-	{ value: "40–60%", label: "Monthly revenue lift" },
-	{ value: "58%", label: "More website visitors (145.8k)" },
-	{ value: "23%", label: "Increase in page views" },
-	{ value: "+38%", label: "Avg engagement time (2m 18s)" },
-];
-
-const meta = [
+const facts = [
 	{ label: "Year", value: "2024" },
 	{ label: "Type", value: "Website redesign" },
 	{ label: "Role", value: "Product design lead" },
 	{ label: "Stack", value: "Figma, Framer, Shopify" },
 ];
 
+const metrics = [
+	{ value: "40–60%", label: "Monthly revenue lift" },
+	{ value: "58%", label: "More visitors (145.8k)" },
+	{ value: "+23%", label: "Page views" },
+	{ value: "+38%", label: "Engagement (2m 18s)" },
+];
+
 const solutionFeatures = [
 	{
 		title: "Streamlined navigation",
-		text: "Cut to the high-intent flows. Cleaner IA, fewer dead-ends.",
+		text: "Cut to high-intent flows. Cleaner IA, fewer dead-ends.",
 	},
 	{
 		title: "Milkyway Rewards",
@@ -26,49 +27,87 @@ const solutionFeatures = [
 	},
 	{
 		title: "Combo Creator",
-		text: "Strategic AOV play: bundle-builder priced to nudge customers toward larger baskets.",
+		text: "Strategic AOV play: bundle-builder priced to push toward bigger baskets.",
 	},
 	{
-		title: "Stronger product filtering",
+		title: "Stronger filtering",
 		text: "Faceted filters so shoppers find what they want without bouncing.",
 	},
 	{
-		title: "Mobile-first + SEO",
-		text: "Re-built layouts and structured content for mobile and search.",
+		title: "Mobile-first IA",
+		text: "Re-built layouts for the device most customers actually shop on.",
+	},
+	{
+		title: "SEO content scaffolding",
+		text: "Structured content + meta so the site became a real growth surface.",
+	},
+];
+
+const related = [
+	{
+		name: "O3 Drinkware",
+		category: "Brand-to-product commerce",
+		year: "2024",
+		thumbnail: "/images/RS-Mockup.png",
+		thumbnailAlt: "O3 Drinkware on a desktop monitor",
+		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
+		mockupAspect: "3463 / 3083",
+		screenTop: "3%",
+		screenLeft: "3%",
+		screenWidth: "94%",
+		screenHeight: "65%",
+		href: "/projects",
+	},
+	{
+		name: "Seeders",
+		category: "Multi-sided platform UX",
+		year: "2021",
+		thumbnail: "/images/Seeders_Mockup_E04.jpg",
+		thumbnailAlt: "Seeders mobile app screens",
+		href: "/projects",
 	},
 ];
 ---
 
 <DashboardLayout title="Milkyway Glass — Andrew Baek">
-	<!-- Breadcrumb -->
 	<a href="/projects" class="project-breadcrumb">
-		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
 			<polyline points="12 19 5 12 12 5"/>
 		</svg>
 		All projects
 	</a>
 
-	<!-- Header -->
+	<!-- Header: eyebrow, title, summary, inline facts & metric pills -->
 	<header class="project-header">
 		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
 		<h1 class="project-title">Milkyway Glass</h1>
 		<p class="project-summary">
 			Redesigning an e-commerce flow around the metrics that actually
 			move the business — revenue, retention, and average order value —
-			without losing the brand's distinct voice.
+			without losing the brand's voice.
 		</p>
-		<dl class="project-meta">
-			{meta.map((item) => (
-				<div class="project-meta-item">
-					<dt>{item.label}</dt>
-					<dd>{item.value}</dd>
-				</div>
+
+		<ul class="project-facts">
+			{facts.map((f) => (
+				<li class="project-fact">
+					<span class="project-fact-label">{f.label}</span>
+					<span class="project-fact-value">{f.value}</span>
+				</li>
 			))}
-		</dl>
+		</ul>
+
+		<ul class="project-metrics">
+			{metrics.map((m) => (
+				<li class="project-metric">
+					<span class="project-metric-value">{m.value}</span>
+					<span class="project-metric-label">{m.label}</span>
+				</li>
+			))}
+		</ul>
 	</header>
 
-	<!-- Hero visual: laptop mockup with video -->
+	<!-- Hero visual -->
 	<div class="project-hero">
 		<div class="project-hero-mockup">
 			<img
@@ -89,93 +128,69 @@ const solutionFeatures = [
 		</div>
 	</div>
 
-	<!-- Impact stats -->
-	<section class="project-section">
-		<h2 class="project-section-title">Impact</h2>
-		<div class="project-stats">
-			{stats.map((stat) => (
-				<div class="project-stat">
-					<p class="project-stat-value">{stat.value}</p>
-					<p class="project-stat-label">{stat.label}</p>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<!-- Overview -->
-	<section class="project-section">
-		<h2 class="project-section-title">Overview</h2>
-		<p class="project-section-text">
+	<!-- Editorial body -->
+	<section class="project-body">
+		<h2 class="project-h2">Overview</h2>
+		<p class="project-prose">
 			Milkyway Glass is an e-commerce startup specializing in glass
-			accessories. The team was sitting on a strong brand but a weak
-			conversion funnel. The redesign was driven by data — what page
-			scrolls converted, what filters got used, where shoppers dropped —
-			and strategic SEO so the site became a real growth lever, not just
-			a storefront.
+			accessories. The team had a strong brand and a weak conversion
+			funnel. The redesign was driven by data — what pages converted,
+			what filters got used, where shoppers dropped — and strategic SEO
+			so the site became a real growth lever, not just a storefront.
 		</p>
-	</section>
 
-	<!-- Problem -->
-	<section class="project-section">
-		<h2 class="project-section-title">The problem</h2>
-		<p class="project-section-text">
-			The original site looked good but didn't perform. Three core issues
-			kept users from converting:
+		<h2 class="project-h2">The challenge</h2>
+		<p class="project-prose">
+			Three issues quietly killed conversion before users even reached
+			the cart:
 		</p>
 		<ul class="project-list">
 			<li><strong>Unintuitive navigation</strong> — shoppers couldn't find what they came for.</li>
 			<li><strong>Thin engaging content</strong> — product pages told you what; rarely why.</li>
 			<li><strong>Poor mobile experience</strong> — over half the traffic was mobile, dropping off fast.</li>
 		</ul>
-	</section>
 
-	<!-- Solution -->
-	<section class="project-section">
-		<h2 class="project-section-title">The solution</h2>
-		<p class="project-section-text">
-			Five interventions, ordered by impact on revenue:
+		<h2 class="project-h2">The approach</h2>
+		<p class="project-prose">
+			Six interventions, ordered by impact on revenue:
 		</p>
-		<div class="project-features">
-			{solutionFeatures.map((feature) => (
+		<div class="project-feature-grid">
+			{solutionFeatures.map((f, i) => (
 				<div class="project-feature">
-					<h3 class="project-feature-title">{feature.title}</h3>
-					<p class="project-feature-text">{feature.text}</p>
+					<span class="project-feature-index">{String(i + 1).padStart(2, "0")}</span>
+					<div class="project-feature-text">
+						<h3 class="project-feature-title">{f.title}</h3>
+						<p class="project-feature-sub">{f.text}</p>
+					</div>
 				</div>
 			))}
 		</div>
-	</section>
 
-	<!-- Takeaways -->
-	<section class="project-section">
-		<h2 class="project-section-title">Takeaways</h2>
-		<p class="project-section-text">
+		<h2 class="project-h2">Outcomes</h2>
+		<p class="project-prose">
 			The work re-positioned the site from a static brand showcase into
-			a measurable growth surface. The biggest lift came from the
-			combo creator — proof that good UX framed as a business mechanism
-			(AOV) reads differently to stakeholders than UX framed as polish.
+			a measurable growth surface. The biggest lift came from the combo
+			creator — proof that good UX framed as a business mechanism (AOV)
+			reads differently to stakeholders than UX framed as polish.
 		</p>
 	</section>
 
-	<!-- Footer nav -->
-	<nav class="project-footer-nav" aria-label="Project navigation">
-		<a href="/projects" class="project-footer-link">
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<line x1="19" y1="12" x2="5" y2="12"/>
-				<polyline points="12 19 5 12 12 5"/>
-			</svg>
-			All projects
-		</a>
-		<a href="/projects" class="project-footer-link project-footer-link-next">
-			<span class="project-footer-link-meta">Next project</span>
-			<span class="project-footer-link-title">
-				O3 Drinkware
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+	<!-- Related projects -->
+	<section class="project-related">
+		<div class="project-related-head">
+			<h2 class="project-h2">More work</h2>
+			<a href="/projects" class="project-related-link">
+				All projects
+				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<line x1="5" y1="12" x2="19" y2="12"/>
 					<polyline points="12 5 19 12 12 19"/>
 				</svg>
-			</span>
-		</a>
-	</nav>
+			</a>
+		</div>
+		<div class="project-related-grid">
+			{related.map((project) => <ProjectCard {...project} />)}
+		</div>
+	</section>
 </DashboardLayout>
 
 <style>
@@ -204,7 +219,7 @@ const solutionFeatures = [
 
 	/* Header */
 	.project-header {
-		margin-bottom: 48px;
+		margin-bottom: 56px;
 	}
 
 	.project-eyebrow {
@@ -233,42 +248,69 @@ const solutionFeatures = [
 		line-height: 1.5;
 		color: var(--text-secondary);
 		max-width: 640px;
-		margin: 0 0 32px;
+		margin: 0 0 28px;
 	}
 
-	.project-meta {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-		gap: 16px 32px;
-		padding: 20px 24px;
-		border: 1px solid var(--border);
-		border-radius: 16px;
-		margin: 0;
-	}
-
-	.project-meta-item {
+	/* Facts as inline pills (the "specs" row) */
+	.project-facts {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 12px;
 		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		margin: 0;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 
-	.project-meta dt {
+	.project-fact {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 6px 12px;
+		border: 1px solid var(--border);
+		border-radius: 999px;
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: 11px;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.14em;
+		font-size: var(--text-body-sm);
+	}
+
+	.project-fact-label {
 		color: var(--text-muted);
-		margin: 0;
+		font-weight: 500;
 	}
 
-	.project-meta dd {
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: var(--text-body-md);
-		font-weight: 500;
+	.project-fact-value {
 		color: var(--text-primary);
+		font-weight: 600;
+	}
+
+	/* Metric pills — same shape but accent-tinted */
+	.project-metrics {
+		list-style: none;
+		padding: 0;
 		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.project-metric {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 8px;
+		padding: 6px 14px;
+		border: 1px solid var(--text-accent);
+		border-radius: 999px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+	}
+
+	.project-metric-value {
+		color: var(--text-accent);
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.project-metric-label {
+		color: var(--text-secondary);
 	}
 
 	/* Hero visual */
@@ -282,15 +324,15 @@ const solutionFeatures = [
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 48px;
+		margin-bottom: 64px;
 	}
 
 	.project-hero-mockup {
 		position: relative;
 		aspect-ratio: 3750 / 4906;
 		max-width: 90%;
-		max-height: 110%;
-		transform: translateY(50px);
+		max-height: 115%;
+		transform: translateY(60px);
 	}
 
 	.project-hero-mockup-frame {
@@ -315,71 +357,37 @@ const solutionFeatures = [
 		border-radius: 4px;
 	}
 
-	/* Content sections */
-	.project-section {
-		max-width: 640px;
-		margin: 0 0 48px;
+	/* Editorial body */
+	.project-body {
+		max-width: 720px;
+		margin: 0 0 64px;
 	}
 
-	.project-section-title {
+	.project-h2 {
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: var(--text-display-sm);
 		font-weight: 600;
 		letter-spacing: -0.02em;
 		color: var(--text-primary);
-		margin: 0 0 16px;
+		margin: 48px 0 16px;
 	}
 
-	.project-section-text {
+	.project-h2:first-child {
+		margin-top: 0;
+	}
+
+	.project-prose {
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: var(--text-body-md);
-		line-height: 1.6;
+		line-height: 1.65;
 		color: var(--text-primary);
 		margin: 0 0 16px;
 	}
 
-	/* Stats grid */
-	.project-stats {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-		gap: 16px;
-		max-width: none;
-	}
-
-	.project-section:has(.project-stats) {
-		max-width: none;
-	}
-
-	.project-stat {
-		padding: 20px 22px 22px;
-		border: 1px solid var(--border);
-		border-radius: 16px;
-	}
-
-	.project-stat-value {
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: var(--text-display-md);
-		font-weight: 700;
-		letter-spacing: -0.03em;
-		color: var(--text-accent);
-		line-height: 1.05;
-		margin: 0 0 8px;
-		font-variant-numeric: tabular-nums;
-	}
-
-	.project-stat-label {
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: var(--text-body-sm);
-		color: var(--text-secondary);
-		line-height: 1.4;
-		margin: 0;
-	}
-
-	/* Lists */
 	.project-list {
 		list-style: none;
 		padding: 0;
-		margin: 0;
+		margin: 0 0 24px;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -398,7 +406,7 @@ const solutionFeatures = [
 		content: "";
 		position: absolute;
 		left: 0;
-		top: 0.7em;
+		top: 0.75em;
 		width: 6px;
 		height: 6px;
 		border-radius: 50%;
@@ -409,17 +417,38 @@ const solutionFeatures = [
 		font-weight: 600;
 	}
 
-	/* Solution feature cards */
-	.project-features {
+	/* Feature grid — 2 columns with numbered items */
+	.project-feature-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 16px;
+		margin: 8px 0 0;
 	}
 
 	.project-feature {
-		padding: 18px 22px;
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+		padding: 20px 22px;
 		border: 1px solid var(--border);
-		border-radius: 14px;
+		border-radius: 16px;
+	}
+
+	.project-feature-index {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 600;
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+		flex-shrink: 0;
+		padding-top: 2px;
+	}
+
+	.project-feature-text {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
 	}
 
 	.project-feature-title {
@@ -427,10 +456,11 @@ const solutionFeatures = [
 		font-size: var(--text-body-md);
 		font-weight: 600;
 		color: var(--text-primary);
-		margin: 0 0 4px;
+		margin: 0;
+		line-height: 1.3;
 	}
 
-	.project-feature-text {
+	.project-feature-sub {
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: var(--text-body-sm);
 		color: var(--text-secondary);
@@ -438,75 +468,52 @@ const solutionFeatures = [
 		margin: 0;
 	}
 
-	/* Footer nav */
-	.project-footer-nav {
+	/* Related */
+	.project-related {
+		padding-top: 32px;
+		border-top: 1px solid var(--border);
+	}
+
+	.project-related-head {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 16px;
-		padding-top: 32px;
-		margin-top: 24px;
-		border-top: 1px solid var(--border);
+		margin-bottom: 20px;
 	}
 
-	.project-footer-link {
+	.project-related-link {
 		display: inline-flex;
 		align-items: center;
-		gap: 8px;
+		gap: 6px;
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: var(--text-body-sm);
 		font-weight: 500;
 		color: var(--text-secondary);
 		text-decoration: none;
 		transition: color var(--transition-fast);
+		flex-shrink: 0;
 	}
 
-	.project-footer-link:hover {
+	.project-related-link:hover {
 		color: var(--text-primary);
 	}
 
-	.project-footer-link svg {
+	.project-related-link svg {
 		width: 14px;
 		height: 14px;
 	}
 
-	.project-footer-link-next {
-		flex-direction: column;
-		align-items: flex-end;
-		gap: 2px;
-	}
-
-	.project-footer-link-meta {
-		font-size: 11px;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.14em;
-		color: var(--text-muted);
-	}
-
-	.project-footer-link-title {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-		font-size: var(--text-body-md);
-		font-weight: 600;
-		color: var(--text-primary);
+	.project-related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 20px;
 	}
 
 	@media (max-width: 768px) {
 		.project-hero-mockup {
 			max-height: 100%;
 			transform: translateY(20px);
-		}
-
-		.project-footer-nav {
-			flex-direction: column;
-			align-items: stretch;
-			gap: 20px;
-		}
-
-		.project-footer-link-next {
-			align-items: flex-start;
 		}
 	}
 </style>
