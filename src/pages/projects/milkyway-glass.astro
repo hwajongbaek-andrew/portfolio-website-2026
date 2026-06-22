@@ -1,0 +1,512 @@
+---
+import DashboardLayout from "../../layouts/DashboardLayout.astro";
+
+const stats = [
+	{ value: "40–60%", label: "Monthly revenue lift" },
+	{ value: "58%", label: "More website visitors (145.8k)" },
+	{ value: "23%", label: "Increase in page views" },
+	{ value: "+38%", label: "Avg engagement time (2m 18s)" },
+];
+
+const meta = [
+	{ label: "Year", value: "2024" },
+	{ label: "Type", value: "Website redesign" },
+	{ label: "Role", value: "Product design lead" },
+	{ label: "Stack", value: "Figma, Framer, Shopify" },
+];
+
+const solutionFeatures = [
+	{
+		title: "Streamlined navigation",
+		text: "Cut to the high-intent flows. Cleaner IA, fewer dead-ends.",
+	},
+	{
+		title: "Milkyway Rewards",
+		text: "Loyalty program designed to lift returning-customer frequency and LTV.",
+	},
+	{
+		title: "Combo Creator",
+		text: "Strategic AOV play: bundle-builder priced to nudge customers toward larger baskets.",
+	},
+	{
+		title: "Stronger product filtering",
+		text: "Faceted filters so shoppers find what they want without bouncing.",
+	},
+	{
+		title: "Mobile-first + SEO",
+		text: "Re-built layouts and structured content for mobile and search.",
+	},
+];
+---
+
+<DashboardLayout title="Milkyway Glass — Andrew Baek">
+	<!-- Breadcrumb -->
+	<a href="/projects" class="project-breadcrumb">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<line x1="19" y1="12" x2="5" y2="12"/>
+			<polyline points="12 19 5 12 12 5"/>
+		</svg>
+		All projects
+	</a>
+
+	<!-- Header -->
+	<header class="project-header">
+		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
+		<h1 class="project-title">Milkyway Glass</h1>
+		<p class="project-summary">
+			Redesigning an e-commerce flow around the metrics that actually
+			move the business — revenue, retention, and average order value —
+			without losing the brand's distinct voice.
+		</p>
+		<dl class="project-meta">
+			{meta.map((item) => (
+				<div class="project-meta-item">
+					<dt>{item.label}</dt>
+					<dd>{item.value}</dd>
+				</div>
+			))}
+		</dl>
+	</header>
+
+	<!-- Hero visual: laptop mockup with video -->
+	<div class="project-hero">
+		<div class="project-hero-mockup">
+			<img
+				src="/images/Laptop Mockup.png"
+				alt="Milkyway Glass website preview on a laptop"
+				class="project-hero-mockup-frame"
+			/>
+			<video
+				class="project-hero-mockup-video"
+				autoplay
+				loop
+				muted
+				playsinline
+				preload="metadata"
+			>
+				<source src="/videos/Portfolio-MK-Desktop.mp4" type="video/mp4" />
+			</video>
+		</div>
+	</div>
+
+	<!-- Impact stats -->
+	<section class="project-section">
+		<h2 class="project-section-title">Impact</h2>
+		<div class="project-stats">
+			{stats.map((stat) => (
+				<div class="project-stat">
+					<p class="project-stat-value">{stat.value}</p>
+					<p class="project-stat-label">{stat.label}</p>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Overview -->
+	<section class="project-section">
+		<h2 class="project-section-title">Overview</h2>
+		<p class="project-section-text">
+			Milkyway Glass is an e-commerce startup specializing in glass
+			accessories. The team was sitting on a strong brand but a weak
+			conversion funnel. The redesign was driven by data — what page
+			scrolls converted, what filters got used, where shoppers dropped —
+			and strategic SEO so the site became a real growth lever, not just
+			a storefront.
+		</p>
+	</section>
+
+	<!-- Problem -->
+	<section class="project-section">
+		<h2 class="project-section-title">The problem</h2>
+		<p class="project-section-text">
+			The original site looked good but didn't perform. Three core issues
+			kept users from converting:
+		</p>
+		<ul class="project-list">
+			<li><strong>Unintuitive navigation</strong> — shoppers couldn't find what they came for.</li>
+			<li><strong>Thin engaging content</strong> — product pages told you what; rarely why.</li>
+			<li><strong>Poor mobile experience</strong> — over half the traffic was mobile, dropping off fast.</li>
+		</ul>
+	</section>
+
+	<!-- Solution -->
+	<section class="project-section">
+		<h2 class="project-section-title">The solution</h2>
+		<p class="project-section-text">
+			Five interventions, ordered by impact on revenue:
+		</p>
+		<div class="project-features">
+			{solutionFeatures.map((feature) => (
+				<div class="project-feature">
+					<h3 class="project-feature-title">{feature.title}</h3>
+					<p class="project-feature-text">{feature.text}</p>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Takeaways -->
+	<section class="project-section">
+		<h2 class="project-section-title">Takeaways</h2>
+		<p class="project-section-text">
+			The work re-positioned the site from a static brand showcase into
+			a measurable growth surface. The biggest lift came from the
+			combo creator — proof that good UX framed as a business mechanism
+			(AOV) reads differently to stakeholders than UX framed as polish.
+		</p>
+	</section>
+
+	<!-- Footer nav -->
+	<nav class="project-footer-nav" aria-label="Project navigation">
+		<a href="/projects" class="project-footer-link">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="19" y1="12" x2="5" y2="12"/>
+				<polyline points="12 19 5 12 12 5"/>
+			</svg>
+			All projects
+		</a>
+		<a href="/projects" class="project-footer-link project-footer-link-next">
+			<span class="project-footer-link-meta">Next project</span>
+			<span class="project-footer-link-title">
+				O3 Drinkware
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="5" y1="12" x2="19" y2="12"/>
+					<polyline points="12 5 19 12 12 19"/>
+				</svg>
+			</span>
+		</a>
+	</nav>
+</DashboardLayout>
+
+<style>
+	/* Breadcrumb */
+	.project-breadcrumb {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+		text-decoration: none;
+		margin-bottom: 32px;
+		transition: color var(--transition-fast);
+	}
+
+	.project-breadcrumb:hover {
+		color: var(--text-primary);
+	}
+
+	.project-breadcrumb svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	/* Header */
+	.project-header {
+		margin-bottom: 48px;
+	}
+
+	.project-eyebrow {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-accent);
+		margin: 0 0 12px;
+	}
+
+	.project-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: clamp(40px, 5vw, 64px);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin: 0 0 20px;
+	}
+
+	.project-summary {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		line-height: 1.5;
+		color: var(--text-secondary);
+		max-width: 640px;
+		margin: 0 0 32px;
+	}
+
+	.project-meta {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: 16px 32px;
+		padding: 20px 24px;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		margin: 0;
+	}
+
+	.project-meta-item {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		margin: 0;
+	}
+
+	.project-meta dt {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+		margin: 0;
+	}
+
+	.project-meta dd {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 500;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	/* Hero visual */
+	.project-hero {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		border-radius: 24px;
+		overflow: hidden;
+		background: var(--accent-gradient, linear-gradient(to bottom, #F99E67, #FAB771));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 48px;
+	}
+
+	.project-hero-mockup {
+		position: relative;
+		aspect-ratio: 3750 / 4906;
+		max-width: 90%;
+		max-height: 110%;
+		transform: translateY(50px);
+	}
+
+	.project-hero-mockup-frame {
+		position: relative;
+		z-index: 1;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		pointer-events: none;
+	}
+
+	.project-hero-mockup-video {
+		position: absolute;
+		z-index: 2;
+		top: 1.5%;
+		left: 7%;
+		width: 86%;
+		height: 43.5%;
+		object-fit: cover;
+		display: block;
+		border-radius: 4px;
+	}
+
+	/* Content sections */
+	.project-section {
+		max-width: 640px;
+		margin: 0 0 48px;
+	}
+
+	.project-section-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-display-sm);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--text-primary);
+		margin: 0 0 16px;
+	}
+
+	.project-section-text {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		line-height: 1.6;
+		color: var(--text-primary);
+		margin: 0 0 16px;
+	}
+
+	/* Stats grid */
+	.project-stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 16px;
+		max-width: none;
+	}
+
+	.project-section:has(.project-stats) {
+		max-width: none;
+	}
+
+	.project-stat {
+		padding: 20px 22px 22px;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+	}
+
+	.project-stat-value {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-display-md);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--text-accent);
+		line-height: 1.05;
+		margin: 0 0 8px;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.project-stat-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	/* Lists */
+	.project-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.project-list li {
+		padding-left: 20px;
+		position: relative;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		line-height: 1.6;
+		color: var(--text-primary);
+	}
+
+	.project-list li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.7em;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: var(--text-accent);
+	}
+
+	.project-list strong {
+		font-weight: 600;
+	}
+
+	/* Solution feature cards */
+	.project-features {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.project-feature {
+		padding: 18px 22px;
+		border: 1px solid var(--border);
+		border-radius: 14px;
+	}
+
+	.project-feature-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 4px;
+	}
+
+	.project-feature-text {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	/* Footer nav */
+	.project-footer-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+		padding-top: 32px;
+		margin-top: 24px;
+		border-top: 1px solid var(--border);
+	}
+
+	.project-footer-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: color var(--transition-fast);
+	}
+
+	.project-footer-link:hover {
+		color: var(--text-primary);
+	}
+
+	.project-footer-link svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.project-footer-link-next {
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 2px;
+	}
+
+	.project-footer-link-meta {
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+	}
+
+	.project-footer-link-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-size: var(--text-body-md);
+		font-weight: 600;
+		color: var(--text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.project-hero-mockup {
+			max-height: 100%;
+			transform: translateY(20px);
+		}
+
+		.project-footer-nav {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 20px;
+		}
+
+		.project-footer-link-next {
+			align-items: flex-start;
+		}
+	}
+</style>
