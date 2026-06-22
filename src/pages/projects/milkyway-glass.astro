@@ -5,41 +5,66 @@ import ProjectCard from "../../components/ProjectCard.astro";
 const facts = [
 	{ label: "Year", value: "2024" },
 	{ label: "Type", value: "Website redesign" },
-	{ label: "Role", value: "Product design lead" },
-	{ label: "Stack", value: "Figma, Framer, Shopify" },
+	{ label: "Role", value: "Lead product designer" },
+	{ label: "Tools", value: "Figma, Wix, Shopify" },
 ];
 
 const metrics = [
 	{ value: "40–60%", label: "Monthly revenue lift" },
-	{ value: "58%", label: "More visitors (145.8k)" },
-	{ value: "+23%", label: "Page views" },
-	{ value: "+38%", label: "Engagement (2m 18s)" },
+	{ value: "+58%", label: "Website visitors (145.8k)" },
+	{ value: "+23%", label: "Page views (907.02k)" },
+	{ value: "+38%", label: "Engagement (1m53s → 2m18s)" },
+];
+
+const baseline = [
+	{ value: "1.6%", label: "Conversion rate" },
+	{ value: "50%", label: "Bounce rate" },
+	{ value: "1m 53s", label: "Avg engagement" },
 ];
 
 const solutionFeatures = [
 	{
-		title: "Streamlined navigation",
-		text: "Cut to high-intent flows. Cleaner IA, fewer dead-ends.",
+		title: "Easier navigation",
+		text: "Streamlined the nav bar and consolidated repeated content. Filters surfaced earlier so users got to product faster.",
 	},
 	{
-		title: "Milkyway Rewards",
-		text: "Loyalty program designed to lift returning-customer frequency and LTV.",
+		title: "Content placement",
+		text: "Moved high-intent CTAs and key content above the fold for the majority of users who never scrolled further.",
 	},
 	{
 		title: "Combo Creator",
-		text: "Strategic AOV play: bundle-builder priced to push toward bigger baskets.",
+		text: "Bundle-builder added to the homepage as a strategic AOV play — turning single-product sessions into multi-item baskets.",
 	},
 	{
-		title: "Stronger filtering",
-		text: "Faceted filters so shoppers find what they want without bouncing.",
+		title: "Milkyway Rewards",
+		text: "A dedicated loyalty program page designed to convert one-time buyers into returning customers through points + perks.",
 	},
 	{
-		title: "Mobile-first IA",
-		text: "Re-built layouts for the device most customers actually shop on.",
+		title: "Intuitive product filter",
+		text: "Re-designed the filter system to be simpler and more direct, so users could narrow on what they actually wanted.",
 	},
 	{
-		title: "SEO content scaffolding",
-		text: "Structured content + meta so the site became a real growth surface.",
+		title: "SEO + mobile rebuild",
+		text: "Applied SEO principles to every product description and rebuilt layouts mobile-first for the device most customers shop on.",
+	},
+];
+
+const takeaways = [
+	{
+		title: "Enhanced user experience",
+		text: "Putting user needs first led to a smoother, more engaging experience across devices.",
+	},
+	{
+		title: "Strategic growth",
+		text: "Mobile, SEO, and marketing collaboration combined into measurable business growth.",
+	},
+	{
+		title: "Brand visibility",
+		text: "Influencer and UGC collaborations elevated brand presence and broadened reach.",
+	},
+	{
+		title: "Long-term impact",
+		text: "The redesign laid a foundation for continued growth, not a one-time spike.",
 	},
 ];
 
@@ -83,9 +108,9 @@ const related = [
 		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
 		<h1 class="project-title">Milkyway Glass</h1>
 		<p class="project-summary">
-			Redesigning an e-commerce flow around the metrics that actually
-			move the business — revenue, retention, and average order value —
-			without losing the brand's voice.
+			A more enticing shopping experience — built around data, SEO, and
+			retention mechanics — that lifted monthly revenue 40–60% and grew
+			visitors 58%.
 		</p>
 
 		<ul class="project-facts">
@@ -93,15 +118,6 @@ const related = [
 				<li class="project-fact">
 					<span class="project-fact-label">{f.label}</span>
 					<span class="project-fact-value">{f.value}</span>
-				</li>
-			))}
-		</ul>
-
-		<ul class="project-metrics">
-			{metrics.map((m) => (
-				<li class="project-metric">
-					<span class="project-metric-value">{m.value}</span>
-					<span class="project-metric-label">{m.label}</span>
 				</li>
 			))}
 		</ul>
@@ -128,52 +144,121 @@ const related = [
 		</div>
 	</div>
 
-	<!-- Editorial body -->
-	<section class="project-body">
-		<h2 class="project-h2">Overview</h2>
-		<p class="project-prose">
-			Milkyway Glass is an e-commerce startup specializing in glass
-			accessories. The team had a strong brand and a weak conversion
-			funnel. The redesign was driven by data — what pages converted,
-			what filters got used, where shoppers dropped — and strategic SEO
-			so the site became a real growth lever, not just a storefront.
-		</p>
-
-		<h2 class="project-h2">The challenge</h2>
-		<p class="project-prose">
-			Three issues quietly killed conversion before users even reached
-			the cart:
-		</p>
-		<ul class="project-list">
-			<li><strong>Unintuitive navigation</strong> — shoppers couldn't find what they came for.</li>
-			<li><strong>Thin engaging content</strong> — product pages told you what; rarely why.</li>
-			<li><strong>Poor mobile experience</strong> — over half the traffic was mobile, dropping off fast.</li>
-		</ul>
-
-		<h2 class="project-h2">The approach</h2>
-		<p class="project-prose">
-			Six interventions, ordered by impact on revenue:
-		</p>
-		<div class="project-feature-grid">
-			{solutionFeatures.map((f, i) => (
-				<div class="project-feature">
-					<span class="project-feature-index">{String(i + 1).padStart(2, "0")}</span>
-					<div class="project-feature-text">
-						<h3 class="project-feature-title">{f.title}</h3>
-						<p class="project-feature-sub">{f.text}</p>
-					</div>
+	<!-- Impact metrics — bigger card section after the hero -->
+	<section class="project-impact">
+		<h2 class="project-impact-title">Impact</h2>
+		<div class="project-impact-grid">
+			{metrics.map((m) => (
+				<div class="project-impact-card">
+					<p class="project-impact-value">{m.value}</p>
+					<p class="project-impact-label">{m.label}</p>
 				</div>
 			))}
 		</div>
-
-		<h2 class="project-h2">Outcomes</h2>
-		<p class="project-prose">
-			The work re-positioned the site from a static brand showcase into
-			a measurable growth surface. The biggest lift came from the combo
-			creator — proof that good UX framed as a business mechanism (AOV)
-			reads differently to stakeholders than UX framed as polish.
-		</p>
 	</section>
+
+	<!-- Two-column body: editorial prose + sticky TOC -->
+	<div class="project-layout">
+		<article class="project-body">
+			<h2 class="project-h2" id="overview">Overview</h2>
+			<p class="project-prose">
+				Milkyway Glass is an e-commerce startup specializing in glass
+				accessories for cannabis users. I led the redesign of their site
+				by integrating data-driven insights, strategic SEO, and
+				collaborative marketing work. The result was significant lift
+				across visibility, navigation, and the overall customer
+				experience — and a real increase in sales and engagement.
+			</p>
+
+			<h2 class="project-h2" id="challenge">The challenge</h2>
+			<p class="project-prose">
+				The original site suffered from unintuitive navigation, weak
+				engaging content, and poor mobile optimization — friction that
+				quietly killed conversion before users ever reached the cart.
+			</p>
+			<ul class="project-list">
+				<li><strong>Complicated navigation</strong> with repeated content and unclear CTAs.</li>
+				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
+				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
+				<li><strong>Sparse product information</strong> — reviews and ratings missing.</li>
+				<li><strong>Disorganized layout</strong> with too many competing buttons and no SEO foundation.</li>
+			</ul>
+			<p class="project-prose">The numbers reflected it:</p>
+			<ul class="project-metrics project-metrics-baseline">
+				{baseline.map((b) => (
+					<li class="project-metric project-metric-baseline">
+						<span class="project-metric-value">{b.value}</span>
+						<span class="project-metric-label">{b.label}</span>
+					</li>
+				))}
+			</ul>
+
+			<h2 class="project-h2" id="process">Process</h2>
+			<p class="project-prose">
+				I used heat maps and scroll maps to see where attention actually
+				went, mapped the full user journey to identify pain points, and
+				collaborated with the marketing coordinator to pull the data
+				needed to make decisions defensibly rather than by gut.
+			</p>
+
+			<h2 class="project-h2" id="hmw">How might we</h2>
+			<p class="project-prose">
+				Three guiding questions framed the work:
+			</p>
+			<ul class="project-list">
+				<li>How might we <strong>simplify navigation</strong> to reduce friction for users?</li>
+				<li>How might we <strong>strengthen customer connection</strong> through engaging content — loyalty, UGC, influencer collaboration?</li>
+				<li>How might we <strong>optimize the experience</strong> for mobile, where most shopping actually happens?</li>
+			</ul>
+
+			<h2 class="project-h2" id="approach">The approach</h2>
+			<p class="project-prose">
+				Six interventions, each tied back to one of the three "How might
+				we" questions:
+			</p>
+			<div class="project-feature-grid">
+				{solutionFeatures.map((f, i) => (
+					<div class="project-feature">
+						<span class="project-feature-index">{String(i + 1).padStart(2, "0")}</span>
+						<div class="project-feature-text">
+							<h3 class="project-feature-title">{f.title}</h3>
+							<p class="project-feature-sub">{f.text}</p>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<h2 class="project-h2" id="outcomes">Outcomes</h2>
+			<p class="project-prose">
+				The redesign moved Milkyway from a static brand showcase to a
+				measurable growth surface — and the wins compounded across four
+				fronts:
+			</p>
+			<div class="project-feature-grid">
+				{takeaways.map((t) => (
+					<div class="project-feature">
+						<div class="project-feature-text">
+							<h3 class="project-feature-title">{t.title}</h3>
+							<p class="project-feature-sub">{t.text}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</article>
+
+		<!-- Sticky table of contents -->
+		<aside class="project-toc" aria-label="On this page">
+			<p class="project-toc-label">On this page</p>
+			<ul class="project-toc-list">
+				<li><a href="#overview" class="project-toc-link" data-toc-link>Overview</a></li>
+				<li><a href="#challenge" class="project-toc-link" data-toc-link>The challenge</a></li>
+				<li><a href="#process" class="project-toc-link" data-toc-link>Process</a></li>
+				<li><a href="#hmw" class="project-toc-link" data-toc-link>How might we</a></li>
+				<li><a href="#approach" class="project-toc-link" data-toc-link>The approach</a></li>
+				<li><a href="#outcomes" class="project-toc-link" data-toc-link>Outcomes</a></li>
+			</ul>
+		</aside>
+	</div>
 
 	<!-- Related projects -->
 	<section class="project-related">
@@ -313,6 +398,19 @@ const related = [
 		color: var(--text-secondary);
 	}
 
+	/* Baseline metrics — muted, reflects "before" numbers in body */
+	.project-metrics-baseline {
+		margin: 16px 0 24px;
+	}
+
+	.project-metric-baseline {
+		border-color: var(--border);
+	}
+
+	.project-metric-baseline .project-metric-value {
+		color: var(--text-secondary);
+	}
+
 	/* Hero visual */
 	.project-hero {
 		position: relative;
@@ -357,10 +455,114 @@ const related = [
 		border-radius: 4px;
 	}
 
+	/* Impact metric card section (between hero and body) */
+	.project-impact {
+		margin-bottom: 64px;
+	}
+
+	.project-impact-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+		margin: 0 0 16px;
+	}
+
+	.project-impact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 16px;
+	}
+
+	.project-impact-card {
+		padding: 24px 24px 22px;
+		border: 1px solid var(--border);
+		border-radius: 18px;
+	}
+
+	.project-impact-value {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-display-md);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--text-accent);
+		line-height: 1.05;
+		margin: 0 0 8px;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.project-impact-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	/* Two-column layout: body + sticky TOC */
+	.project-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 200px;
+		gap: 64px;
+		align-items: start;
+		margin: 0 0 64px;
+	}
+
+	/* TOC */
+	.project-toc {
+		position: sticky;
+		top: 32px;
+		align-self: start;
+	}
+
+	.project-toc-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+		margin: 0 0 12px;
+	}
+
+	.project-toc-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		border-left: 1px solid var(--border);
+	}
+
+	.project-toc-link {
+		display: block;
+		padding: 6px 14px;
+		margin-left: -1px;
+		border-left: 1px solid transparent;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: color var(--transition-fast),
+			border-color var(--transition-fast);
+	}
+
+	.project-toc-link:hover {
+		color: var(--text-primary);
+	}
+
+	.project-toc-link.is-active {
+		color: var(--text-primary);
+		border-left-color: var(--text-accent);
+		font-weight: 500;
+	}
+
 	/* Editorial body */
 	.project-body {
 		max-width: 720px;
-		margin: 0 0 64px;
 	}
 
 	.project-h2 {
@@ -370,6 +572,7 @@ const related = [
 		letter-spacing: -0.02em;
 		color: var(--text-primary);
 		margin: 48px 0 16px;
+		scroll-margin-top: 32px;
 	}
 
 	.project-h2:first-child {
@@ -510,6 +713,18 @@ const related = [
 		gap: 20px;
 	}
 
+	@media (max-width: 900px) {
+		.project-layout {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 32px;
+		}
+
+		.project-toc {
+			position: static;
+			order: -1;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.project-hero-mockup {
 			max-height: 100%;
@@ -517,3 +732,43 @@ const related = [
 		}
 	}
 </style>
+
+<script>
+	// TOC scroll-spy: highlight the link for the section currently in view
+	const tocLinks = Array.from(
+		document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]")
+	);
+	const sectionIds = tocLinks
+		.map((a) => a.getAttribute("href")?.slice(1))
+		.filter((id): id is string => !!id);
+	const sections = sectionIds
+		.map((id) => document.getElementById(id))
+		.filter((el): el is HTMLElement => !!el);
+
+	if ("IntersectionObserver" in window && sections.length > 0) {
+		const setActive = (id: string) => {
+			tocLinks.forEach((link) => {
+				link.classList.toggle(
+					"is-active",
+					link.getAttribute("href") === "#" + id
+				);
+			});
+		};
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const visible = entries.filter((e) => e.isIntersecting);
+				if (visible.length === 0) return;
+				// Pick the topmost visible entry
+				visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+				const id = visible[0].target.id;
+				if (id) setActive(id);
+			},
+			{ rootMargin: "0px 0px -65% 0px", threshold: 0 }
+		);
+
+		sections.forEach((s) => observer.observe(s));
+		// Default: first section active
+		setActive(sections[0].id);
+	}
+</script>
