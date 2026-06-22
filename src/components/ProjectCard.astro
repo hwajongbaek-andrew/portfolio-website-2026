@@ -5,6 +5,14 @@ interface Props {
 	year: string;
 	thumbnail?: string;
 	thumbnailAlt?: string;
+	videoSrc?: string;
+	mockupAspect?: string;
+	mockupMax?: string; // e.g., "100%" or "120%" — overrides default 92%
+	mockupOffsetY?: string; // e.g., "50px" — shifts mockup down inside the thumb
+	screenTop?: string;
+	screenLeft?: string;
+	screenWidth?: string;
+	screenHeight?: string;
 	href?: string;
 }
 
@@ -14,14 +22,72 @@ const {
 	year,
 	thumbnail,
 	thumbnailAlt = "",
+	videoSrc,
+	mockupAspect,
+	mockupMax,
+	mockupOffsetY,
+	screenTop,
+	screenLeft,
+	screenWidth,
+	screenHeight,
 	href = "#",
 } = Astro.props;
+
+const useMockupCombo = !!(videoSrc && thumbnail && mockupAspect);
+
+const mockupStyle: Record<string, string> = {};
+if (mockupAspect) mockupStyle["aspectRatio"] = mockupAspect;
+if (mockupMax) mockupStyle["--mockup-max"] = mockupMax;
+if (mockupOffsetY) mockupStyle["--mockup-offset-y"] = mockupOffsetY;
+if (screenTop) mockupStyle["--screen-top"] = screenTop;
+if (screenLeft) mockupStyle["--screen-left"] = screenLeft;
+if (screenWidth) mockupStyle["--screen-width"] = screenWidth;
+if (screenHeight) mockupStyle["--screen-height"] = screenHeight;
+
+const imageStyle: Record<string, string> = {};
+if (mockupOffsetY) imageStyle["--mockup-offset-y"] = mockupOffsetY;
 ---
 
 <a href={href} class="project-card">
 	<div class="project-card-thumb">
-		{thumbnail ? (
-			<img src={thumbnail} alt={thumbnailAlt} loading="lazy" />
+		{useMockupCombo ? (
+			<div class="project-card-mockup" style={mockupStyle}>
+				<img
+					src={thumbnail}
+					alt={thumbnailAlt}
+					class="project-card-mockup-frame"
+					loading="lazy"
+				/>
+				<video
+					class="project-card-mockup-video"
+					autoplay
+					loop
+					muted
+					playsinline
+					preload="metadata"
+				>
+					<source src={videoSrc} type="video/mp4" />
+				</video>
+			</div>
+		) : videoSrc ? (
+			<video
+				class="project-card-video"
+				autoplay
+				loop
+				muted
+				playsinline
+				preload="metadata"
+			>
+				<source src={videoSrc} type="video/mp4" />
+			</video>
+		) : thumbnail ? (
+			<img
+				src={thumbnail}
+				alt={thumbnailAlt}
+				class="project-card-image"
+				style={imageStyle}
+				loading="lazy"
+			/>
 		) : (
 			<div class="project-card-placeholder" aria-hidden="true"></div>
 		)}
@@ -61,18 +127,61 @@ const {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.project-card-thumb img {
-		width: 88%;
-		height: 88%;
-		object-fit: contain;
-		display: block;
+		position: relative;
 	}
 
 	.project-card-placeholder {
 		width: 100%;
 		height: 100%;
+	}
+
+	/* Mockup + video combo. aspectRatio is set inline per project so the
+	   wrapper matches the natural mockup image ratio — video screen-coord
+	   percentages then map correctly to the mockup. */
+	.project-card-mockup {
+		position: relative;
+		max-width: var(--mockup-max, 92%);
+		max-height: var(--mockup-max, 92%);
+		transform: translateY(var(--mockup-offset-y, 14px));
+	}
+
+	.project-card-mockup-frame {
+		position: relative;
+		z-index: 1;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		pointer-events: none;
+	}
+
+	.project-card-mockup-video {
+		position: absolute;
+		z-index: 2;
+		top: var(--screen-top, 0%);
+		left: var(--screen-left, 0%);
+		width: var(--screen-width, 100%);
+		height: var(--screen-height, 100%);
+		object-fit: cover;
+		display: block;
+		border-radius: 2px;
+	}
+
+	/* Static image only (no embedded video) */
+	.project-card-image {
+		width: 92%;
+		height: 92%;
+		object-fit: contain;
+		display: block;
+		transform: translateY(var(--mockup-offset-y, 14px));
+	}
+
+	/* Standalone video (no mockup frame) */
+	.project-card-video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
 	}
 
 	.project-card-body {
