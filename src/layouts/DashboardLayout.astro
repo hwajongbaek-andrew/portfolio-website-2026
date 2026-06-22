@@ -40,12 +40,19 @@ const { title } = Astro.props;
 	body {
 		display: block;
 		height: auto;
-		overflow: auto;
+		/* overflow: visible (not auto/hidden) so the html/viewport handles
+		   scrolling. Required for descendant position: sticky to work —
+		   overflow: auto would create a separate scroll context that breaks it,
+		   and global.css sets body { overflow: hidden } which we must override. */
+		overflow: visible;
 	}
 
 	main {
 		margin-left: 312px; /* 16 sidebar offset + 280 sidebar + 16 gap */
 		min-height: 100vh;
+		/* Override global.css main { overflow: hidden } — that rule was for
+		   the old slideshow app and breaks descendant position: sticky. */
+		overflow: visible;
 	}
 
 	.page {

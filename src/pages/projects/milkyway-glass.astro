@@ -40,6 +40,10 @@ const solutionFeatures = [
 		text: "A dedicated loyalty program page designed to convert one-time buyers into returning customers through points + perks.",
 	},
 	{
+		title: "UGC + influencer collaboration",
+		text: "Integrated user-generated content and influencer features on the homepage to lift trust and broaden brand reach.",
+	},
+	{
 		title: "Intuitive product filter",
 		text: "Re-designed the filter system to be simpler and more direct, so users could narrow on what they actually wanted.",
 	},
@@ -175,13 +179,16 @@ const related = [
 				The original site suffered from unintuitive navigation, weak
 				engaging content, and poor mobile optimization — friction that
 				quietly killed conversion before users ever reached the cart.
+				A close audit surfaced seven specific issues:
 			</p>
 			<ul class="project-list">
-				<li><strong>Complicated navigation</strong> with repeated content and unclear CTAs.</li>
+				<li><strong>Complicated navigation</strong> with repeated and redundant content.</li>
+				<li><strong>Unclear call-to-action messaging</strong> — users didn't know where to click next.</li>
 				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
 				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
-				<li><strong>Sparse product information</strong> — reviews and ratings missing.</li>
-				<li><strong>Disorganized layout</strong> with too many competing buttons and no SEO foundation.</li>
+				<li><strong>Sparse product information</strong> — reviews and ratings were missing entirely.</li>
+				<li><strong>Disorganized layout</strong> with too many competing buttons fighting for attention.</li>
+				<li><strong>No SEO foundation</strong> — the site was effectively invisible to search.</li>
 			</ul>
 			<p class="project-prose">The numbers reflected it:</p>
 			<ul class="project-metrics project-metrics-baseline">
@@ -195,11 +202,48 @@ const related = [
 
 			<h2 class="project-h2" id="process">Process</h2>
 			<p class="project-prose">
-				I used heat maps and scroll maps to see where attention actually
-				went, mapped the full user journey to identify pain points, and
-				collaborated with the marketing coordinator to pull the data
-				needed to make decisions defensibly rather than by gut.
+				To avoid designing on gut, I anchored the work in three research
+				methods that triangulated user behaviour, business context, and
+				visual attention:
 			</p>
+			<ul class="project-list">
+				<li>
+					<strong>Heat maps and scroll maps</strong> to see where users
+					actually clicked and how far they scrolled — separating
+					real attention from assumed attention.
+				</li>
+				<li>
+					<strong>User journey mapping</strong> from landing to checkout
+					to find the specific moments where users dropped off.
+				</li>
+				<li>
+					<strong>Marketing coordinator collaboration</strong> to pull
+					traffic sources, campaign data, and competitive context — so
+					design decisions stayed aligned with where customers were
+					actually coming from.
+				</li>
+			</ul>
+			<p class="project-prose">
+				The data made the priorities undeniable: most sessions ended
+				before the fold, mobile was where the majority of traffic lived,
+				and the filter system was the single biggest abandonment point
+				on the path to a product page.
+			</p>
+
+			<figure class="project-figure project-figure--research">
+				<div class="project-figure-frame" aria-hidden="true">
+					<div class="project-figure-grid">
+						<div class="project-figure-hot project-figure-hot-1"></div>
+						<div class="project-figure-hot project-figure-hot-2"></div>
+						<div class="project-figure-hot project-figure-hot-3"></div>
+					</div>
+					<span class="project-figure-tag">Heat map · scroll depth · journey</span>
+				</div>
+				<figcaption class="project-figure-caption">
+					Research artifacts — heat maps and scroll-depth maps revealed
+					how shallow most sessions actually were on the original site.
+				</figcaption>
+			</figure>
 
 			<h2 class="project-h2" id="hmw">How might we</h2>
 			<p class="project-prose">
@@ -213,9 +257,42 @@ const related = [
 
 			<h2 class="project-h2" id="approach">The approach</h2>
 			<p class="project-prose">
-				Six interventions, each tied back to one of the three "How might
-				we" questions:
+				Seven interventions, each tied back to one of the three "How
+				might we" questions:
 			</p>
+
+			<figure class="project-figure project-figure--solution">
+				<div class="project-figure-frame" aria-hidden="true">
+					<div class="project-figure-screens">
+						<div class="project-figure-screen project-figure-screen-1">
+							<div class="project-figure-bar"></div>
+							<div class="project-figure-block"></div>
+							<div class="project-figure-block project-figure-block--sm"></div>
+						</div>
+						<div class="project-figure-screen project-figure-screen-2">
+							<div class="project-figure-bar"></div>
+							<div class="project-figure-cards">
+								<div class="project-figure-card"></div>
+								<div class="project-figure-card"></div>
+								<div class="project-figure-card"></div>
+							</div>
+						</div>
+						<div class="project-figure-screen project-figure-screen-3">
+							<div class="project-figure-bar"></div>
+							<div class="project-figure-cards">
+								<div class="project-figure-card"></div>
+								<div class="project-figure-card"></div>
+							</div>
+							<div class="project-figure-block project-figure-block--sm"></div>
+						</div>
+					</div>
+					<span class="project-figure-tag">Homepage · combo creator · product filter</span>
+				</div>
+				<figcaption class="project-figure-caption">
+					Key screens from the rebuild — homepage hierarchy reset, the
+					new Combo Creator, and the streamlined product filter.
+				</figcaption>
+			</figure>
 			<div class="project-feature-grid">
 				{solutionFeatures.map((f, i) => (
 					<div class="project-feature">
@@ -234,6 +311,29 @@ const related = [
 				measurable growth surface — and the wins compounded across four
 				fronts:
 			</p>
+
+			<figure class="project-figure project-figure--results">
+				<div class="project-figure-frame" aria-hidden="true">
+					<svg class="project-figure-chart" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+						<defs>
+							<linearGradient id="mk-line-fill" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
+								<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+							</linearGradient>
+						</defs>
+						<!-- Baseline (before) — flat dashed -->
+						<path d="M 0 100 L 320 96" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+						<!-- Growth curve (after) — rising solid + filled area -->
+						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#mk-line-fill)"/>
+						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+					</svg>
+					<span class="project-figure-tag">Revenue · visitors · engagement</span>
+				</div>
+				<figcaption class="project-figure-caption">
+					Post-launch trends — sustained monthly growth across revenue,
+					traffic, and engagement, not a single-week spike.
+				</figcaption>
+			</figure>
 			<div class="project-feature-grid">
 				{takeaways.map((t) => (
 					<div class="project-feature">
@@ -246,18 +346,20 @@ const related = [
 			</div>
 		</article>
 
-		<!-- Sticky table of contents -->
-		<aside class="project-toc" aria-label="On this page">
-			<p class="project-toc-label">On this page</p>
-			<ul class="project-toc-list">
-				<li><a href="#overview" class="project-toc-link" data-toc-link>Overview</a></li>
-				<li><a href="#challenge" class="project-toc-link" data-toc-link>The challenge</a></li>
-				<li><a href="#process" class="project-toc-link" data-toc-link>Process</a></li>
-				<li><a href="#hmw" class="project-toc-link" data-toc-link>How might we</a></li>
-				<li><a href="#approach" class="project-toc-link" data-toc-link>The approach</a></li>
-				<li><a href="#outcomes" class="project-toc-link" data-toc-link>Outcomes</a></li>
-			</ul>
-		</aside>
+		<!-- Sticky table of contents (wrap pattern: outer cell stretches to grid row height, inner aside is the sticky element) -->
+		<div class="project-toc-cell">
+			<aside class="project-toc" aria-label="On this page">
+				<p class="project-toc-label">On this page</p>
+				<ul class="project-toc-list">
+					<li><a href="#overview" class="project-toc-link" data-toc-link>Overview</a></li>
+					<li><a href="#challenge" class="project-toc-link" data-toc-link>The challenge</a></li>
+					<li><a href="#process" class="project-toc-link" data-toc-link>Process</a></li>
+					<li><a href="#hmw" class="project-toc-link" data-toc-link>How might we</a></li>
+					<li><a href="#approach" class="project-toc-link" data-toc-link>The approach</a></li>
+					<li><a href="#outcomes" class="project-toc-link" data-toc-link>Outcomes</a></li>
+				</ul>
+			</aside>
+		</div>
 	</div>
 
 	<!-- Related projects -->
@@ -501,20 +603,26 @@ const related = [
 		margin: 0;
 	}
 
-	/* Two-column layout: body + sticky TOC */
+	/* Two-column layout: body + sticky TOC.
+	   The grid uses default align-items: stretch so the TOC cell fills the
+	   row height (= body height). The inner .project-toc is content-sized,
+	   so position: sticky has scroll room within the tall cell. */
 	.project-layout {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 200px;
 		gap: 64px;
-		align-items: start;
 		margin: 0 0 64px;
 	}
 
-	/* TOC */
+	/* Outer TOC cell stretches to grid row height (cell = body height) */
+	.project-toc-cell {
+		align-self: stretch;
+	}
+
+	/* Inner TOC is content-sized; sticks within the tall cell as user scrolls */
 	.project-toc {
 		position: sticky;
 		top: 32px;
-		align-self: start;
 	}
 
 	.project-toc-label {
@@ -620,6 +728,168 @@ const related = [
 		font-weight: 600;
 	}
 
+	/* Figure / visual placeholder blocks — break up text-heavy sections.
+	   Each frame is a styled illustration of what real artwork would live there. */
+	.project-figure {
+		margin: 32px 0 8px;
+	}
+
+	.project-figure-frame {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		border-radius: 18px;
+		border: 1px solid var(--border);
+		background: linear-gradient(135deg, rgba(229, 167, 122, 0.12), rgba(229, 167, 122, 0.04));
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 24px;
+	}
+
+	[data-theme="dark"] .project-figure-frame {
+		background: linear-gradient(135deg, rgba(251, 146, 60, 0.10), rgba(251, 146, 60, 0.02));
+	}
+
+	.project-figure-tag {
+		position: absolute;
+		bottom: 14px;
+		left: 16px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		background-color: var(--bg-primary);
+		padding: 4px 10px;
+		border-radius: 999px;
+		border: 1px solid var(--border);
+	}
+
+	.project-figure-caption {
+		margin-top: 14px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-muted);
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	/* Research figure — abstract heat-spot dots */
+	.project-figure-grid {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background-image:
+			linear-gradient(var(--border) 1px, transparent 1px),
+			linear-gradient(90deg, var(--border) 1px, transparent 1px);
+		background-size: 32px 32px;
+		background-position: -1px -1px;
+		opacity: 0.5;
+	}
+
+	.project-figure-hot {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(20px);
+		opacity: 0.85;
+	}
+
+	.project-figure-hot-1 {
+		top: 18%;
+		left: 24%;
+		width: 120px;
+		height: 120px;
+		background: radial-gradient(circle, #FB923C 0%, transparent 70%);
+	}
+
+	.project-figure-hot-2 {
+		top: 38%;
+		left: 52%;
+		width: 80px;
+		height: 80px;
+		background: radial-gradient(circle, #F97316 0%, transparent 70%);
+	}
+
+	.project-figure-hot-3 {
+		top: 55%;
+		left: 70%;
+		width: 60px;
+		height: 60px;
+		background: radial-gradient(circle, #EAB308 0%, transparent 70%);
+	}
+
+	/* Solution figure — three mini "screens" side by side */
+	.project-figure-screens {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 14px;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+	}
+
+	.project-figure-screen {
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		padding: 10px;
+		aspect-ratio: 3 / 4;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.project-figure-bar {
+		height: 8px;
+		border-radius: 4px;
+		background-color: var(--bg-secondary);
+	}
+
+	.project-figure-block {
+		flex: 1;
+		border-radius: 6px;
+		background: linear-gradient(135deg, #FAB771, #F99E67);
+		opacity: 0.7;
+	}
+
+	.project-figure-block--sm {
+		flex: 0.4;
+		opacity: 0.4;
+		background: var(--bg-secondary);
+	}
+
+	.project-figure-cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4px;
+		flex: 1;
+	}
+
+	.project-figure-card {
+		border-radius: 4px;
+		background-color: var(--bg-secondary);
+	}
+
+	/* Results figure — rising line chart */
+	.project-figure-chart {
+		width: 100%;
+		height: 100%;
+		color: var(--text-accent);
+	}
+
+	@media (max-width: 600px) {
+		.project-figure-screens {
+			gap: 8px;
+		}
+
+		.project-figure-screen {
+			padding: 6px;
+			border-radius: 6px;
+		}
+	}
+
 	/* Feature grid — 2 columns with numbered items */
 	.project-feature-grid {
 		display: grid;
@@ -719,9 +989,13 @@ const related = [
 			gap: 32px;
 		}
 
+		.project-toc-cell {
+			order: -1;
+			height: auto;
+		}
+
 		.project-toc {
 			position: static;
-			order: -1;
 		}
 	}
 
