@@ -34,6 +34,13 @@ const recentProjects = [
 		href: "/projects",
 	},
 ];
+
+const stackPreview = [
+	{ name: "Figma", sublabel: "Design tool", letter: "F", color: "#F24E1E" },
+	{ name: "Linear", sublabel: "Project management", letter: "L", color: "#5E6AD2" },
+	{ name: "Claude", sublabel: "AI co-pilot", letter: "C", color: "#D97757" },
+	{ name: "Cursor", sublabel: "AI editor", letter: "C", color: "#1A1A1A" },
+];
 ---
 
 <DashboardLayout title="Andrew Baek — Product Designer">
@@ -56,6 +63,7 @@ const recentProjects = [
 		</div>
 	</header>
 
+	<!-- Recent Work -->
 	<section class="home-section">
 		<div class="home-section-head">
 			<h2 class="home-section-title">Recent Work</h2>
@@ -67,20 +75,84 @@ const recentProjects = [
 				</svg>
 			</a>
 		</div>
-		<div class="home-grid">
+		<div class="home-grid-projects">
 			{recentProjects.map((project) => <ProjectCard {...project} />)}
+		</div>
+	</section>
+
+	<!-- Stack preview -->
+	<section class="home-section">
+		<div class="home-section-card">
+			<div class="home-section-head">
+				<div>
+					<h2 class="home-section-title">Stack</h2>
+					<p class="home-section-sub">Tools I reach for daily.</p>
+				</div>
+				<a href="/stack" class="home-section-link">
+					View all
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"/>
+						<polyline points="12 5 19 12 12 19"/>
+					</svg>
+				</a>
+			</div>
+			<div class="home-stack-grid">
+				{stackPreview.map((item) => (
+					<div class="home-stack-item">
+						<span class="home-stack-icon" style={`background-color: ${item.color}`}>{item.letter}</span>
+						<div class="home-stack-text">
+							<p class="home-stack-name">{item.name}</p>
+							<p class="home-stack-sub">{item.sublabel}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- About + Contact previews -->
+	<section class="home-section">
+		<div class="home-pair">
+			<a href="/about" class="home-card">
+				<div class="home-card-head">
+					<span class="home-card-eyebrow">About</span>
+					<svg class="home-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="7" y1="17" x2="17" y2="7"/>
+						<polyline points="7 7 17 7 17 17"/>
+					</svg>
+				</div>
+				<h3 class="home-card-title">A product designer with an industrial design brain.</h3>
+				<p class="home-card-text">
+					Trained on objects, fluent in pixels. Tight feedback loops,
+					deliberate decisions, and craft over tooling.
+				</p>
+			</a>
+			<a href="/contact" class="home-card">
+				<div class="home-card-head">
+					<span class="home-card-eyebrow">Contact</span>
+					<svg class="home-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="7" y1="17" x2="17" y2="7"/>
+						<polyline points="7 7 17 7 17 17"/>
+					</svg>
+				</div>
+				<h3 class="home-card-title">Always open to interesting product problems.</h3>
+				<p class="home-card-text">
+					Working on something that needs a designer with strategy and
+					craft? Let's talk.
+				</p>
+			</a>
 		</div>
 	</section>
 </DashboardLayout>
 
 <style>
 	.home-section {
-		margin-bottom: 56px;
+		margin-bottom: 32px;
 	}
 
 	.home-section-head {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		gap: 16px;
 		margin-bottom: 20px;
@@ -95,6 +167,13 @@ const recentProjects = [
 		letter-spacing: -0.02em;
 	}
 
+	.home-section-sub {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		margin: 4px 0 0;
+	}
+
 	.home-section-link {
 		display: inline-flex;
 		align-items: center;
@@ -105,6 +184,7 @@ const recentProjects = [
 		color: var(--text-secondary);
 		text-decoration: none;
 		transition: color var(--transition-fast);
+		flex-shrink: 0;
 	}
 
 	.home-section-link:hover {
@@ -116,14 +196,149 @@ const recentProjects = [
 		height: 14px;
 	}
 
-	.home-grid {
+	/* Recent Work grid (projects) — auto-fit so columns drop to 1 when there's no room */
+	.home-grid-projects {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 		gap: 20px;
 	}
 
+	/* Section card — wraps Stack preview etc. */
+	.home-section-card {
+		border: 1px solid var(--border);
+		border-radius: 20px;
+		padding: 24px 24px 28px;
+		background-color: var(--bg-primary);
+	}
+
+	.home-section-card .home-section-head {
+		margin-bottom: 24px;
+	}
+
+	/* Stack preview grid */
+	.home-stack-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 16px 24px;
+	}
+
+	.home-stack-item {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	.home-stack-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 10px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 16px;
+		font-weight: 600;
+		flex-shrink: 0;
+	}
+
+	.home-stack-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.home-stack-name {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-md);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.home-stack-sub {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.3;
+	}
+
+	/* About + Contact pair */
+	.home-pair {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 20px;
+	}
+
+	.home-card {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		padding: 24px;
+		border: 1px solid var(--border);
+		border-radius: 20px;
+		background-color: var(--bg-primary);
+		text-decoration: none;
+		transition: border-color var(--transition-fast),
+			transform var(--transition-fast);
+	}
+
+	.home-card:hover {
+		border-color: var(--text-muted);
+		transform: translateY(-2px);
+	}
+
+	.home-card-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.home-card-eyebrow {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-muted);
+	}
+
+	.home-card-arrow {
+		width: 14px;
+		height: 14px;
+		color: var(--text-muted);
+		transition: color var(--transition-fast);
+	}
+
+	.home-card:hover .home-card-arrow {
+		color: var(--text-primary);
+	}
+
+	.home-card-title {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0;
+		line-height: 1.3;
+		letter-spacing: -0.01em;
+	}
+
+	.home-card-text {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.5;
+	}
+
 	@media (max-width: 768px) {
-		.home-grid {
+		.home-grid-projects,
+		.home-stack-grid,
+		.home-pair {
 			grid-template-columns: 1fr;
 		}
 	}
