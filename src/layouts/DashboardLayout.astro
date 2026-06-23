@@ -23,6 +23,10 @@ const { title } = Astro.props;
 			const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 			const theme = stored || (systemDark ? "dark" : "light");
 			document.documentElement.setAttribute("data-theme", theme);
+
+			// Sidebar collapsed/expanded — set pre-paint to avoid a width flash.
+			const sidebar = localStorage.getItem("sidebar") === "collapsed" ? "collapsed" : "expanded";
+			document.documentElement.setAttribute("data-sidebar", sidebar);
 		</script>
 	</head>
 	<body>
@@ -47,12 +51,23 @@ const { title } = Astro.props;
 		overflow: visible;
 	}
 
+	/* Sidebar footprint drives the main offset. --sidebar-w flips between
+	   280px (expanded) and 84px (collapsed); +32px = 16 left inset + 16 gap. */
+	:root {
+		--sidebar-w: 280px;
+	}
+
+	:root[data-sidebar="collapsed"] {
+		--sidebar-w: 84px;
+	}
+
 	main {
-		margin-left: 312px; /* 16 sidebar offset + 280 sidebar + 16 gap */
+		margin-left: calc(var(--sidebar-w) + 32px);
 		min-height: 100vh;
 		/* Override global.css main { overflow: hidden } — that rule was for
 		   the old slideshow app and breaks descendant position: sticky. */
 		overflow: visible;
+		transition: margin-left 320ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.page {

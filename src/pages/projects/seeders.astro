@@ -3,76 +3,82 @@ import DashboardLayout from "../../layouts/DashboardLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const facts = [
-	{ label: "Year", value: "2024" },
-	{ label: "Type", value: "Website redesign" },
-	{ label: "Role", value: "Lead product designer" },
-	{ label: "Tools", value: "Figma, Wix, Shopify" },
+	{ label: "Year", value: "2021" },
+	{ label: "Type", value: "Product design" },
+	{ label: "Role", value: "Product designer" },
+	{ label: "Tools", value: "Figma" },
 ];
 
 const metrics = [
-	{ value: "40–60%", label: "Monthly revenue lift" },
-	{ value: "+58%", label: "Website visitors (145.8k)" },
-	{ value: "+23%", label: "Page views (907.02k)" },
-	{ value: "+38%", label: "Engagement (1m53s → 2m18s)" },
+	{ value: "5", label: "Features designed into one app" },
+	{ value: "4", label: "Core functions unified" },
+	{ value: "$600", label: "Annual value of urban gardening" },
+	{ value: "2", label: "User personas guiding the design" },
 ];
 
-const baseline = [
-	{ value: "1.6%", label: "Conversion rate" },
-	{ value: "50%", label: "Bounce rate" },
-	{ value: "1m 53s", label: "Avg engagement" },
+const dimensions = [
+	{ value: "01", label: "Affordance" },
+	{ value: "02", label: "Constraint" },
+	{ value: "03", label: "Accessibility" },
+	{ value: "04", label: "Sustainability" },
+	{ value: "05", label: "Joy / delight" },
 ];
 
 const solutionFeatures = [
 	{
-		title: "Easier navigation",
-		text: "Streamlined the nav bar and consolidated repeated content. Filters surfaced earlier so users got to product faster.",
+		title: "Customizable favorites",
+		text: "Users set preferred plants on their profile; favorites surface on the home screen for quick access to info and shopping.",
 	},
 	{
-		title: "Content placement",
-		text: "Moved high-intent CTAs and key content above the fold for the majority of users who never scrolled further.",
+		title: "Unlimited planting information",
+		text: "A searchable plant archive — the \"home gardening teacher\" — with detailed growing instructions and video tutorials.",
 	},
 	{
-		title: "Combo Creator",
-		text: "Bundle-builder added to the homepage as a strategic AOV play — turning single-product sessions into multi-item baskets.",
+		title: "Intuitive shopping",
+		text: "Self-explanatory, visually compelling product navigation with a seamless purchase path built into the main app.",
 	},
 	{
-		title: "Milkyway Rewards",
-		text: "A dedicated loyalty program page designed to convert one-time buyers into returning customers through points + perks.",
+		title: "Community hub",
+		text: "A familiar social network to share gardening stories and exchange, sell, or buy second-hand equipment.",
 	},
 	{
-		title: "UGC + influencer collaboration",
-		text: "Integrated user-generated content and influencer features on the homepage to lift trust and broaden brand reach.",
-	},
-	{
-		title: "Intuitive product filter",
-		text: "Re-designed the filter system to be simpler and more direct, so users could narrow on what they actually wanted.",
-	},
-	{
-		title: "SEO + mobile rebuild",
-		text: "Applied SEO principles to every product description and rebuilt layouts mobile-first for the device most customers shop on.",
+		title: "Smart scheduling",
+		text: "A \"Today's Work\" feed delivers daily reminders so users stay aligned with their planting schedule.",
 	},
 ];
 
 const takeaways = [
 	{
-		title: "Enhanced user experience",
-		text: "Putting user needs first led to a smoother, more engaging experience across devices.",
+		title: "Customization is critical",
+		text: "Gardening interests vary widely, so customizable features are what make the service genuinely useful and convenient.",
 	},
 	{
-		title: "Strategic growth",
-		text: "Mobile, SEO, and marketing collaboration combined into measurable business growth.",
+		title: "More research & testing",
+		text: "Reaching a true all-in-one platform needs additional rounds of user research and testing before launch.",
 	},
 	{
-		title: "Brand visibility",
-		text: "Influencer and UGC collaborations elevated brand presence and broadened reach.",
-	},
-	{
-		title: "Long-term impact",
-		text: "The redesign laid a foundation for continued growth, not a one-time spike.",
+		title: "Community needs safeguards",
+		text: "Social and exchange features require extra planning to mitigate risks like fraud and privacy concerns.",
 	},
 ];
 
 const related = [
+	{
+		name: "Milkyway Glass",
+		category: "E-commerce UX & retention",
+		year: "2024",
+		thumbnail: "/images/Laptop Mockup.png",
+		thumbnailAlt: "Milkyway Glass on a laptop",
+		videoSrc: "/videos/Portfolio-MK-Desktop.mp4",
+		mockupAspect: "3750 / 4906",
+		mockupMax: "120%",
+		mockupOffsetY: "50px",
+		screenTop: "1.5%",
+		screenLeft: "7%",
+		screenWidth: "86%",
+		screenHeight: "43.5%",
+		href: "/projects/milkyway-glass",
+	},
 	{
 		name: "O3 Drinkware",
 		category: "Brand-to-product commerce",
@@ -87,18 +93,10 @@ const related = [
 		screenHeight: "65%",
 		href: "/projects/o3-drinkware",
 	},
-	{
-		name: "Seeders",
-		category: "Multi-sided platform UX",
-		year: "2021",
-		thumbnail: "/images/Seeders_Mockup_E04.jpg",
-		thumbnailAlt: "Seeders mobile app screens",
-		href: "/projects/seeders",
-	},
 ];
 ---
 
-<DashboardLayout title="Milkyway Glass — Andrew Baek">
+<DashboardLayout title="Seeders — Andrew Baek">
 	<a href="/projects" class="project-breadcrumb">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
@@ -107,14 +105,14 @@ const related = [
 		All projects
 	</a>
 
-	<!-- Header: eyebrow, title, summary, inline facts & metric pills -->
+	<!-- Header -->
 	<header class="project-header">
-		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
-		<h1 class="project-title">Milkyway Glass</h1>
+		<p class="project-eyebrow">Product Design — Mobile App</p>
+		<h1 class="project-title">Seeders</h1>
 		<p class="project-summary">
-			A more enticing shopping experience — built around data, SEO, and
-			retention mechanics — that lifted monthly revenue 40–60% and grew
-			visitors 58%.
+			A next-gen gardening app for home gardeners — consolidating plant
+			information, shopping, planning, and a second-hand community into one
+			all-in-one experience, so people stop juggling multiple platforms.
 		</p>
 
 		<ul class="project-facts">
@@ -127,30 +125,18 @@ const related = [
 		</ul>
 	</header>
 
-	<!-- Hero visual -->
+	<!-- Hero visual (static mobile screens) -->
 	<div class="project-hero">
-		<div class="project-hero-mockup">
-			<img
-				src="/images/Laptop Mockup.png"
-				alt="Milkyway Glass website preview on a laptop"
-				class="project-hero-mockup-frame"
-			/>
-			<video
-				class="project-hero-mockup-video"
-				autoplay
-				loop
-				muted
-				playsinline
-				preload="metadata"
-			>
-				<source src="/videos/Portfolio-MK-Desktop.mp4" type="video/mp4" />
-			</video>
-		</div>
+		<img
+			src="/images/Seeders_Mockup_E04.jpg"
+			alt="Seeders app shown across several mobile screens"
+			class="project-hero-image"
+		/>
 	</div>
 
-	<!-- Impact metrics — bigger card section after the hero -->
+	<!-- Impact / project at a glance -->
 	<section class="project-impact">
-		<h2 class="project-impact-title">Impact</h2>
+		<h2 class="project-impact-title">At a glance</h2>
 		<div class="project-impact-grid">
 			{metrics.map((m) => (
 				<div class="project-impact-card">
@@ -161,74 +147,61 @@ const related = [
 		</div>
 	</section>
 
-	<!-- Two-column body: editorial prose + sticky TOC -->
+	<!-- Two-column body -->
 	<div class="project-layout">
 		<article class="project-body">
 			<h2 class="project-h2" id="overview">Overview</h2>
 			<p class="project-prose">
-				Milkyway Glass is an e-commerce startup specializing in glass
-				accessories for cannabis users. I led the redesign of their site
-				by integrating data-driven insights, strategic SEO, and
-				collaborative marketing work. The result was significant lift
-				across visibility, navigation, and the overall customer
-				experience — and a real increase in sales and engagement.
+				Seeders is an all-in-one gardening platform for home gardeners. It
+				consolidates access to planting information, mobile shopping,
+				gardening planning, and photo/equipment sharing into a single
+				unified experience — eliminating the constant switching between
+				separate apps and sites.
 			</p>
 
 			<h2 class="project-h2" id="challenge">The challenge</h2>
 			<p class="project-prose">
-				The original site suffered from unintuitive navigation, weak
-				engaging content, and poor mobile optimization — friction that
-				quietly killed conversion before users ever reached the cart.
-				A close audit surfaced seven specific issues:
+				Home gardeners struggle to access comprehensive information, plan
+				their efforts, and connect with others — often needing several
+				platforms to cover one hobby. The core problem:
+				<strong>home gardeners face challenges in accessing information,
+				planning tools, and community engagement, frequently requiring
+				multiple platforms to meet their needs.</strong>
 			</p>
 			<ul class="project-list">
-				<li><strong>Complicated navigation</strong> with repeated and redundant content.</li>
-				<li><strong>Unclear call-to-action messaging</strong> — users didn't know where to click next.</li>
-				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
-				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
-				<li><strong>Sparse product information</strong> — reviews and ratings were missing entirely.</li>
-				<li><strong>Disorganized layout</strong> with too many competing buttons fighting for attention.</li>
-				<li><strong>No SEO foundation</strong> — the site was effectively invisible to search.</li>
-			</ul>
-			<p class="project-prose">The numbers reflected it:</p>
-			<ul class="project-metrics project-metrics-baseline">
-				{baseline.map((b) => (
-					<li class="project-metric project-metric-baseline">
-						<span class="project-metric-value">{b.value}</span>
-						<span class="project-metric-label">{b.label}</span>
-					</li>
-				))}
+				<li><strong>Hard to find reliable, plant-specific information.</strong></li>
+				<li><strong>No intuitive scheduling tools</strong> to plan and stay on track.</li>
+				<li><strong>Limited ways to share experiences</strong> with other gardeners.</li>
+				<li><strong>Few platforms for second-hand equipment</strong> — buying or selling.</li>
+				<li><strong>App fragmentation</strong> — needing many tools for one activity.</li>
 			</ul>
 
 			<h2 class="project-h2" id="process">Process</h2>
 			<p class="project-prose">
-				To avoid designing on gut, I anchored the work in three research
-				methods that triangulated user behaviour, business context, and
-				visual attention:
+				I ran both qualitative and quantitative research, analyzing the
+				gardening context across five dimensions to keep the design
+				grounded in real behaviour:
 			</p>
-			<ul class="project-list">
-				<li>
-					<strong>Heat maps and scroll maps</strong> to see where users
-					actually clicked and how far they scrolled — separating
-					real attention from assumed attention.
-				</li>
-				<li>
-					<strong>User journey mapping</strong> from landing to checkout
-					to find the specific moments where users dropped off.
-				</li>
-				<li>
-					<strong>Marketing coordinator collaboration</strong> to pull
-					traffic sources, campaign data, and competitive context — so
-					design decisions stayed aligned with where customers were
-					actually coming from.
-				</li>
+			<ul class="project-metrics project-metrics-baseline">
+				{dimensions.map((d) => (
+					<li class="project-metric project-metric-baseline">
+						<span class="project-metric-value">{d.value}</span>
+						<span class="project-metric-label">{d.label}</span>
+					</li>
+				))}
 			</ul>
 			<p class="project-prose">
-				The data made the priorities undeniable: most sessions ended
-				before the fold, mobile was where the majority of traffic lived,
-				and the filter system was the single biggest abandonment point
-				on the path to a product page.
+				A few insights shaped the direction: millennial participation in
+				home gardening is rising, urban gardening can return roughly $600
+				of value a year, it doubles as an educational tool for children,
+				and it's an affordable long-term investment. I also built a User
+				Interaction Analysis Map to trace how people complete gardening
+				tasks and where friction shows up.
 			</p>
+			<ul class="project-list">
+				<li><strong>Jennifer Owens (hotel receptionist)</strong> — wants a gardening community with a used-item sharing platform and an accessible, affordable shop.</li>
+				<li><strong>Adriana Lopez (school teacher)</strong> — wants consolidation: an intuitive mobile shop, a customizable planner, and one integrated all-in-one app.</li>
+			</ul>
 
 			<figure class="project-figure project-figure--research">
 				<div class="project-figure-frame" aria-hidden="true">
@@ -237,28 +210,27 @@ const related = [
 						<div class="project-figure-hot project-figure-hot-2"></div>
 						<div class="project-figure-hot project-figure-hot-3"></div>
 					</div>
-					<span class="project-figure-tag">Heat map · scroll depth · journey</span>
+					<span class="project-figure-tag">5 dimensions · personas · interaction map</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Research artifacts — heat maps and scroll-depth maps revealed
-					how shallow most sessions actually were on the original site.
+					Research artifacts — a five-dimension analysis and a user
+					interaction map that exposed where gardeners get stuck.
 				</figcaption>
 			</figure>
 
 			<h2 class="project-h2" id="hmw">How might we</h2>
 			<p class="project-prose">
-				Three guiding questions framed the work:
+				One question anchored the product:
 			</p>
 			<ul class="project-list">
-				<li>How might we <strong>simplify navigation</strong> to reduce friction for users?</li>
-				<li>How might we <strong>strengthen customer connection</strong> through engaging content — loyalty, UGC, influencer collaboration?</li>
-				<li>How might we <strong>optimize the experience</strong> for mobile, where most shopping actually happens?</li>
+				<li>How might we provide an extensive gardening experience — <strong>shopping, planning, and socializing</strong> — through an informative community hub in a single digital environment?</li>
 			</ul>
 
 			<h2 class="project-h2" id="approach">The approach</h2>
 			<p class="project-prose">
-				Seven interventions, each tied back to one of the three "How
-				might we" questions:
+				Site mapping identified four core functions — plant search,
+				commerce, community, and calendar — which wireframing turned into
+				five connected features:
 			</p>
 
 			<figure class="project-figure project-figure--solution">
@@ -286,11 +258,11 @@ const related = [
 							<div class="project-figure-block project-figure-block--sm"></div>
 						</div>
 					</div>
-					<span class="project-figure-tag">Homepage · combo creator · product filter</span>
+					<span class="project-figure-tag">Search · shop · community · calendar</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Key screens from the rebuild — homepage hierarchy reset, the
-					new Combo Creator, and the streamlined product filter.
+					Key screens — favorites and plant info, the in-app shop, the
+					second-hand community, and the daily planting schedule.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -307,31 +279,30 @@ const related = [
 
 			<h2 class="project-h2" id="outcomes">Outcomes</h2>
 			<p class="project-prose">
-				The redesign moved Milkyway from a static brand showcase to a
-				measurable growth surface — and the wins compounded across four
-				fronts:
+				Seeders landed as a cohesive concept for a single gardening home
+				base. This was a concept project, so there are no deployment
+				metrics yet — but the work produced clear takeaways for taking it
+				further:
 			</p>
 
 			<figure class="project-figure project-figure--results">
 				<div class="project-figure-frame" aria-hidden="true">
 					<svg class="project-figure-chart" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 						<defs>
-							<linearGradient id="mk-line-fill" x1="0" y1="0" x2="0" y2="1">
+							<linearGradient id="seeders-line-fill" x1="0" y1="0" x2="0" y2="1">
 								<stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
 								<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
 							</linearGradient>
 						</defs>
-						<!-- Baseline (before) — flat dashed -->
 						<path d="M 0 100 L 320 96" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
-						<!-- Growth curve (after) — rising solid + filled area -->
-						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#mk-line-fill)"/>
+						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#seeders-line-fill)"/>
 						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 					</svg>
-					<span class="project-figure-tag">Revenue · visitors · engagement</span>
+					<span class="project-figure-tag">Consolidation · customization · community</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Post-launch trends — sustained monthly growth across revenue,
-					traffic, and engagement, not a single-week spike.
+					A unified concept that replaces a fragmented toolset with one
+					customizable, community-driven gardening app.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -346,7 +317,7 @@ const related = [
 			</div>
 		</article>
 
-		<!-- Sticky table of contents (wrap pattern: outer cell stretches to grid row height, inner aside is the sticky element) -->
+		<!-- Sticky table of contents -->
 		<div class="project-toc-cell">
 			<aside class="project-toc" aria-label="On this page">
 				<p class="project-toc-label">On this page</p>
@@ -438,7 +409,7 @@ const related = [
 		margin: 0 0 28px;
 	}
 
-	/* Facts as inline pills (the "specs" row) */
+	/* Facts as inline pills */
 	.project-facts {
 		list-style: none;
 		padding: 0;
@@ -469,7 +440,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Metric pills — same shape but accent-tinted */
+	/* Metric pills */
 	.project-metrics {
 		list-style: none;
 		padding: 0;
@@ -500,7 +471,6 @@ const related = [
 		color: var(--text-secondary);
 	}
 
-	/* Baseline metrics — muted, reflects "before" numbers in body */
 	.project-metrics-baseline {
 		margin: 16px 0 24px;
 	}
@@ -527,37 +497,15 @@ const related = [
 		margin-bottom: 64px;
 	}
 
-	.project-hero-mockup {
-		position: relative;
-		aspect-ratio: 3750 / 4906;
-		max-width: 90%;
-		max-height: 115%;
-		transform: translateY(60px);
-	}
-
-	.project-hero-mockup-frame {
-		position: relative;
-		z-index: 1;
-		display: block;
-		width: 100%;
-		height: 100%;
+	/* Seeders hero is a static image of the app screens */
+	.project-hero-image {
+		max-width: 92%;
+		max-height: 100%;
 		object-fit: contain;
-		pointer-events: none;
-	}
-
-	.project-hero-mockup-video {
-		position: absolute;
-		z-index: 2;
-		top: 1.5%;
-		left: 7%;
-		width: 86%;
-		height: 43.5%;
-		object-fit: cover;
 		display: block;
-		border-radius: 4px;
 	}
 
-	/* Impact metric card section (between hero and body) */
+	/* Impact card section */
 	.project-impact {
 		margin-bottom: 64px;
 	}
@@ -603,10 +551,7 @@ const related = [
 		margin: 0;
 	}
 
-	/* Two-column layout: body + sticky TOC.
-	   The grid uses default align-items: stretch so the TOC cell fills the
-	   row height (= body height). The inner .project-toc is content-sized,
-	   so position: sticky has scroll room within the tall cell. */
+	/* Two-column layout */
 	.project-layout {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 200px;
@@ -614,12 +559,10 @@ const related = [
 		margin: 0 0 64px;
 	}
 
-	/* Outer TOC cell stretches to grid row height (cell = body height) */
 	.project-toc-cell {
 		align-self: stretch;
 	}
 
-	/* Inner TOC is content-sized; sticks within the tall cell as user scrolls */
 	.project-toc {
 		position: sticky;
 		top: 32px;
@@ -728,8 +671,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Figure / visual placeholder blocks — break up text-heavy sections.
-	   Each frame is a styled illustration of what real artwork would live there. */
+	/* Figure / visual placeholder blocks */
 	.project-figure {
 		margin: 32px 0 8px;
 	}
@@ -747,7 +689,7 @@ const related = [
 		padding: 24px;
 	}
 
-	[data-theme="dark"] .project-figure-frame {
+	:global([data-theme="dark"]) .project-figure-frame {
 		background: linear-gradient(135deg, rgba(251, 146, 60, 0.10), rgba(251, 146, 60, 0.02));
 	}
 
@@ -776,7 +718,6 @@ const related = [
 		text-align: center;
 	}
 
-	/* Research figure — abstract heat-spot dots */
 	.project-figure-grid {
 		position: relative;
 		width: 100%;
@@ -801,7 +742,7 @@ const related = [
 		left: 24%;
 		width: 120px;
 		height: 120px;
-		background: radial-gradient(circle, #FB923C 0%, transparent 70%);
+		background: radial-gradient(circle, #4ADE80 0%, transparent 70%);
 	}
 
 	.project-figure-hot-2 {
@@ -809,7 +750,7 @@ const related = [
 		left: 52%;
 		width: 80px;
 		height: 80px;
-		background: radial-gradient(circle, #F97316 0%, transparent 70%);
+		background: radial-gradient(circle, #22C55E 0%, transparent 70%);
 	}
 
 	.project-figure-hot-3 {
@@ -817,10 +758,9 @@ const related = [
 		left: 70%;
 		width: 60px;
 		height: 60px;
-		background: radial-gradient(circle, #EAB308 0%, transparent 70%);
+		background: radial-gradient(circle, #FB923C 0%, transparent 70%);
 	}
 
-	/* Solution figure — three mini "screens" side by side */
 	.project-figure-screens {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -850,7 +790,7 @@ const related = [
 	.project-figure-block {
 		flex: 1;
 		border-radius: 6px;
-		background: linear-gradient(135deg, #FAB771, #F99E67);
+		background: linear-gradient(135deg, #4ADE80, #22C55E);
 		opacity: 0.7;
 	}
 
@@ -872,7 +812,6 @@ const related = [
 		background-color: var(--bg-secondary);
 	}
 
-	/* Results figure — rising line chart */
 	.project-figure-chart {
 		width: 100%;
 		height: 100%;
@@ -890,7 +829,7 @@ const related = [
 		}
 	}
 
-	/* Feature grid — 2 columns with numbered items */
+	/* Feature grid */
 	.project-feature-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -998,13 +937,6 @@ const related = [
 			position: static;
 		}
 	}
-
-	@media (max-width: 768px) {
-		.project-hero-mockup {
-			max-height: 100%;
-			transform: translateY(20px);
-		}
-	}
 </style>
 
 <script>
@@ -1033,7 +965,6 @@ const related = [
 			(entries) => {
 				const visible = entries.filter((e) => e.isIntersecting);
 				if (visible.length === 0) return;
-				// Pick the topmost visible entry
 				visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 				const id = visible[0].target.id;
 				if (id) setActive(id);
@@ -1042,7 +973,6 @@ const related = [
 		);
 
 		sections.forEach((s) => observer.observe(s));
-		// Default: first section active
 		setActive(sections[0].id);
 	}
 </script>

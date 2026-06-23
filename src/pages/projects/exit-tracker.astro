@@ -3,89 +3,73 @@ import DashboardLayout from "../../layouts/DashboardLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const facts = [
-	{ label: "Year", value: "2024" },
-	{ label: "Type", value: "Website redesign" },
-	{ label: "Role", value: "Lead product designer" },
-	{ label: "Tools", value: "Figma, Wix, Shopify" },
+	{ label: "Year", value: "2021" },
+	{ label: "Type", value: "Product design" },
+	{ label: "Role", value: "Product designer" },
+	{ label: "Tools", value: "Figma" },
 ];
 
 const metrics = [
-	{ value: "40–60%", label: "Monthly revenue lift" },
-	{ value: "+58%", label: "Website visitors (145.8k)" },
-	{ value: "+23%", label: "Page views (907.02k)" },
-	{ value: "+38%", label: "Engagement (1m53s → 2m18s)" },
-];
-
-const baseline = [
-	{ value: "1.6%", label: "Conversion rate" },
-	{ value: "50%", label: "Bounce rate" },
-	{ value: "1m 53s", label: "Avg engagement" },
+	{ value: "1M", label: "Daily TTC subway passengers" },
+	{ value: "4", label: "Core features designed" },
+	{ value: "2", label: "User personas guiding the design" },
+	{ value: "100%", label: "Built on the familiar TTC map" },
 ];
 
 const solutionFeatures = [
 	{
-		title: "Easier navigation",
-		text: "Streamlined the nav bar and consolidated repeated content. Filters surfaced earlier so users got to product faster.",
+		title: "Interactive subway map",
+		text: "A fully interactive, intuitive map built on the official TTC map riders already know — reducing visual confusion from the start.",
 	},
 	{
-		title: "Content placement",
-		text: "Moved high-intent CTAs and key content above the fold for the majority of users who never scrolled further.",
+		title: "Clear platform maps",
+		text: "Visual maps for every platform, where a single tap tracks the user's location and surfaces the right exit.",
 	},
 	{
-		title: "Combo Creator",
-		text: "Bundle-builder added to the homepage as a strategic AOV play — turning single-product sessions into multi-item baskets.",
+		title: "Visual content & info",
+		text: "Real photos of exits and surrounding pathways, integrated with Google Maps for destination suggestions.",
 	},
 	{
-		title: "Milkyway Rewards",
-		text: "A dedicated loyalty program page designed to convert one-time buyers into returning customers through points + perks.",
-	},
-	{
-		title: "UGC + influencer collaboration",
-		text: "Integrated user-generated content and influencer features on the homepage to lift trust and broaden brand reach.",
-	},
-	{
-		title: "Intuitive product filter",
-		text: "Re-designed the filter system to be simpler and more direct, so users could narrow on what they actually wanted.",
-	},
-	{
-		title: "SEO + mobile rebuild",
-		text: "Applied SEO principles to every product description and rebuilt layouts mobile-first for the device most customers shop on.",
+		title: "Live alert system",
+		text: "Real-time information on delays, service changes, and emergencies so riders avoid unexpected surprises.",
 	},
 ];
 
 const takeaways = [
 	{
-		title: "Enhanced user experience",
-		text: "Putting user needs first led to a smoother, more engaging experience across devices.",
+		title: "Personas surfaced real pain",
+		text: "Persona-building and journey mapping pinned down the specific frustrations passengers face every day.",
 	},
 	{
-		title: "Strategic growth",
-		text: "Mobile, SEO, and marketing collaboration combined into measurable business growth.",
+		title: "Research finds the gap",
+		text: "Effective market research was essential to identify where the design needed to focus.",
 	},
 	{
-		title: "Brand visibility",
-		text: "Influencer and UGC collaborations elevated brand presence and broadened reach.",
+		title: "Clear maps win",
+		text: "Clean visual maps for exits and pathways proved to be the critical success factor.",
 	},
 	{
-		title: "Long-term impact",
-		text: "The redesign laid a foundation for continued growth, not a one-time spike.",
+		title: "Test, then iterate",
+		text: "Closely monitored user testing is the next step to carry the concept forward.",
 	},
 ];
 
 const related = [
 	{
-		name: "O3 Drinkware",
-		category: "Brand-to-product commerce",
+		name: "Milkyway Glass",
+		category: "E-commerce UX & retention",
 		year: "2024",
-		thumbnail: "/images/RS-Mockup.png",
-		thumbnailAlt: "O3 Drinkware on a desktop monitor",
-		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
-		mockupAspect: "3463 / 3083",
-		screenTop: "3%",
-		screenLeft: "3%",
-		screenWidth: "94%",
-		screenHeight: "65%",
-		href: "/projects/o3-drinkware",
+		thumbnail: "/images/Laptop Mockup.png",
+		thumbnailAlt: "Milkyway Glass on a laptop",
+		videoSrc: "/videos/Portfolio-MK-Desktop.mp4",
+		mockupAspect: "3750 / 4906",
+		mockupMax: "120%",
+		mockupOffsetY: "50px",
+		screenTop: "1.5%",
+		screenLeft: "7%",
+		screenWidth: "86%",
+		screenHeight: "43.5%",
+		href: "/projects/milkyway-glass",
 	},
 	{
 		name: "Seeders",
@@ -98,7 +82,7 @@ const related = [
 ];
 ---
 
-<DashboardLayout title="Milkyway Glass — Andrew Baek">
+<DashboardLayout title="Exit Tracker — Andrew Baek">
 	<a href="/projects" class="project-breadcrumb">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
@@ -107,14 +91,14 @@ const related = [
 		All projects
 	</a>
 
-	<!-- Header: eyebrow, title, summary, inline facts & metric pills -->
+	<!-- Header -->
 	<header class="project-header">
-		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
-		<h1 class="project-title">Milkyway Glass</h1>
+		<p class="project-eyebrow">Product Design — Mobile App</p>
+		<h1 class="project-title">Exit Tracker</h1>
 		<p class="project-summary">
-			A more enticing shopping experience — built around data, SEO, and
-			retention mechanics — that lifted monthly revenue 40–60% and grew
-			visitors 58%.
+			A mobile app that helps subway riders find the exact exit they need —
+			turning confusing underground stations into a clear path to the
+			surface, and saving time on the way to a destination.
 		</p>
 
 		<ul class="project-facts">
@@ -127,30 +111,37 @@ const related = [
 		</ul>
 	</header>
 
-	<!-- Hero visual -->
+	<!-- Hero visual (styled placeholder — no source mockup available) -->
 	<div class="project-hero">
-		<div class="project-hero-mockup">
-			<img
-				src="/images/Laptop Mockup.png"
-				alt="Milkyway Glass website preview on a laptop"
-				class="project-hero-mockup-frame"
-			/>
-			<video
-				class="project-hero-mockup-video"
-				autoplay
-				loop
-				muted
-				playsinline
-				preload="metadata"
-			>
-				<source src="/videos/Portfolio-MK-Desktop.mp4" type="video/mp4" />
-			</video>
+		<div class="project-hero-device" aria-hidden="true">
+			<div class="project-hero-notch"></div>
+			<div class="project-hero-screen">
+				<svg class="project-hero-map" viewBox="0 0 220 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+					<!-- transit lines -->
+					<path d="M -10 120 H 230" stroke="#EAB308" stroke-width="6" stroke-linecap="round" fill="none"/>
+					<path d="M 60 -10 V 390" stroke="#22C55E" stroke-width="6" stroke-linecap="round" fill="none"/>
+					<path d="M 160 -10 V 390" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" fill="none"/>
+					<path d="M -10 260 H 230" stroke="#FB923C" stroke-width="6" stroke-linecap="round" fill="none"/>
+					<!-- stations -->
+					<circle cx="60" cy="120" r="7" fill="var(--bg-primary)" stroke="#1A1A1A" stroke-width="3"/>
+					<circle cx="160" cy="120" r="7" fill="var(--bg-primary)" stroke="#1A1A1A" stroke-width="3"/>
+					<circle cx="60" cy="260" r="7" fill="var(--bg-primary)" stroke="#1A1A1A" stroke-width="3"/>
+					<circle cx="160" cy="260" r="7" fill="var(--bg-primary)" stroke="#1A1A1A" stroke-width="3"/>
+				</svg>
+				<div class="project-hero-pin">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 6l6 6-6 6"/>
+						<line x1="3" y1="12" x2="15" y2="12"/>
+					</svg>
+					EXIT
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<!-- Impact metrics — bigger card section after the hero -->
+	<!-- Impact / project at a glance -->
 	<section class="project-impact">
-		<h2 class="project-impact-title">Impact</h2>
+		<h2 class="project-impact-title">At a glance</h2>
 		<div class="project-impact-grid">
 			{metrics.map((m) => (
 				<div class="project-impact-card">
@@ -161,73 +152,51 @@ const related = [
 		</div>
 	</section>
 
-	<!-- Two-column body: editorial prose + sticky TOC -->
+	<!-- Two-column body -->
 	<div class="project-layout">
 		<article class="project-body">
 			<h2 class="project-h2" id="overview">Overview</h2>
 			<p class="project-prose">
-				Milkyway Glass is an e-commerce startup specializing in glass
-				accessories for cannabis users. I led the redesign of their site
-				by integrating data-driven insights, strategic SEO, and
-				collaborative marketing work. The result was significant lift
-				across visibility, navigation, and the overall customer
-				experience — and a real increase in sales and engagement.
+				Exit Tracker is a mobile app designed to help subway passengers
+				navigate to the exit they actually need. By surfacing exit
+				locations and the destinations each one leads to, it helps people
+				reach where they're going without wasting time figuring out the
+				station.
 			</p>
 
 			<h2 class="project-h2" id="challenge">The challenge</h2>
 			<p class="project-prose">
-				The original site suffered from unintuitive navigation, weak
-				engaging content, and poor mobile optimization — friction that
-				quietly killed conversion before users ever reached the cart.
-				A close audit surfaced seven specific issues:
+				Subway passengers often struggle to find the correct exits because
+				of unclear signage and complex underground pathways — which leads
+				to confusion and delays. A close look surfaced four recurring pain
+				points:
 			</p>
 			<ul class="project-list">
-				<li><strong>Complicated navigation</strong> with repeated and redundant content.</li>
-				<li><strong>Unclear call-to-action messaging</strong> — users didn't know where to click next.</li>
-				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
-				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
-				<li><strong>Sparse product information</strong> — reviews and ratings were missing entirely.</li>
-				<li><strong>Disorganized layout</strong> with too many competing buttons fighting for attention.</li>
-				<li><strong>No SEO foundation</strong> — the site was effectively invisible to search.</li>
-			</ul>
-			<p class="project-prose">The numbers reflected it:</p>
-			<ul class="project-metrics project-metrics-baseline">
-				{baseline.map((b) => (
-					<li class="project-metric project-metric-baseline">
-						<span class="project-metric-value">{b.value}</span>
-						<span class="project-metric-label">{b.label}</span>
-					</li>
-				))}
+				<li><strong>Unclear signage</strong> makes the right direction hard to find.</li>
+				<li><strong>Easy to get lost</strong> when you take the wrong exit.</li>
+				<li><strong>Complex underground pathways</strong> overwhelm newcomers.</li>
+				<li><strong>No intuitive map</strong> that includes the underground exits.</li>
 			</ul>
 
 			<h2 class="project-h2" id="process">Process</h2>
 			<p class="project-prose">
-				To avoid designing on gut, I anchored the work in three research
-				methods that triangulated user behaviour, business context, and
-				visual attention:
+				Market research framed the scale of the problem and who it affects
+				most:
 			</p>
 			<ul class="project-list">
-				<li>
-					<strong>Heat maps and scroll maps</strong> to see where users
-					actually clicked and how far they scrolled — separating
-					real attention from assumed attention.
-				</li>
-				<li>
-					<strong>User journey mapping</strong> from landing to checkout
-					to find the specific moments where users dropped off.
-				</li>
-				<li>
-					<strong>Marketing coordinator collaboration</strong> to pull
-					traffic sources, campaign data, and competitive context — so
-					design decisions stayed aligned with where customers were
-					actually coming from.
-				</li>
+				<li><strong>1 million passengers</strong> ride the TTC subway, many through outdated stations.</li>
+				<li><strong>Unclear signs and complex pathways</strong> make orientation hard.</li>
+				<li><strong>Riders waste time</strong> figuring out directions instead of moving.</li>
+			</ul>
+			<p class="project-prose">Two personas kept the work grounded:</p>
+			<ul class="project-list">
+				<li><strong>Serena Green (student)</strong> — needs an easier map, an alert system, and self-explanatory signs; frustrated by unclear signs and confusing connections.</li>
+				<li><strong>Martin Omar (software developer)</strong> — needs an extensive mobile map and clear exit signs; unfamiliar with the system and gets lost without one.</li>
 			</ul>
 			<p class="project-prose">
-				The data made the priorities undeniable: most sessions ended
-				before the fold, mobile was where the majority of traffic lived,
-				and the filter system was the single biggest abandonment point
-				on the path to a product page.
+				From there I moved through site mapping to identify key functions,
+				then wireframing and iteration on layouts and flows before
+				committing to a high-fidelity design.
 			</p>
 
 			<figure class="project-figure project-figure--research">
@@ -237,28 +206,26 @@ const related = [
 						<div class="project-figure-hot project-figure-hot-2"></div>
 						<div class="project-figure-hot project-figure-hot-3"></div>
 					</div>
-					<span class="project-figure-tag">Heat map · scroll depth · journey</span>
+					<span class="project-figure-tag">Insights · personas · site map</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Research artifacts — heat maps and scroll-depth maps revealed
-					how shallow most sessions actually were on the original site.
+					Research artifacts — market insights and personas that defined
+					where riders get lost and what would help them most.
 				</figcaption>
 			</figure>
 
 			<h2 class="project-h2" id="hmw">How might we</h2>
 			<p class="project-prose">
-				Three guiding questions framed the work:
+				One question framed the design:
 			</p>
 			<ul class="project-list">
-				<li>How might we <strong>simplify navigation</strong> to reduce friction for users?</li>
-				<li>How might we <strong>strengthen customer connection</strong> through engaging content — loyalty, UGC, influencer collaboration?</li>
-				<li>How might we <strong>optimize the experience</strong> for mobile, where most shopping actually happens?</li>
+				<li>How might we <strong>reduce the confusion</strong> passengers feel when trying to find the right exit to reach their final destination?</li>
 			</ul>
 
 			<h2 class="project-h2" id="approach">The approach</h2>
 			<p class="project-prose">
-				Seven interventions, each tied back to one of the three "How
-				might we" questions:
+				Four features work together to make exits obvious and the journey
+				predictable:
 			</p>
 
 			<figure class="project-figure project-figure--solution">
@@ -286,11 +253,11 @@ const related = [
 							<div class="project-figure-block project-figure-block--sm"></div>
 						</div>
 					</div>
-					<span class="project-figure-tag">Homepage · combo creator · product filter</span>
+					<span class="project-figure-tag">Map · platform view · alerts</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Key screens from the rebuild — homepage hierarchy reset, the
-					new Combo Creator, and the streamlined product filter.
+					Key screens — the interactive subway map, a tappable platform
+					view with exit info, and the live alert feed.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -307,31 +274,29 @@ const related = [
 
 			<h2 class="project-h2" id="outcomes">Outcomes</h2>
 			<p class="project-prose">
-				The redesign moved Milkyway from a static brand showcase to a
-				measurable growth surface — and the wins compounded across four
-				fronts:
+				Exit Tracker came together as a clear concept for taking the guess
+				work out of subway exits. As a concept project it has no deployment
+				metrics yet, but it produced sharp takeaways for the next round:
 			</p>
 
 			<figure class="project-figure project-figure--results">
 				<div class="project-figure-frame" aria-hidden="true">
 					<svg class="project-figure-chart" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 						<defs>
-							<linearGradient id="mk-line-fill" x1="0" y1="0" x2="0" y2="1">
+							<linearGradient id="exit-line-fill" x1="0" y1="0" x2="0" y2="1">
 								<stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
 								<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
 							</linearGradient>
 						</defs>
-						<!-- Baseline (before) — flat dashed -->
 						<path d="M 0 100 L 320 96" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
-						<!-- Growth curve (after) — rising solid + filled area -->
-						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#mk-line-fill)"/>
+						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#exit-line-fill)"/>
 						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 					</svg>
-					<span class="project-figure-tag">Revenue · visitors · engagement</span>
+					<span class="project-figure-tag">Clarity · confidence · time saved</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Post-launch trends — sustained monthly growth across revenue,
-					traffic, and engagement, not a single-week spike.
+					A concept that trades underground confusion for a clear,
+					map-led path to the right exit.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -346,7 +311,7 @@ const related = [
 			</div>
 		</article>
 
-		<!-- Sticky table of contents (wrap pattern: outer cell stretches to grid row height, inner aside is the sticky element) -->
+		<!-- Sticky table of contents -->
 		<div class="project-toc-cell">
 			<aside class="project-toc" aria-label="On this page">
 				<p class="project-toc-label">On this page</p>
@@ -438,7 +403,7 @@ const related = [
 		margin: 0 0 28px;
 	}
 
-	/* Facts as inline pills (the "specs" row) */
+	/* Facts as inline pills */
 	.project-facts {
 		list-style: none;
 		padding: 0;
@@ -469,50 +434,6 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Metric pills — same shape but accent-tinted */
-	.project-metrics {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-	}
-
-	.project-metric {
-		display: inline-flex;
-		align-items: baseline;
-		gap: 8px;
-		padding: 6px 14px;
-		border: 1px solid var(--text-accent);
-		border-radius: 999px;
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: var(--text-body-sm);
-	}
-
-	.project-metric-value {
-		color: var(--text-accent);
-		font-weight: 700;
-		font-variant-numeric: tabular-nums;
-	}
-
-	.project-metric-label {
-		color: var(--text-secondary);
-	}
-
-	/* Baseline metrics — muted, reflects "before" numbers in body */
-	.project-metrics-baseline {
-		margin: 16px 0 24px;
-	}
-
-	.project-metric-baseline {
-		border-color: var(--border);
-	}
-
-	.project-metric-baseline .project-metric-value {
-		color: var(--text-secondary);
-	}
-
 	/* Hero visual */
 	.project-hero {
 		position: relative;
@@ -527,37 +448,66 @@ const related = [
 		margin-bottom: 64px;
 	}
 
-	.project-hero-mockup {
+	/* Exit Tracker placeholder — a stylized phone showing a transit map */
+	.project-hero-device {
 		position: relative;
-		aspect-ratio: 3750 / 4906;
-		max-width: 90%;
-		max-height: 115%;
-		transform: translateY(60px);
+		width: 230px;
+		max-width: 56%;
+		aspect-ratio: 9 / 18;
+		background: #1A1A1A;
+		border-radius: 34px;
+		padding: 10px;
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+		transform: translateY(8px);
 	}
 
-	.project-hero-mockup-frame {
+	.project-hero-notch {
+		position: absolute;
+		top: 16px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 64px;
+		height: 6px;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.35);
+		z-index: 3;
+	}
+
+	.project-hero-screen {
 		position: relative;
-		z-index: 1;
-		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
-		pointer-events: none;
+		border-radius: 26px;
+		overflow: hidden;
+		background: var(--bg-primary);
 	}
 
-	.project-hero-mockup-video {
-		position: absolute;
-		z-index: 2;
-		top: 1.5%;
-		left: 7%;
-		width: 86%;
-		height: 43.5%;
-		object-fit: cover;
+	.project-hero-map {
+		width: 100%;
+		height: 100%;
 		display: block;
-		border-radius: 4px;
 	}
 
-	/* Impact metric card section (between hero and body) */
+	.project-hero-pin {
+		position: absolute;
+		bottom: 18px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 7px 14px;
+		border-radius: 999px;
+		background: var(--text-accent);
+		color: #FFFFFF;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+	}
+
+	/* Impact card section */
 	.project-impact {
 		margin-bottom: 64px;
 	}
@@ -603,10 +553,7 @@ const related = [
 		margin: 0;
 	}
 
-	/* Two-column layout: body + sticky TOC.
-	   The grid uses default align-items: stretch so the TOC cell fills the
-	   row height (= body height). The inner .project-toc is content-sized,
-	   so position: sticky has scroll room within the tall cell. */
+	/* Two-column layout */
 	.project-layout {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 200px;
@@ -614,12 +561,10 @@ const related = [
 		margin: 0 0 64px;
 	}
 
-	/* Outer TOC cell stretches to grid row height (cell = body height) */
 	.project-toc-cell {
 		align-self: stretch;
 	}
 
-	/* Inner TOC is content-sized; sticks within the tall cell as user scrolls */
 	.project-toc {
 		position: sticky;
 		top: 32px;
@@ -728,8 +673,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Figure / visual placeholder blocks — break up text-heavy sections.
-	   Each frame is a styled illustration of what real artwork would live there. */
+	/* Figure / visual placeholder blocks */
 	.project-figure {
 		margin: 32px 0 8px;
 	}
@@ -747,7 +691,7 @@ const related = [
 		padding: 24px;
 	}
 
-	[data-theme="dark"] .project-figure-frame {
+	:global([data-theme="dark"]) .project-figure-frame {
 		background: linear-gradient(135deg, rgba(251, 146, 60, 0.10), rgba(251, 146, 60, 0.02));
 	}
 
@@ -776,7 +720,6 @@ const related = [
 		text-align: center;
 	}
 
-	/* Research figure — abstract heat-spot dots */
 	.project-figure-grid {
 		position: relative;
 		width: 100%;
@@ -801,7 +744,7 @@ const related = [
 		left: 24%;
 		width: 120px;
 		height: 120px;
-		background: radial-gradient(circle, #FB923C 0%, transparent 70%);
+		background: radial-gradient(circle, #3B82F6 0%, transparent 70%);
 	}
 
 	.project-figure-hot-2 {
@@ -809,7 +752,7 @@ const related = [
 		left: 52%;
 		width: 80px;
 		height: 80px;
-		background: radial-gradient(circle, #F97316 0%, transparent 70%);
+		background: radial-gradient(circle, #FB923C 0%, transparent 70%);
 	}
 
 	.project-figure-hot-3 {
@@ -820,7 +763,6 @@ const related = [
 		background: radial-gradient(circle, #EAB308 0%, transparent 70%);
 	}
 
-	/* Solution figure — three mini "screens" side by side */
 	.project-figure-screens {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -850,7 +792,7 @@ const related = [
 	.project-figure-block {
 		flex: 1;
 		border-radius: 6px;
-		background: linear-gradient(135deg, #FAB771, #F99E67);
+		background: linear-gradient(135deg, #60A5FA, #3B82F6);
 		opacity: 0.7;
 	}
 
@@ -872,7 +814,6 @@ const related = [
 		background-color: var(--bg-secondary);
 	}
 
-	/* Results figure — rising line chart */
 	.project-figure-chart {
 		width: 100%;
 		height: 100%;
@@ -890,7 +831,7 @@ const related = [
 		}
 	}
 
-	/* Feature grid — 2 columns with numbered items */
+	/* Feature grid */
 	.project-feature-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -998,13 +939,6 @@ const related = [
 			position: static;
 		}
 	}
-
-	@media (max-width: 768px) {
-		.project-hero-mockup {
-			max-height: 100%;
-			transform: translateY(20px);
-		}
-	}
 </style>
 
 <script>
@@ -1033,7 +967,6 @@ const related = [
 			(entries) => {
 				const visible = entries.filter((e) => e.isIntersecting);
 				if (visible.length === 0) return;
-				// Pick the topmost visible entry
 				visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 				const id = visible[0].target.id;
 				if (id) setActive(id);
@@ -1042,7 +975,6 @@ const related = [
 		);
 
 		sections.forEach((s) => observer.observe(s));
-		// Default: first section active
 		setActive(sections[0].id);
 	}
 </script>

@@ -3,89 +3,87 @@ import DashboardLayout from "../../layouts/DashboardLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const facts = [
-	{ label: "Year", value: "2024" },
-	{ label: "Type", value: "Website redesign" },
-	{ label: "Role", value: "Lead product designer" },
-	{ label: "Tools", value: "Figma, Wix, Shopify" },
+	{ label: "Year", value: "2024–25" },
+	{ label: "Type", value: "Responsive website redesign" },
+	{ label: "Role", value: "Web & UX/UI designer" },
+	{ label: "Tools", value: "Figma, Shopify, Adobe CC" },
 ];
 
 const metrics = [
-	{ value: "40–60%", label: "Monthly revenue lift" },
-	{ value: "+58%", label: "Website visitors (145.8k)" },
-	{ value: "+23%", label: "Page views (907.02k)" },
-	{ value: "+38%", label: "Engagement (1m53s → 2m18s)" },
+	{ value: "4D", label: "Discover → Define → Develop → Deliver" },
+	{ value: "2", label: "User personas guiding decisions" },
+	{ value: "6", label: "Core design features shipped" },
+	{ value: "2 mo", label: "Concept to delivery (Nov '24 – Jan '25)" },
 ];
 
-const baseline = [
-	{ value: "1.6%", label: "Conversion rate" },
-	{ value: "50%", label: "Bounce rate" },
-	{ value: "1m 53s", label: "Avg engagement" },
+const directions = [
+	{ value: "01", label: "Modern aesthetics" },
+	{ value: "02", label: "Brand storytelling" },
+	{ value: "03", label: "Intuitive navigation" },
 ];
 
 const solutionFeatures = [
 	{
-		title: "Easier navigation",
-		text: "Streamlined the nav bar and consolidated repeated content. Filters surfaced earlier so users got to product faster.",
+		title: "A modern reflection of O3",
+		text: "A clean, contemporary design that embodies O3's sleek, modern brand identity from the first scroll.",
 	},
 	{
-		title: "Content placement",
-		text: "Moved high-intent CTAs and key content above the fold for the majority of users who never scrolled further.",
+		title: "Bringing O3's values to life",
+		text: "Thoughtful design and content surface O3's values of innovation and artistry to connect with users.",
 	},
 	{
-		title: "Combo Creator",
-		text: "Bundle-builder added to the homepage as a strategic AOV play — turning single-product sessions into multi-item baskets.",
+		title: "With and without liquid",
+		text: "Product photography shows each tumbler both filled and empty — communicating versatility at a glance.",
 	},
 	{
-		title: "Milkyway Rewards",
-		text: "A dedicated loyalty program page designed to convert one-time buyers into returning customers through points + perks.",
+		title: "Aqueduct (water-way) technology",
+		text: "A dedicated section spotlights O3's proprietary water-management system as a hero differentiator.",
 	},
 	{
-		title: "UGC + influencer collaboration",
-		text: "Integrated user-generated content and influencer features on the homepage to lift trust and broaden brand reach.",
+		title: "Navigation that flows",
+		text: "Intuitive navigation lets users explore and reach the right product in just a few clicks.",
 	},
 	{
-		title: "Intuitive product filter",
-		text: "Re-designed the filter system to be simpler and more direct, so users could narrow on what they actually wanted.",
-	},
-	{
-		title: "SEO + mobile rebuild",
-		text: "Applied SEO principles to every product description and rebuilt layouts mobile-first for the device most customers shop on.",
+		title: "Simplified for every click",
+		text: "Streamlined, mobile-friendly product pages strip out friction on the path to checkout.",
 	},
 ];
 
 const takeaways = [
 	{
-		title: "Enhanced user experience",
-		text: "Putting user needs first led to a smoother, more engaging experience across devices.",
+		title: "User-centered approach",
+		text: "Prioritizing the user experience kept navigation seamless and product discovery effortless.",
 	},
 	{
-		title: "Strategic growth",
-		text: "Mobile, SEO, and marketing collaboration combined into measurable business growth.",
+		title: "Brand alignment",
+		text: "Aligning the design with O3's identity let the site reflect the company's values and aesthetics.",
 	},
 	{
-		title: "Brand visibility",
-		text: "Influencer and UGC collaborations elevated brand presence and broadened reach.",
+		title: "Mobile-first design",
+		text: "Optimizing for mobile was essential to keep the experience performant on every device.",
 	},
 	{
-		title: "Long-term impact",
-		text: "The redesign laid a foundation for continued growth, not a one-time spike.",
+		title: "Effective storytelling",
+		text: "Design and content working together built a stronger emotional connection beyond the products.",
 	},
 ];
 
 const related = [
 	{
-		name: "O3 Drinkware",
-		category: "Brand-to-product commerce",
+		name: "Milkyway Glass",
+		category: "E-commerce UX & retention",
 		year: "2024",
-		thumbnail: "/images/RS-Mockup.png",
-		thumbnailAlt: "O3 Drinkware on a desktop monitor",
-		videoSrc: "/videos/O3-Portfolio-Front_A.mp4",
-		mockupAspect: "3463 / 3083",
-		screenTop: "3%",
-		screenLeft: "3%",
-		screenWidth: "94%",
-		screenHeight: "65%",
-		href: "/projects/o3-drinkware",
+		thumbnail: "/images/Laptop Mockup.png",
+		thumbnailAlt: "Milkyway Glass on a laptop",
+		videoSrc: "/videos/Portfolio-MK-Desktop.mp4",
+		mockupAspect: "3750 / 4906",
+		mockupMax: "120%",
+		mockupOffsetY: "50px",
+		screenTop: "1.5%",
+		screenLeft: "7%",
+		screenWidth: "86%",
+		screenHeight: "43.5%",
+		href: "/projects/milkyway-glass",
 	},
 	{
 		name: "Seeders",
@@ -98,7 +96,7 @@ const related = [
 ];
 ---
 
-<DashboardLayout title="Milkyway Glass — Andrew Baek">
+<DashboardLayout title="O3 Drinkware — Andrew Baek">
 	<a href="/projects" class="project-breadcrumb">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
@@ -107,14 +105,14 @@ const related = [
 		All projects
 	</a>
 
-	<!-- Header: eyebrow, title, summary, inline facts & metric pills -->
+	<!-- Header: eyebrow, title, summary, inline facts -->
 	<header class="project-header">
-		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
-		<h1 class="project-title">Milkyway Glass</h1>
+		<p class="project-eyebrow">Responsive Website Redesign</p>
+		<h1 class="project-title">O3 Drinkware</h1>
 		<p class="project-summary">
-			A more enticing shopping experience — built around data, SEO, and
-			retention mechanics — that lifted monthly revenue 40–60% and grew
-			visitors 58%.
+			A sleek, user-focused e-commerce platform for a premium glass
+			drinkware brand — pairing innovative product technology with artistic
+			design and a frictionless shopping flow.
 		</p>
 
 		<ul class="project-facts">
@@ -131,8 +129,8 @@ const related = [
 	<div class="project-hero">
 		<div class="project-hero-mockup">
 			<img
-				src="/images/Laptop Mockup.png"
-				alt="Milkyway Glass website preview on a laptop"
+				src="/images/RS-Mockup.png"
+				alt="O3 Drinkware website preview on a desktop monitor"
 				class="project-hero-mockup-frame"
 			/>
 			<video
@@ -143,14 +141,14 @@ const related = [
 				playsinline
 				preload="metadata"
 			>
-				<source src="/videos/Portfolio-MK-Desktop.mp4" type="video/mp4" />
+				<source src="/videos/O3-Portfolio-Front_A.mp4" type="video/mp4" />
 			</video>
 		</div>
 	</div>
 
-	<!-- Impact metrics — bigger card section after the hero -->
+	<!-- Impact / project at a glance -->
 	<section class="project-impact">
-		<h2 class="project-impact-title">Impact</h2>
+		<h2 class="project-impact-title">At a glance</h2>
 		<div class="project-impact-grid">
 			{metrics.map((m) => (
 				<div class="project-impact-card">
@@ -166,69 +164,58 @@ const related = [
 		<article class="project-body">
 			<h2 class="project-h2" id="overview">Overview</h2>
 			<p class="project-prose">
-				Milkyway Glass is an e-commerce startup specializing in glass
-				accessories for cannabis users. I led the redesign of their site
-				by integrating data-driven insights, strategic SEO, and
-				collaborative marketing work. The result was significant lift
-				across visibility, navigation, and the overall customer
-				experience — and a real increase in sales and engagement.
+				The O3 Drinkware website is a sleek, user-focused e-commerce
+				platform that showcases premium glass drinkware combining
+				innovative technology with artistic design. I focused on clean,
+				modern layouts that highlight the brand identity while keeping
+				navigation easy — pairing high-quality imagery and detailed
+				product descriptions with a responsive design that holds up across
+				every device.
 			</p>
 
 			<h2 class="project-h2" id="challenge">The challenge</h2>
 			<p class="project-prose">
-				The original site suffered from unintuitive navigation, weak
-				engaging content, and poor mobile optimization — friction that
-				quietly killed conversion before users ever reached the cart.
-				A close audit surfaced seven specific issues:
+				O3 Drinkware needed a visually compelling, user-friendly platform
+				that reflects its innovative design values while keeping shopping
+				effortless. The guiding design question:
+				<strong>How might we create an intuitive and engaging website that
+				showcases O3's artistry and enhances the user experience?</strong>
+			</p>
+			<p class="project-prose">
+				Research into the target audience surfaced recurring friction:
 			</p>
 			<ul class="project-list">
-				<li><strong>Complicated navigation</strong> with repeated and redundant content.</li>
-				<li><strong>Unclear call-to-action messaging</strong> — users didn't know where to click next.</li>
-				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
-				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
-				<li><strong>Sparse product information</strong> — reviews and ratings were missing entirely.</li>
-				<li><strong>Disorganized layout</strong> with too many competing buttons fighting for attention.</li>
-				<li><strong>No SEO foundation</strong> — the site was effectively invisible to search.</li>
-			</ul>
-			<p class="project-prose">The numbers reflected it:</p>
-			<ul class="project-metrics project-metrics-baseline">
-				{baseline.map((b) => (
-					<li class="project-metric project-metric-baseline">
-						<span class="project-metric-value">{b.value}</span>
-						<span class="project-metric-label">{b.label}</span>
-					</li>
-				))}
+				<li><strong>Hard to find unique, high-quality drinkware</strong> worth the premium.</li>
+				<li><strong>Cluttered layouts</strong> that buried the product instead of celebrating it.</li>
+				<li><strong>Poor mobile experience</strong> on sites built desktop-first.</li>
+				<li><strong>Limited browsing time</strong> — shoppers need to find the right gift fast.</li>
+				<li><strong>Missing product details</strong> that left buyers unsure before purchase.</li>
 			</ul>
 
 			<h2 class="project-h2" id="process">Process</h2>
 			<p class="project-prose">
-				To avoid designing on gut, I anchored the work in three research
-				methods that triangulated user behaviour, business context, and
-				visual attention:
+				I structured the work around the <strong>4D method</strong> —
+				Discover, Define, Develop, and Deliver — to move from brand
+				understanding to a shippable design without skipping the thinking
+				in between.
 			</p>
 			<ul class="project-list">
-				<li>
-					<strong>Heat maps and scroll maps</strong> to see where users
-					actually clicked and how far they scrolled — separating
-					real attention from assumed attention.
-				</li>
-				<li>
-					<strong>User journey mapping</strong> from landing to checkout
-					to find the specific moments where users dropped off.
-				</li>
-				<li>
-					<strong>Marketing coordinator collaboration</strong> to pull
-					traffic sources, campaign data, and competitive context — so
-					design decisions stayed aligned with where customers were
-					actually coming from.
-				</li>
+				<li><strong>Discover</strong> — learned O3's brand goals: a strong online presence reflecting innovation and artistry for its unique glass tumblers.</li>
+				<li><strong>Define</strong> — built two personas (Emily, a graphic designer who wants visually stunning products with easy navigation; Sophia, an interior designer who needs to quickly browse and find the perfect gift) and mapped the user journey from discovery to purchase.</li>
+				<li><strong>Develop</strong> — produced a site map and wireframes to lock in a logical flow and clear product presentation.</li>
+				<li><strong>Deliver</strong> — translated it into a responsive, on-brand final design.</li>
 			</ul>
 			<p class="project-prose">
-				The data made the priorities undeniable: most sessions ended
-				before the fold, mobile was where the majority of traffic lived,
-				and the filter system was the single biggest abandonment point
-				on the path to a product page.
+				Defining the work this way pointed to four clear directions:
 			</p>
+			<ul class="project-metrics project-metrics-baseline">
+				{directions.map((d) => (
+					<li class="project-metric project-metric-baseline">
+						<span class="project-metric-value">{d.value}</span>
+						<span class="project-metric-label">{d.label}</span>
+					</li>
+				))}
+			</ul>
 
 			<figure class="project-figure project-figure--research">
 				<div class="project-figure-frame" aria-hidden="true">
@@ -237,28 +224,28 @@ const related = [
 						<div class="project-figure-hot project-figure-hot-2"></div>
 						<div class="project-figure-hot project-figure-hot-3"></div>
 					</div>
-					<span class="project-figure-tag">Heat map · scroll depth · journey</span>
+					<span class="project-figure-tag">Personas · journey map · directions</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Research artifacts — heat maps and scroll-depth maps revealed
-					how shallow most sessions actually were on the original site.
+					Define-phase artifacts — personas and a user journey map that
+					grounded the design in real shopper goals.
 				</figcaption>
 			</figure>
 
 			<h2 class="project-h2" id="hmw">How might we</h2>
 			<p class="project-prose">
-				Three guiding questions framed the work:
+				One question framed every decision:
 			</p>
 			<ul class="project-list">
-				<li>How might we <strong>simplify navigation</strong> to reduce friction for users?</li>
-				<li>How might we <strong>strengthen customer connection</strong> through engaging content — loyalty, UGC, influencer collaboration?</li>
-				<li>How might we <strong>optimize the experience</strong> for mobile, where most shopping actually happens?</li>
+				<li>How might we <strong>showcase O3's artistry</strong> while keeping the experience intuitive?</li>
+				<li>How might we <strong>tell the brand story</strong> so the values land as clearly as the products?</li>
+				<li>How might we <strong>streamline shopping</strong> for mobile, where most browsing happens?</li>
 			</ul>
 
 			<h2 class="project-h2" id="approach">The approach</h2>
 			<p class="project-prose">
-				Seven interventions, each tied back to one of the three "How
-				might we" questions:
+				The Deliver phase turned those directions into six concrete design
+				moves:
 			</p>
 
 			<figure class="project-figure project-figure--solution">
@@ -286,11 +273,11 @@ const related = [
 							<div class="project-figure-block project-figure-block--sm"></div>
 						</div>
 					</div>
-					<span class="project-figure-tag">Homepage · combo creator · product filter</span>
+					<span class="project-figure-tag">Homepage · product page · Aqueduct tech</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Key screens from the rebuild — homepage hierarchy reset, the
-					new Combo Creator, and the streamlined product filter.
+					Key screens from the build — a brand-led homepage, versatile
+					product photography, and a dedicated Aqueduct technology story.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -307,31 +294,29 @@ const related = [
 
 			<h2 class="project-h2" id="outcomes">Outcomes</h2>
 			<p class="project-prose">
-				The redesign moved Milkyway from a static brand showcase to a
-				measurable growth surface — and the wins compounded across four
-				fronts:
+				The result is a responsive storefront that feels as considered as
+				the product itself — and the takeaways carried beyond this one
+				project:
 			</p>
 
 			<figure class="project-figure project-figure--results">
 				<div class="project-figure-frame" aria-hidden="true">
 					<svg class="project-figure-chart" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 						<defs>
-							<linearGradient id="mk-line-fill" x1="0" y1="0" x2="0" y2="1">
+							<linearGradient id="o3-line-fill" x1="0" y1="0" x2="0" y2="1">
 								<stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
 								<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
 							</linearGradient>
 						</defs>
-						<!-- Baseline (before) — flat dashed -->
 						<path d="M 0 100 L 320 96" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
-						<!-- Growth curve (after) — rising solid + filled area -->
-						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#mk-line-fill)"/>
+						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#o3-line-fill)"/>
 						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 					</svg>
-					<span class="project-figure-tag">Revenue · visitors · engagement</span>
+					<span class="project-figure-tag">Brand clarity · usability · mobile</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Post-launch trends — sustained monthly growth across revenue,
-					traffic, and engagement, not a single-week spike.
+					A modern, responsive storefront that strengthens brand
+					perception and smooths the path to purchase.
 				</figcaption>
 			</figure>
 			<div class="project-feature-grid">
@@ -346,7 +331,7 @@ const related = [
 			</div>
 		</article>
 
-		<!-- Sticky table of contents (wrap pattern: outer cell stretches to grid row height, inner aside is the sticky element) -->
+		<!-- Sticky table of contents -->
 		<div class="project-toc-cell">
 			<aside class="project-toc" aria-label="On this page">
 				<p class="project-toc-label">On this page</p>
@@ -438,7 +423,7 @@ const related = [
 		margin: 0 0 28px;
 	}
 
-	/* Facts as inline pills (the "specs" row) */
+	/* Facts as inline pills */
 	.project-facts {
 		list-style: none;
 		padding: 0;
@@ -469,7 +454,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Metric pills — same shape but accent-tinted */
+	/* Metric pills */
 	.project-metrics {
 		list-style: none;
 		padding: 0;
@@ -500,7 +485,6 @@ const related = [
 		color: var(--text-secondary);
 	}
 
-	/* Baseline metrics — muted, reflects "before" numbers in body */
 	.project-metrics-baseline {
 		margin: 16px 0 24px;
 	}
@@ -527,12 +511,13 @@ const related = [
 		margin-bottom: 64px;
 	}
 
+	/* O3 uses a desktop-monitor mockup (wider than Milkyway's laptop) */
 	.project-hero-mockup {
 		position: relative;
-		aspect-ratio: 3750 / 4906;
-		max-width: 90%;
-		max-height: 115%;
-		transform: translateY(60px);
+		aspect-ratio: 3463 / 3083;
+		max-width: 82%;
+		max-height: 94%;
+		transform: translateY(6px);
 	}
 
 	.project-hero-mockup-frame {
@@ -548,16 +533,16 @@ const related = [
 	.project-hero-mockup-video {
 		position: absolute;
 		z-index: 2;
-		top: 1.5%;
-		left: 7%;
-		width: 86%;
-		height: 43.5%;
+		top: 3%;
+		left: 3%;
+		width: 94%;
+		height: 65%;
 		object-fit: cover;
 		display: block;
 		border-radius: 4px;
 	}
 
-	/* Impact metric card section (between hero and body) */
+	/* Impact card section */
 	.project-impact {
 		margin-bottom: 64px;
 	}
@@ -603,10 +588,7 @@ const related = [
 		margin: 0;
 	}
 
-	/* Two-column layout: body + sticky TOC.
-	   The grid uses default align-items: stretch so the TOC cell fills the
-	   row height (= body height). The inner .project-toc is content-sized,
-	   so position: sticky has scroll room within the tall cell. */
+	/* Two-column layout: body + sticky TOC */
 	.project-layout {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 200px;
@@ -614,12 +596,10 @@ const related = [
 		margin: 0 0 64px;
 	}
 
-	/* Outer TOC cell stretches to grid row height (cell = body height) */
 	.project-toc-cell {
 		align-self: stretch;
 	}
 
-	/* Inner TOC is content-sized; sticks within the tall cell as user scrolls */
 	.project-toc {
 		position: sticky;
 		top: 32px;
@@ -728,8 +708,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Figure / visual placeholder blocks — break up text-heavy sections.
-	   Each frame is a styled illustration of what real artwork would live there. */
+	/* Figure / visual placeholder blocks */
 	.project-figure {
 		margin: 32px 0 8px;
 	}
@@ -747,7 +726,7 @@ const related = [
 		padding: 24px;
 	}
 
-	[data-theme="dark"] .project-figure-frame {
+	:global([data-theme="dark"]) .project-figure-frame {
 		background: linear-gradient(135deg, rgba(251, 146, 60, 0.10), rgba(251, 146, 60, 0.02));
 	}
 
@@ -776,7 +755,6 @@ const related = [
 		text-align: center;
 	}
 
-	/* Research figure — abstract heat-spot dots */
 	.project-figure-grid {
 		position: relative;
 		width: 100%;
@@ -820,7 +798,6 @@ const related = [
 		background: radial-gradient(circle, #EAB308 0%, transparent 70%);
 	}
 
-	/* Solution figure — three mini "screens" side by side */
 	.project-figure-screens {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -872,7 +849,6 @@ const related = [
 		background-color: var(--bg-secondary);
 	}
 
-	/* Results figure — rising line chart */
 	.project-figure-chart {
 		width: 100%;
 		height: 100%;
@@ -890,7 +866,7 @@ const related = [
 		}
 	}
 
-	/* Feature grid — 2 columns with numbered items */
+	/* Feature grid */
 	.project-feature-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1001,8 +977,8 @@ const related = [
 
 	@media (max-width: 768px) {
 		.project-hero-mockup {
-			max-height: 100%;
-			transform: translateY(20px);
+			max-width: 92%;
+			transform: translateY(0);
 		}
 	}
 </style>
@@ -1033,7 +1009,6 @@ const related = [
 			(entries) => {
 				const visible = entries.filter((e) => e.isIntersecting);
 				if (visible.length === 0) return;
-				// Pick the topmost visible entry
 				visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 				const id = visible[0].target.id;
 				if (id) setActive(id);
@@ -1042,7 +1017,6 @@ const related = [
 		);
 
 		sections.forEach((s) => observer.observe(s));
-		// Default: first section active
 		setActive(sections[0].id);
 	}
 </script>

@@ -23,10 +23,26 @@ const isActive = (href: string) => {
 ---
 
 <aside class="sidebar">
-	<!-- Identity: logo wordmark -->
+	<!-- Collapse / expand toggle — pinned just outside the sidebar's right edge -->
+	<button
+		type="button"
+		class="sidebar-toggle"
+		data-sidebar-toggle
+		aria-label="Collapse sidebar"
+		aria-expanded="true"
+	>
+		<svg class="sidebar-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<polyline points="15 18 9 12 15 6"/>
+		</svg>
+	</button>
+
+	<!-- Identity: full wordmark when expanded, monogram when collapsed -->
 	<a href="/" class="sidebar-identity" aria-label="Andrew Baek — home">
-		<span class="sidebar-logo" role="img" aria-label="Andrew Baek"></span>
-		<span class="sidebar-role">Product Designer</span>
+		<span class="sidebar-monogram" aria-hidden="true">AB</span>
+		<span class="sidebar-wordmark">
+			<span class="sidebar-logo" role="img" aria-label="Andrew Baek"></span>
+			<span class="sidebar-role">Product Designer</span>
+		</span>
 	</a>
 
 	<!-- Primary nav -->
@@ -67,6 +83,7 @@ const isActive = (href: string) => {
 						</span>
 						<span class="sidebar-label">{item.label}</span>
 						<span class="sidebar-shortcut" aria-hidden="true">{item.shortcut}</span>
+						<span class="sidebar-tooltip" role="tooltip">{item.label}</span>
 					</a>
 				</li>
 			))}
@@ -116,6 +133,7 @@ const isActive = (href: string) => {
 						) : (
 							<span class="sidebar-shortcut" aria-hidden="true">{item.shortcut}</span>
 						)}
+						<span class="sidebar-tooltip" role="tooltip">{item.label}</span>
 					</a>
 				</li>
 			))}
@@ -138,15 +156,58 @@ const isActive = (href: string) => {
 		top: 16px;
 		left: 16px;
 		bottom: 16px;
-		width: 280px;
+		width: var(--sidebar-w, 280px);
 		padding: 28px 20px 20px;
 		display: flex;
 		flex-direction: column;
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border);
 		border-radius: 28px;
-		transition: background-color 300ms ease, border-color 300ms ease;
+		transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+			padding 320ms cubic-bezier(0.4, 0, 0.2, 1),
+			background-color 300ms ease, border-color 300ms ease;
 		z-index: 50;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	/* Collapse / expand toggle — straddles the right edge in both states */
+	.sidebar-toggle {
+		position: absolute;
+		top: 26px;
+		right: -14px;
+		width: 28px;
+		height: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border-radius: 50%;
+		border: 1px solid var(--border);
+		background-color: var(--bg-primary);
+		color: var(--text-secondary);
+		cursor: pointer;
+		z-index: 60;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		transition: background-color var(--transition-fast),
+			color var(--transition-fast), border-color var(--transition-fast);
+	}
+
+	.sidebar-toggle:hover {
+		background-color: var(--bg-secondary);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
+	}
+
+	.sidebar-toggle-icon {
+		transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-toggle-icon {
+		transform: rotate(180deg);
 	}
 
 	/* Identity block: logo wordmark + role */
@@ -159,6 +220,45 @@ const isActive = (href: string) => {
 		color: inherit;
 		border-radius: 12px;
 		margin-bottom: 32px;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-identity {
+		padding: 0;
+		align-items: center;
+	}
+
+	.sidebar-wordmark {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		min-width: 0;
+		opacity: 1;
+		transition: opacity 200ms ease;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-wordmark {
+		display: none;
+	}
+
+	/* Monogram chip — shown only when collapsed */
+	.sidebar-monogram {
+		display: none;
+		width: 40px;
+		height: 40px;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		border-radius: 11px;
+		background: var(--accent-gradient, linear-gradient(to bottom, #F99E67, #FAB771));
+		color: #FFFFFF;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 15px;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-monogram {
+		display: flex;
 	}
 
 	.sidebar-logo {
@@ -205,6 +305,7 @@ const isActive = (href: string) => {
 
 	/* Nav item */
 	.sidebar-item {
+		position: relative;
 		display: flex;
 		align-items: center;
 		gap: 12px;
@@ -248,6 +349,67 @@ const isActive = (href: string) => {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		opacity: 1;
+		transition: opacity 180ms ease;
+	}
+
+	/* Tooltip — hidden by default, only revealed on hover when collapsed */
+	.sidebar-tooltip {
+		position: absolute;
+		left: calc(100% + 14px);
+		top: 50%;
+		transform: translateY(-50%) translateX(-4px);
+		padding: 6px 10px;
+		border-radius: 8px;
+		background-color: var(--text-primary);
+		color: var(--bg-primary);
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 12px;
+		font-weight: 500;
+		white-space: nowrap;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 70;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+		transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
+	}
+
+	.sidebar-tooltip::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: -4px;
+		width: 8px;
+		height: 8px;
+		transform: translateY(-50%) rotate(45deg);
+		background-color: var(--text-primary);
+		border-radius: 1px;
+	}
+
+	/* Tooltips activate only in the collapsed state */
+	:global([data-sidebar="collapsed"]) .sidebar-item:hover .sidebar-tooltip,
+	:global([data-sidebar="collapsed"]) .sidebar-item:focus-visible .sidebar-tooltip {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(-50%) translateX(0);
+	}
+
+	/* ---- Collapsed state: icons only ---- */
+	:global([data-sidebar="collapsed"]) .sidebar-item {
+		justify-content: center;
+		gap: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-label,
+	:global([data-sidebar="collapsed"]) .sidebar-shortcut {
+		opacity: 0;
+		width: 0;
+		flex: 0 0 0;
+		overflow: hidden;
+		pointer-events: none;
 	}
 
 	.sidebar-shortcut {
@@ -308,9 +470,63 @@ const isActive = (href: string) => {
 		color: var(--text-secondary);
 	}
 
+	/* Collapsed: section label becomes a hairline divider */
+	:global([data-sidebar="collapsed"]) .sidebar-section-label {
+		font-size: 0;
+		color: transparent;
+		height: 1px;
+		margin: 16px 8px 12px;
+		padding: 0;
+		background-color: var(--border);
+		overflow: hidden;
+	}
+
+	/* Collapsed: center the status dot, drop the text and theme switch */
+	:global([data-sidebar="collapsed"]) .sidebar-status {
+		justify-content: center;
+		padding: 0;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-status-text {
+		display: none;
+	}
+
+	:global([data-sidebar="collapsed"] .theme-toggle) {
+		display: none;
+	}
+
 	@media (max-width: 768px) {
 		.sidebar {
 			display: none;
 		}
 	}
 </style>
+
+<script>
+	const STORAGE_KEY = "sidebar";
+	const root = document.documentElement;
+
+	const apply = (collapsed: boolean) => {
+		root.setAttribute("data-sidebar", collapsed ? "collapsed" : "expanded");
+		document.querySelectorAll<HTMLButtonElement>("[data-sidebar-toggle]").forEach((btn) => {
+			btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+			btn.setAttribute(
+				"aria-label",
+				collapsed ? "Expand sidebar" : "Collapse sidebar"
+			);
+		});
+	};
+
+	// Sync initial button state with the attribute set pre-paint in the layout head.
+	apply(root.getAttribute("data-sidebar") === "collapsed");
+
+	document.querySelectorAll<HTMLButtonElement>("[data-sidebar-toggle]").forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const collapsed = root.getAttribute("data-sidebar") !== "collapsed";
+			apply(collapsed);
+			try {
+				localStorage.setItem(STORAGE_KEY, collapsed ? "collapsed" : "expanded");
+			} catch {}
+		});
+	});
+</script>
