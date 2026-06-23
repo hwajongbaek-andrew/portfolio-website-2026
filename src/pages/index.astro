@@ -35,11 +35,14 @@ const recentProjects = [
 	},
 ];
 
+// Brand logos fetched from the simple-icons CDN, mirroring the Stack page.
+const si = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons/icons/${slug}.svg`;
+
 const stackPreview = [
-	{ name: "Figma", sublabel: "Design tool", letter: "F", color: "#F24E1E" },
-	{ name: "Linear", sublabel: "Project management", letter: "L", color: "#5E6AD2" },
-	{ name: "Claude", sublabel: "AI co-pilot", letter: "C", color: "#D97757" },
-	{ name: "Cursor", sublabel: "AI editor", letter: "C", color: "#1A1A1A" },
+	{ name: "Figma", sublabel: "Design tool", icon: si("figma"), letter: "F", color: "#F24E1E" },
+	{ name: "Claude", sublabel: "Reasoning & code", icon: si("claude"), letter: "C", color: "#D97757" },
+	{ name: "Cursor", sublabel: "AI-first editor", icon: si("cursor"), letter: "C", color: "#1A1A1A" },
+	{ name: "Webflow", sublabel: "Visual web builder", icon: si("webflow"), letter: "W", color: "#146EF5" },
 ];
 ---
 
@@ -113,7 +116,16 @@ const stackPreview = [
 			<div class="home-stack-grid">
 				{stackPreview.map((item) => (
 					<div class="home-stack-item">
-						<span class="home-stack-icon" style={`background-color: ${item.color}`}>{item.letter}</span>
+						<span
+							class="home-stack-icon"
+							style={`--brand: ${item.color}; --logo-url: url('${item.icon}')`}
+						>
+							<span
+								class:list={["home-stack-logo", { "is-dark-brand": item.color.toLowerCase() === "#1a1a1a" }]}
+								role="img"
+								aria-label={`${item.name} logo`}
+							></span>
+						</span>
 						<div class="home-stack-text">
 							<p class="home-stack-name">{item.name}</p>
 							<p class="home-stack-sub">{item.sublabel}</p>
@@ -248,17 +260,29 @@ const stackPreview = [
 	}
 
 	.home-stack-icon {
-		width: 36px;
-		height: 36px;
-		border-radius: 10px;
+		position: relative;
+		width: 40px;
+		height: 40px;
+		border-radius: 11px;
+		border: 1px solid color-mix(in srgb, var(--brand) 26%, transparent);
+		background-color: color-mix(in srgb, var(--brand) 14%, transparent);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		color: #ffffff;
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: 16px;
-		font-weight: 600;
 		flex-shrink: 0;
+	}
+
+	.home-stack-logo {
+		width: 22px;
+		height: 22px;
+		background-color: var(--brand, var(--text-primary));
+		-webkit-mask: var(--logo-url) center / contain no-repeat;
+		mask: var(--logo-url) center / contain no-repeat;
+	}
+
+	/* Near-black brand marks would disappear on a dark tile — lighten them */
+	:global([data-theme="dark"]) .home-stack-logo.is-dark-brand {
+		background-color: #f0f0f0;
 	}
 
 	.home-stack-text {

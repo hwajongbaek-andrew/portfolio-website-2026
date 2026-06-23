@@ -25,35 +25,9 @@ const si11 = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons@11/ico
 
 const stack: StackCategory[] = [
 	{
-		title: "Build & CMS",
-		items: [
-			{ name: "Webflow", sublabel: "Visual web builder", icon: si("webflow"), letter: "W", color: "#146EF5" },
-			{ name: "WordPress", sublabel: "Content management", icon: si("wordpress"), letter: "W", color: "#21759B" },
-			{ name: "Shopify", sublabel: "E-commerce platform", icon: si("shopify"), letter: "S", color: "#7AB55C" },
-		],
-	},
-	{
-		title: "Productivity",
-		items: [
-			{ name: "Notion", sublabel: "Docs & wiki", icon: si("notion"), letter: "N", color: "#1A1A1A" },
-			{ name: "Slack", sublabel: "Team collaboration", icon: si11("slack"), letter: "S", color: "#4A154B" },
-			{ name: "Asana", sublabel: "Work management", icon: si("asana"), letter: "A", color: "#F06A6A" },
-			{ name: "Jira", sublabel: "Issue tracking", icon: si("jira"), letter: "J", color: "#0052CC" },
-			{ name: "ClickUp", sublabel: "Project management", icon: si("clickup"), letter: "C", color: "#7B68EE" },
-		],
-	},
-	{
-		title: "Development",
-		items: [
-			{ name: "VS Code", sublabel: "Code editor", icon: si11("visualstudiocode"), letter: "V", color: "#007ACC" },
-			{ name: "GitHub", sublabel: "Source control", icon: si("github"), letter: "G", color: "#1A1A1A" },
-			{ name: "Vercel", sublabel: "Hosting", icon: si("vercel"), letter: "V", color: "#1A1A1A" },
-			{ name: "Astro", sublabel: "Web framework", icon: si("astro"), letter: "A", color: "#FF5D01" },
-		],
-	},
-	{
 		title: "Design",
 		items: [
+			{ name: "Figma", sublabel: "Design tool", icon: si("figma"), letter: "F", color: "#F24E1E" },
 			{ name: "Adobe Photoshop", sublabel: "Raster editing", icon: si11("adobephotoshop"), letter: "Ps", color: "#31A8FF" },
 			{ name: "Adobe Illustrator", sublabel: "Vector design", icon: si11("adobeillustrator"), letter: "Ai", color: "#FF9A00" },
 			{ name: "Adobe InDesign", sublabel: "Layout & print", icon: si11("adobeindesign"), letter: "Id", color: "#FF3366" },
@@ -71,11 +45,40 @@ const stack: StackCategory[] = [
 		],
 	},
 	{
+		title: "Build & CMS",
+		items: [
+			{ name: "Webflow", sublabel: "Visual web builder", icon: si("webflow"), letter: "W", color: "#146EF5" },
+			{ name: "WordPress", sublabel: "Content management", icon: si("wordpress"), letter: "W", color: "#21759B" },
+			{ name: "Shopify", sublabel: "E-commerce platform", icon: si("shopify"), letter: "S", color: "#7AB55C" },
+			{ name: "Wix", sublabel: "Website builder", icon: si("wix"), letter: "W", color: "#0C6EFC" },
+			{ name: "Squarespace", sublabel: "Website builder", icon: si("squarespace"), letter: "S", color: "#1A1A1A" },
+		],
+	},
+	{
+		title: "Development",
+		items: [
+			{ name: "VS Code", sublabel: "Code editor", icon: si11("visualstudiocode"), letter: "V", color: "#007ACC" },
+			{ name: "GitHub", sublabel: "Source control", icon: si("github"), letter: "G", color: "#1A1A1A" },
+			{ name: "Vercel", sublabel: "Hosting", icon: si("vercel"), letter: "V", color: "#1A1A1A" },
+			{ name: "Astro", sublabel: "Web framework", icon: si("astro"), letter: "A", color: "#FF5D01" },
+		],
+	},
+	{
+		title: "Productivity",
+		items: [
+			{ name: "Notion", sublabel: "Docs & wiki", icon: si("notion"), letter: "N", color: "#1A1A1A" },
+			{ name: "Slack", sublabel: "Team collaboration", icon: si11("slack"), letter: "S", color: "#4A154B" },
+			{ name: "Asana", sublabel: "Work management", icon: si("asana"), letter: "A", color: "#F06A6A" },
+			{ name: "Jira", sublabel: "Issue tracking", icon: si("jira"), letter: "J", color: "#0052CC" },
+			{ name: "ClickUp", sublabel: "Project management", icon: si("clickup"), letter: "C", color: "#7B68EE" },
+		],
+	},
+	{
 		title: "Marketing",
 		items: [
 			{ name: "HubSpot", sublabel: "CRM platform", icon: si("hubspot"), letter: "H", color: "#FF7A59" },
 			{ name: "Mailchimp", sublabel: "Email marketing", icon: si("mailchimp"), letter: "M", color: "#FFE01B" },
-			{ name: "Klaviyo", sublabel: "Marketing automation", icon: null, letter: "K", color: "#1A1A1A" },
+			{ name: "Klaviyo", sublabel: "Marketing automation", icon: "/images/klaviyo.svg", letter: "K", color: "#1A1A1A" },
 		],
 	},
 ];
@@ -96,23 +99,15 @@ const stack: StackCategory[] = [
 				<div class="stack-grid">
 					{section.items.map((item) => (
 						<div class="stack-item">
-							<span class="stack-item-icon">
-								{item.icon ? (
-									<>
-										<img
-											class="stack-logo"
-											src={item.icon}
-											alt={`${item.name} logo`}
-											width="24"
-											height="24"
-											loading="lazy"
-											onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-										/>
-										<span class="stack-logo-fallback" style={`background-color: ${item.color}`} aria-hidden="true">{item.letter}</span>
-									</>
-								) : (
-									<span class="stack-logo-fallback stack-logo-fallback--solo" style={`background-color: ${item.color}`} aria-hidden="true">{item.letter}</span>
-								)}
+							<span
+								class="stack-item-icon"
+								style={`--brand: ${item.color}; --logo-url: url('${item.icon}')`}
+							>
+								<span
+									class:list={["stack-logo", { "is-dark-brand": item.color.toLowerCase() === "#1a1a1a" }]}
+									role="img"
+									aria-label={`${item.name} logo`}
+								></span>
 							</span>
 							<div class="stack-item-text">
 								<p class="stack-item-name">{item.name}</p>
@@ -160,48 +155,32 @@ const stack: StackCategory[] = [
 		gap: 14px;
 	}
 
-	/* Logo tile */
+	/* Logo tile — softly tinted with the brand colour */
 	.stack-item-icon {
 		position: relative;
 		width: 44px;
 		height: 44px;
 		border-radius: 12px;
-		border: 1px solid var(--border);
-		background-color: var(--bg-secondary);
+		border: 1px solid color-mix(in srgb, var(--brand) 26%, transparent);
+		background-color: color-mix(in srgb, var(--brand) 14%, transparent);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		overflow: hidden;
 		flex-shrink: 0;
 	}
 
+	/* Logo drawn as a mask filled with the brand colour */
 	.stack-logo {
 		width: 24px;
 		height: 24px;
-		object-fit: contain;
-		display: block;
+		background-color: var(--brand, var(--text-primary));
+		-webkit-mask: var(--logo-url) center / contain no-repeat;
+		mask: var(--logo-url) center / contain no-repeat;
 	}
 
-	/* simple-icons SVGs ship solid black; flip them to white in dark mode */
-	:global([data-theme="dark"]) .stack-logo {
-		filter: invert(1);
-	}
-
-	/* Monogram fallback if a remote logo 404s / fails to load */
-	.stack-logo-fallback {
-		display: none;
-		width: 100%;
-		height: 100%;
-		align-items: center;
-		justify-content: center;
-		color: #ffffff;
-		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: 15px;
-		font-weight: 600;
-	}
-
-	.stack-logo-fallback--solo {
-		display: flex;
+	/* Near-black brand marks would disappear on a dark tile — lighten them */
+	:global([data-theme="dark"]) .stack-logo.is-dark-brand {
+		background-color: #f0f0f0;
 	}
 
 	.stack-item-text {
