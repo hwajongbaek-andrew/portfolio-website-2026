@@ -157,6 +157,8 @@ const isActive = (href: string) => {
 		left: 16px;
 		bottom: 16px;
 		width: var(--sidebar-w, 280px);
+		/* Shared square footprint for the brand mark + nav icons when collapsed */
+		--rail-slot: 40px;
 		padding: 28px 20px 20px;
 		display: flex;
 		flex-direction: column;
@@ -174,18 +176,18 @@ const isActive = (href: string) => {
 		padding-right: 16px;
 	}
 
-	/* Collapse / expand toggle — straddles the right edge in both states */
+	/* Collapse / expand toggle — pill/label shape straddling the right edge */
 	.sidebar-toggle {
 		position: absolute;
 		top: 26px;
-		right: -14px;
-		width: 28px;
-		height: 28px;
+		right: -17px;
+		width: 34px;
+		height: 22px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 0;
-		border-radius: 50%;
+		border-radius: 999px;
 		border: 1px solid var(--border);
 		background-color: var(--bg-primary);
 		color: var(--text-secondary);
@@ -240,11 +242,13 @@ const isActive = (href: string) => {
 		display: none;
 	}
 
-	/* Monogram chip — shown only when collapsed */
+	/* Monogram chip — shown only when collapsed.
+	   Shares the exact --rail-slot box with the collapsed nav icons so the
+	   brand mark and every icon center on the same vertical axis. */
 	.sidebar-monogram {
 		display: none;
-		width: 40px;
-		height: 40px;
+		width: var(--rail-slot, 40px);
+		height: var(--rail-slot, 40px);
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
@@ -397,10 +401,12 @@ const isActive = (href: string) => {
 
 	/* ---- Collapsed state: icons only ---- */
 	:global([data-sidebar="collapsed"]) .sidebar-item {
+		width: var(--rail-slot, 40px);
+		height: var(--rail-slot, 40px);
+		margin-inline: auto;
 		justify-content: center;
 		gap: 0;
-		padding-left: 0;
-		padding-right: 0;
+		padding: 0;
 	}
 
 	:global([data-sidebar="collapsed"]) .sidebar-label,
@@ -481,18 +487,29 @@ const isActive = (href: string) => {
 		overflow: hidden;
 	}
 
-	/* Collapsed: center the status dot, drop the text and theme switch */
+	/* Collapsed: hide the status row (incl. the green dot) entirely */
 	:global([data-sidebar="collapsed"]) .sidebar-status {
-		justify-content: center;
-		padding: 0;
-	}
-
-	:global([data-sidebar="collapsed"]) .sidebar-status-text {
 		display: none;
 	}
 
-	:global([data-sidebar="collapsed"] .theme-toggle) {
-		display: none;
+	/* Collapsed: keep the theme toggle, but flip it to a vertical pill so it
+	   fits the narrow rail. Both data-sidebar and data-theme live on <html>,
+	   so the dark-state thumb position can be derived from the same element.
+	   The leading `html` raises specificity above ThemeToggle's own rules. */
+	:global(html[data-sidebar="collapsed"] .theme-toggle) {
+		width: 40px;
+		height: 74px;
+		margin-inline: auto;
+	}
+
+	:global(html[data-sidebar="collapsed"] .toggle-thumb) {
+		top: 4px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	:global(html[data-sidebar="collapsed"][data-theme="dark"] .toggle-thumb) {
+		transform: translateX(-50%) translateY(32px);
 	}
 
 	@media (max-width: 768px) {

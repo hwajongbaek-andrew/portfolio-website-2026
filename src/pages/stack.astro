@@ -4,6 +4,9 @@ import DashboardLayout from "../layouts/DashboardLayout.astro";
 interface StackItem {
 	name: string;
 	sublabel: string;
+	/** Remote brand-logo SVG URL (null = no reliable CDN source, use fallback). */
+	icon: string | null;
+	/** Fallback monogram shown if the remote logo fails to load. */
 	letter: string;
 	color: string;
 }
@@ -13,38 +16,66 @@ interface StackCategory {
 	items: StackItem[];
 }
 
+// Official brand logos are fetched at runtime from the simple-icons CDN
+// (jsdelivr). A handful of brands were removed from the latest simple-icons
+// for trademark reasons, so those are pinned to simple-icons@11 which still
+// ships them. SVGs are monochrome (black) and inverted to white in dark mode.
+const si = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons/icons/${slug}.svg`;
+const si11 = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons@11/icons/${slug}.svg`;
+
 const stack: StackCategory[] = [
 	{
-		title: "Design",
+		title: "Build & CMS",
 		items: [
-			{ name: "Figma", sublabel: "Design tool", letter: "F", color: "#F24E1E" },
-			{ name: "Framer", sublabel: "Web design platform", letter: "F", color: "#0055FF" },
+			{ name: "Webflow", sublabel: "Visual web builder", icon: si("webflow"), letter: "W", color: "#146EF5" },
+			{ name: "WordPress", sublabel: "Content management", icon: si("wordpress"), letter: "W", color: "#21759B" },
+			{ name: "Shopify", sublabel: "E-commerce platform", icon: si("shopify"), letter: "S", color: "#7AB55C" },
 		],
 	},
 	{
 		title: "Productivity",
 		items: [
-			{ name: "Notion", sublabel: "Docs & wiki", letter: "N", color: "#1A1A1A" },
-			{ name: "Linear", sublabel: "Project management", letter: "L", color: "#5E6AD2" },
-			{ name: "Slack", sublabel: "Team collaboration", letter: "S", color: "#4A154B" },
-			{ name: "Arc", sublabel: "Browser", letter: "A", color: "#FE5A4D" },
+			{ name: "Notion", sublabel: "Docs & wiki", icon: si("notion"), letter: "N", color: "#1A1A1A" },
+			{ name: "Slack", sublabel: "Team collaboration", icon: si11("slack"), letter: "S", color: "#4A154B" },
+			{ name: "Asana", sublabel: "Work management", icon: si("asana"), letter: "A", color: "#F06A6A" },
+			{ name: "Jira", sublabel: "Issue tracking", icon: si("jira"), letter: "J", color: "#0052CC" },
+			{ name: "ClickUp", sublabel: "Project management", icon: si("clickup"), letter: "C", color: "#7B68EE" },
 		],
 	},
 	{
 		title: "Development",
 		items: [
-			{ name: "VS Code", sublabel: "Code editor", letter: "V", color: "#007ACC" },
-			{ name: "GitHub", sublabel: "Source control", letter: "G", color: "#1A1A1A" },
-			{ name: "Vercel", sublabel: "Hosting", letter: "V", color: "#1A1A1A" },
-			{ name: "Astro", sublabel: "Web framework", letter: "A", color: "#FF5D01" },
+			{ name: "VS Code", sublabel: "Code editor", icon: si11("visualstudiocode"), letter: "V", color: "#007ACC" },
+			{ name: "GitHub", sublabel: "Source control", icon: si("github"), letter: "G", color: "#1A1A1A" },
+			{ name: "Vercel", sublabel: "Hosting", icon: si("vercel"), letter: "V", color: "#1A1A1A" },
+			{ name: "Astro", sublabel: "Web framework", icon: si("astro"), letter: "A", color: "#FF5D01" },
+		],
+	},
+	{
+		title: "Design",
+		items: [
+			{ name: "Adobe Photoshop", sublabel: "Raster editing", icon: si11("adobephotoshop"), letter: "Ps", color: "#31A8FF" },
+			{ name: "Adobe Illustrator", sublabel: "Vector design", icon: si11("adobeillustrator"), letter: "Ai", color: "#FF9A00" },
+			{ name: "Adobe InDesign", sublabel: "Layout & print", icon: si11("adobeindesign"), letter: "Id", color: "#FF3366" },
+			{ name: "Adobe Creative Suite", sublabel: "Creative tools", icon: si11("adobecreativecloud"), letter: "Cc", color: "#DA1F26" },
 		],
 	},
 	{
 		title: "Artificial Intelligence",
 		items: [
-			{ name: "Claude", sublabel: "Reasoning & code", letter: "C", color: "#D97757" },
-			{ name: "ChatGPT", sublabel: "General assistant", letter: "G", color: "#10A37F" },
-			{ name: "Cursor", sublabel: "AI-first editor", letter: "C", color: "#1A1A1A" },
+			{ name: "Claude", sublabel: "Reasoning & code", icon: si("claude"), letter: "C", color: "#D97757" },
+			{ name: "ChatGPT", sublabel: "General assistant", icon: si11("openai"), letter: "G", color: "#10A37F" },
+			{ name: "Codex", sublabel: "AI coding agent", icon: si11("openai"), letter: "C", color: "#10A37F" },
+			{ name: "Cursor", sublabel: "AI-first editor", icon: si("cursor"), letter: "C", color: "#1A1A1A" },
+			{ name: "Gemini", sublabel: "Multimodal AI", icon: si("googlegemini"), letter: "G", color: "#8E75F8" },
+		],
+	},
+	{
+		title: "Marketing",
+		items: [
+			{ name: "HubSpot", sublabel: "CRM platform", icon: si("hubspot"), letter: "H", color: "#FF7A59" },
+			{ name: "Mailchimp", sublabel: "Email marketing", icon: si("mailchimp"), letter: "M", color: "#FFE01B" },
+			{ name: "Klaviyo", sublabel: "Marketing automation", icon: null, letter: "K", color: "#1A1A1A" },
 		],
 	},
 ];
@@ -65,7 +96,24 @@ const stack: StackCategory[] = [
 				<div class="stack-grid">
 					{section.items.map((item) => (
 						<div class="stack-item">
-							<span class="stack-item-icon" style={`background-color: ${item.color}`}>{item.letter}</span>
+							<span class="stack-item-icon">
+								{item.icon ? (
+									<>
+										<img
+											class="stack-logo"
+											src={item.icon}
+											alt={`${item.name} logo`}
+											width="24"
+											height="24"
+											loading="lazy"
+											onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+										/>
+										<span class="stack-logo-fallback" style={`background-color: ${item.color}`} aria-hidden="true">{item.letter}</span>
+									</>
+								) : (
+									<span class="stack-logo-fallback stack-logo-fallback--solo" style={`background-color: ${item.color}`} aria-hidden="true">{item.letter}</span>
+								)}
+							</span>
 							<div class="stack-item-text">
 								<p class="stack-item-name">{item.name}</p>
 								<p class="stack-item-sub">{item.sublabel}</p>
@@ -112,18 +160,48 @@ const stack: StackCategory[] = [
 		gap: 14px;
 	}
 
+	/* Logo tile */
 	.stack-item-icon {
-		width: 40px;
-		height: 40px;
-		border-radius: 10px;
+		position: relative;
+		width: 44px;
+		height: 44px;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+		background-color: var(--bg-secondary);
 		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.stack-logo {
+		width: 24px;
+		height: 24px;
+		object-fit: contain;
+		display: block;
+	}
+
+	/* simple-icons SVGs ship solid black; flip them to white in dark mode */
+	:global([data-theme="dark"]) .stack-logo {
+		filter: invert(1);
+	}
+
+	/* Monogram fallback if a remote logo 404s / fails to load */
+	.stack-logo-fallback {
+		display: none;
+		width: 100%;
+		height: 100%;
 		align-items: center;
 		justify-content: center;
 		color: #ffffff;
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-		font-size: 18px;
+		font-size: 15px;
 		font-weight: 600;
-		flex-shrink: 0;
+	}
+
+	.stack-logo-fallback--solo {
+		display: flex;
 	}
 
 	.stack-item-text {
