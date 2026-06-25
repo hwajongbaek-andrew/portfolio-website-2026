@@ -107,7 +107,8 @@ if (mockupOffsetY) imageStyle["--mockup-offset-y"] = mockupOffsetY;
 		flex-direction: column;
 		border: 1px solid var(--border);
 		border-radius: 20px;
-		background-color: var(--bg-primary);
+		/* Lightest grey by default so the card reads as clickable */
+		background-color: var(--bg-secondary);
 		text-decoration: none;
 		overflow: hidden;
 		transition: border-color var(--transition-fast),

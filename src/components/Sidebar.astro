@@ -82,7 +82,6 @@ const isActive = (href: string) => {
 							)}
 						</span>
 						<span class="sidebar-label">{item.label}</span>
-						<span class="sidebar-shortcut" aria-hidden="true">{item.shortcut}</span>
 						<span class="sidebar-tooltip" role="tooltip">{item.label}</span>
 					</a>
 				</li>
@@ -123,15 +122,13 @@ const isActive = (href: string) => {
 							)}
 						</span>
 						<span class="sidebar-label">{item.label}</span>
-						{item.external ? (
+						{item.external && (
 							<span class="sidebar-shortcut sidebar-shortcut-external" aria-hidden="true">
 								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<line x1="7" y1="17" x2="17" y2="7"/>
 									<polyline points="7 7 17 7 17 17"/>
 								</svg>
 							</span>
-						) : (
-							<span class="sidebar-shortcut" aria-hidden="true">{item.shortcut}</span>
 						)}
 						<span class="sidebar-tooltip" role="tooltip">{item.label}</span>
 					</a>
@@ -140,13 +137,17 @@ const isActive = (href: string) => {
 		</ul>
 	</div>
 
-	<!-- Bottom: theme toggle + status -->
+	<!-- Bottom: status + theme toggle (label when expanded, tooltip when collapsed) -->
 	<div class="sidebar-bottom">
 		<div class="sidebar-status">
 			<span class="sidebar-status-dot" aria-hidden="true"></span>
 			<span class="sidebar-status-text">Currently @ MedMe Health</span>
 		</div>
-		<ThemeToggle />
+		<div class="sidebar-theme">
+			<span class="sidebar-theme-label">Theme</span>
+			<ThemeToggle />
+			<span class="sidebar-tooltip" role="tooltip">Toggle theme</span>
+		</div>
 	</div>
 </aside>
 
@@ -164,7 +165,8 @@ const isActive = (href: string) => {
 		flex-direction: column;
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border);
-		border-radius: 28px;
+		/* Match the project-card corner radius for a cohesive language */
+		border-radius: 20px;
 		transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1),
 			padding 320ms cubic-bezier(0.4, 0, 0.2, 1),
 			background-color 300ms ease, border-color 300ms ease;
@@ -176,24 +178,28 @@ const isActive = (href: string) => {
 		padding-right: 16px;
 	}
 
-	/* Collapse / expand toggle — pill/label shape straddling the right edge */
+	/* Collapse / expand toggle — a "bookmark" tab attached to the sidebar's
+	   outer right edge. left: 100% keeps it fully outside the bounding box so
+	   it never overlaps internal content; the left side is flush (no border /
+	   no radius) and the right side is rounded like a tab. */
 	.sidebar-toggle {
 		position: absolute;
-		top: 24px;
-		right: -24px;
-		width: 48px;
-		height: 30px;
+		top: 50%;
+		left: 100%;
+		transform: translateY(-50%);
+		width: 24px;
+		height: 56px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 0;
-		border-radius: 999px;
 		border: 1px solid var(--border);
+		border-left: none;
+		border-radius: 0 12px 12px 0;
 		background-color: var(--bg-primary);
 		color: var(--text-secondary);
 		cursor: pointer;
 		z-index: 60;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 		transition: background-color var(--transition-fast),
 			color var(--transition-fast), border-color var(--transition-fast);
 	}
@@ -393,7 +399,9 @@ const isActive = (href: string) => {
 
 	/* Tooltips activate only in the collapsed state */
 	:global([data-sidebar="collapsed"]) .sidebar-item:hover .sidebar-tooltip,
-	:global([data-sidebar="collapsed"]) .sidebar-item:focus-visible .sidebar-tooltip {
+	:global([data-sidebar="collapsed"]) .sidebar-item:focus-visible .sidebar-tooltip,
+	:global([data-sidebar="collapsed"]) .sidebar-theme:hover .sidebar-tooltip,
+	:global([data-sidebar="collapsed"]) .sidebar-theme:focus-within .sidebar-tooltip {
 		opacity: 1;
 		visibility: visible;
 		transform: translateY(-50%) translateX(0);
@@ -476,6 +484,32 @@ const isActive = (href: string) => {
 		font-size: 12px;
 		font-weight: 500;
 		color: var(--text-secondary);
+	}
+
+	/* Theme row: label + switch when expanded; centred switch + tooltip when collapsed */
+	.sidebar-theme {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 0 10px;
+	}
+
+	.sidebar-theme-label {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+		color: var(--text-secondary);
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-theme {
+		justify-content: center;
+		padding: 0;
+	}
+
+	:global([data-sidebar="collapsed"]) .sidebar-theme-label {
+		display: none;
 	}
 
 	/* Collapsed: section label becomes a hairline divider */

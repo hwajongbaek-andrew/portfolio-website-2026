@@ -23,6 +23,17 @@ interface StackCategory {
 const si = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons/icons/${slug}.svg`;
 const si11 = (slug: string) => `https://cdn.jsdelivr.net/npm/simple-icons@11/icons/${slug}.svg`;
 
+// A brand mark counts as "dark" when its colour is low-luminance. Those are
+// lightened in dark mode so they stay legible on the dark tile — this is what
+// rescues the Slack logo (#4A154B), which is otherwise illegible in dark mode.
+const isDarkBrand = (hex: string) => {
+	const c = hex.replace("#", "");
+	const r = parseInt(c.slice(0, 2), 16);
+	const g = parseInt(c.slice(2, 4), 16);
+	const b = parseInt(c.slice(4, 6), 16);
+	return (0.299 * r + 0.587 * g + 0.114 * b) / 255 < 0.22;
+};
+
 const stack: StackCategory[] = [
 	{
 		title: "Design",
@@ -104,7 +115,7 @@ const stack: StackCategory[] = [
 								style={`--brand: ${item.color}; --logo-url: url('${item.icon}')`}
 							>
 								<span
-									class:list={["stack-logo", { "is-dark-brand": item.color.toLowerCase() === "#1a1a1a" }]}
+									class:list={["stack-logo", { "is-dark-brand": isDarkBrand(item.color) }]}
 									role="img"
 									aria-label={`${item.name} logo`}
 								></span>
