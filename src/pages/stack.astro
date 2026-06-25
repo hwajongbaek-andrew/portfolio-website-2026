@@ -1,5 +1,6 @@
 ---
 import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { withBase } from "../lib/base";
 
 interface StackItem {
 	name: string;
@@ -112,7 +113,7 @@ const stack: StackCategory[] = [
 						<div class="stack-item">
 							<span
 								class="stack-item-icon"
-								style={`--brand: ${item.color}; --logo-url: url('${item.icon}')`}
+								style={`--brand: ${item.color}; --logo-url: url('${withBase(item.icon)}')`}
 							>
 								<span
 									class:list={["stack-logo", { "is-dark-brand": isDarkBrand(item.color) }]}

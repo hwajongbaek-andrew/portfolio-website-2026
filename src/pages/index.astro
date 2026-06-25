@@ -1,5 +1,6 @@
 ---
 import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { withBase } from "../lib/base";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const recentProjects = [
@@ -64,8 +65,8 @@ const stackPreview = [
 			AI in the loop.
 		</p>
 		<div class="page-actions">
-			<a href="/about" class="page-button">About</a>
-			<a href="/contact" class="page-button">
+			<a href={withBase("/about")} class="page-button">About</a>
+			<a href={withBase("/contact")} class="page-button">
 				<svg class="page-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
 					<polyline points="22,6 12,13 2,6"/>
@@ -93,7 +94,7 @@ const stackPreview = [
 	<section class="home-section">
 		<div class="home-section-head">
 			<h2 class="home-section-title">Recent Work</h2>
-			<a href="/projects" class="home-section-link">
+			<a href={withBase("/projects")} class="home-section-link">
 				All projects
 				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<line x1="5" y1="12" x2="19" y2="12"/>
@@ -114,7 +115,7 @@ const stackPreview = [
 					<h2 class="home-section-title">Stack</h2>
 					<p class="home-section-sub">Tools I reach for daily.</p>
 				</div>
-				<a href="/stack" class="home-section-link">
+				<a href={withBase("/stack")} class="home-section-link">
 					View all
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<line x1="5" y1="12" x2="19" y2="12"/>
@@ -127,7 +128,7 @@ const stackPreview = [
 					<div class="home-stack-item">
 						<span
 							class="home-stack-icon"
-							style={`--brand: ${item.color}; --logo-url: url('${item.icon}')`}
+							style={`--brand: ${item.color}; --logo-url: url('${withBase(item.icon)}')`}
 						>
 							<span
 								class:list={["home-stack-logo", { "is-dark-brand": isDarkBrand(item.color) }]}
@@ -148,7 +149,7 @@ const stackPreview = [
 	<!-- About + Contact previews -->
 	<section class="home-section">
 		<div class="home-pair">
-			<a href="/about" class="home-card">
+			<a href={withBase("/about")} class="home-card">
 				<div class="home-card-head">
 					<span class="home-card-icon" aria-hidden="true">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -167,7 +168,7 @@ const stackPreview = [
 					deliberate decisions, and craft over tooling.
 				</p>
 			</a>
-			<a href="/contact" class="home-card">
+			<a href={withBase("/contact")} class="home-card">
 				<div class="home-card-head">
 					<span class="home-card-icon" aria-hidden="true">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">

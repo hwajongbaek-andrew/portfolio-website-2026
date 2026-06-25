@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/base";
+
 interface Props {
 	name: string;
 	category: string;
@@ -48,12 +50,12 @@ const imageStyle: Record<string, string> = {};
 if (mockupOffsetY) imageStyle["--mockup-offset-y"] = mockupOffsetY;
 ---
 
-<a href={href} class="project-card">
+<a href={withBase(href)} class="project-card">
 	<div class="project-card-thumb">
 		{useMockupCombo ? (
 			<div class="project-card-mockup" style={mockupStyle}>
 				<img
-					src={thumbnail}
+					src={withBase(thumbnail)}
 					alt={thumbnailAlt}
 					class="project-card-mockup-frame"
 					loading="lazy"
@@ -66,7 +68,7 @@ if (mockupOffsetY) imageStyle["--mockup-offset-y"] = mockupOffsetY;
 					playsinline
 					preload="metadata"
 				>
-					<source src={videoSrc} type="video/mp4" />
+					<source src={withBase(videoSrc)} type="video/mp4" />
 				</video>
 			</div>
 		) : videoSrc ? (
@@ -78,11 +80,11 @@ if (mockupOffsetY) imageStyle["--mockup-offset-y"] = mockupOffsetY;
 				playsinline
 				preload="metadata"
 			>
-				<source src={videoSrc} type="video/mp4" />
+				<source src={withBase(videoSrc)} type="video/mp4" />
 			</video>
 		) : thumbnail ? (
 			<img
-				src={thumbnail}
+				src={withBase(thumbnail)}
 				alt={thumbnailAlt}
 				class="project-card-image"
 				style={imageStyle}

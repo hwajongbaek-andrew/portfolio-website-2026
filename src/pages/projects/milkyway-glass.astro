@@ -1,5 +1,6 @@
 ---
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
+import { withBase } from "../../lib/base";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const facts = [
@@ -99,7 +100,7 @@ const related = [
 ---
 
 <DashboardLayout title="Milkyway Glass · Andrew Baek">
-	<a href="/projects" class="project-breadcrumb">
+	<a href={withBase("/projects")} class="project-breadcrumb">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
 			<polyline points="12 19 5 12 12 5"/>
@@ -131,7 +132,7 @@ const related = [
 	<div class="project-hero">
 		<div class="project-hero-mockup">
 			<img
-				src="/images/Laptop Mockup.png"
+				src={withBase("/images/Laptop Mockup.png")}
 				alt="Milkyway Glass website preview on a laptop"
 				class="project-hero-mockup-frame"
 			/>
@@ -143,7 +144,7 @@ const related = [
 				playsinline
 				preload="metadata"
 			>
-				<source src="/videos/Portfolio-MK-Desktop.mp4" type="video/mp4" />
+				<source src={withBase("/videos/Portfolio-MK-Desktop.mp4")} type="video/mp4" />
 			</video>
 		</div>
 	</div>
@@ -206,7 +207,7 @@ const related = [
 						<div class="project-shot-frame">
 							<img
 								class="project-shot-img"
-								src="/images/milkyway-old-home.png"
+								src={withBase("/images/milkyway-old-home.png")}
 								alt="Original Milkyway Glass homepage with overloaded navigation, a promo banner, and dark category tiles"
 								loading="lazy"
 								onerror="this.remove()"
@@ -231,7 +232,7 @@ const related = [
 						<div class="project-shot-frame">
 							<img
 								class="project-shot-img"
-								src="/images/milkyway-old-shop.png"
+								src={withBase("/images/milkyway-old-shop.png")}
 								alt="Original Milkyway Glass shop page with a long filter sidebar and product cards without reviews"
 								loading="lazy"
 								onerror="this.remove()"
@@ -255,7 +256,7 @@ const related = [
 						<div class="project-shot-frame">
 							<img
 								class="project-shot-img"
-								src="/images/milkyway-old-product.png"
+								src={withBase("/images/milkyway-old-product.png")}
 								alt="Original Milkyway Glass product page with competing buttons and minimal supporting content"
 								loading="lazy"
 								onerror="this.remove()"
@@ -440,7 +441,7 @@ const related = [
 	<section class="project-related">
 		<div class="project-related-head">
 			<h2 class="project-h2">More work</h2>
-			<a href="/projects" class="project-related-link">
+			<a href={withBase("/projects")} class="project-related-link">
 				All projects
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<line x1="5" y1="12" x2="19" y2="12"/>

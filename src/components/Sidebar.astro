@@ -1,7 +1,12 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { withBase } from "../lib/base";
 
-const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+let pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+if (base && pathname.startsWith(base)) pathname = pathname.slice(base.length) || "/";
+
+const logoMask = `-webkit-mask-image:url(${withBase("/images/logo.svg")});mask-image:url(${withBase("/images/logo.svg")})`;
 
 const primaryNav = [
 	{ label: "Home", href: "/", shortcut: "1", icon: "compass" },
@@ -37,10 +42,10 @@ const isActive = (href: string) => {
 	</button>
 
 	<!-- Identity: full wordmark when expanded, monogram when collapsed -->
-	<a href="/" class="sidebar-identity" aria-label="Andrew Baek — home">
+	<a href={withBase("/")} class="sidebar-identity" aria-label="Andrew Baek, home">
 		<span class="sidebar-monogram" aria-hidden="true">AB</span>
 		<span class="sidebar-wordmark">
-			<span class="sidebar-logo" role="img" aria-label="Andrew Baek"></span>
+			<span class="sidebar-logo" role="img" aria-label="Andrew Baek" style={logoMask}></span>
 			<span class="sidebar-role">Product Designer</span>
 		</span>
 	</a>
@@ -51,7 +56,7 @@ const isActive = (href: string) => {
 			{primaryNav.map((item) => (
 				<li>
 					<a
-						href={item.href}
+						href={withBase(item.href)}
 						class:list={["sidebar-item", { "is-active": isActive(item.href) }]}
 					>
 						<span class="sidebar-icon" aria-hidden="true">
@@ -96,7 +101,7 @@ const isActive = (href: string) => {
 			{connectNav.map((item) => (
 				<li>
 					<a
-						href={item.href}
+						href={withBase(item.href)}
 						target={item.external ? "_blank" : undefined}
 						rel={item.external ? "noopener noreferrer" : undefined}
 						class:list={["sidebar-item", { "is-active": !item.external && isActive(item.href) }]}
@@ -277,8 +282,13 @@ const isActive = (href: string) => {
 		max-width: 180px;
 		aspect-ratio: 1630.06 / 150;
 		background-color: var(--text-accent);
-		-webkit-mask: url("/images/logo.svg") center / contain no-repeat;
-		mask: url("/images/logo.svg") center / contain no-repeat;
+		/* mask-image is set inline (base-aware) via the `logoMask` style */
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		-webkit-mask-size: contain;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
 		transition: background-color 300ms ease;
 	}
 

@@ -1,7 +1,10 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { withBase } from "../lib/base";
 
-const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+let pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+if (base && pathname.startsWith(base)) pathname = pathname.slice(base.length) || "/";
 
 const navItems = [
 	{ label: "Home", href: "/" },
@@ -20,7 +23,7 @@ const isActive = (href: string) => {
 	<div class="mobile-nav-pill">
 		{navItems.map((item) => (
 			<a
-				href={item.href}
+				href={withBase(item.href)}
 				class:list={["mobile-nav-link", { "is-active": isActive(item.href) }]}
 			>
 				{item.label}
