@@ -33,7 +33,7 @@ const solutionFeatures = [
 	},
 	{
 		title: "Combo Creator",
-		text: "Bundle-builder added to the homepage as a strategic AOV play — turning single-product sessions into multi-item baskets.",
+		text: "Bundle-builder added to the homepage as a strategic AOV play, turning single-product sessions into multi-item baskets.",
 	},
 	{
 		title: "Milkyway Rewards",
@@ -98,7 +98,7 @@ const related = [
 ];
 ---
 
-<DashboardLayout title="Milkyway Glass — Andrew Baek">
+<DashboardLayout title="Milkyway Glass · Andrew Baek">
 	<a href="/projects" class="project-breadcrumb">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="19" y1="12" x2="5" y2="12"/>
@@ -112,8 +112,8 @@ const related = [
 		<p class="project-eyebrow">E-commerce UX & Retention Strategy</p>
 		<h1 class="project-title">Milkyway Glass</h1>
 		<p class="project-summary">
-			A more enticing shopping experience — built around data, SEO, and
-			retention mechanics — that lifted monthly revenue 40–60% and grew
+			A more enticing shopping experience built around data, SEO, and
+			retention mechanics that lifted monthly revenue 40–60% and grew
 			visitors 58%.
 		</p>
 
@@ -148,7 +148,7 @@ const related = [
 		</div>
 	</div>
 
-	<!-- Impact metrics — bigger card section after the hero -->
+	<!-- Impact metrics - bigger card section after the hero -->
 	<section class="project-impact">
 		<h2 class="project-impact-title">Impact</h2>
 		<div class="project-impact-grid">
@@ -171,35 +171,108 @@ const related = [
 				by integrating data-driven insights, strategic SEO, and
 				collaborative marketing work. The result was significant lift
 				across visibility, navigation, and the overall customer
-				experience — and a real increase in sales and engagement.
+				experience, with a real increase in sales and engagement.
 			</p>
+
+			<h2 class="project-h2" id="problem">The problem</h2>
+			<div class="project-callout">
+				<span class="project-callout-label">The core problem</span>
+				<p class="project-callout-text">
+					Milkyway sold great glass, but the website got in the way.
+					Confusing navigation, flat content, and a rough mobile
+					experience were losing customers before they reached the cart.
+				</p>
+			</div>
+			<p class="project-prose">And the numbers backed it up:</p>
+			<div class="project-impact-grid">
+				{baseline.map((b) => (
+					<div class="project-impact-card project-impact-card--baseline">
+						<p class="project-impact-value">{b.value}</p>
+						<p class="project-impact-label">{b.label}</p>
+					</div>
+				))}
+			</div>
 
 			<h2 class="project-h2" id="challenge">The challenge</h2>
 			<p class="project-prose">
-				The original site suffered from unintuitive navigation, weak
-				engaging content, and poor mobile optimization — friction that
-				quietly killed conversion before users ever reached the cart.
-				A close audit surfaced seven specific issues:
+				A close audit of the live site turned that into seven concrete
+				issues, clustered around the three places users actually got stuck.
 			</p>
-			<ul class="project-list">
-				<li><strong>Complicated navigation</strong> with repeated and redundant content.</li>
-				<li><strong>Unclear call-to-action messaging</strong> — users didn't know where to click next.</li>
-				<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
-				<li><strong>Complex product filters</strong> that didn't work well on mobile.</li>
-				<li><strong>Sparse product information</strong> — reviews and ratings were missing entirely.</li>
-				<li><strong>Disorganized layout</strong> with too many competing buttons fighting for attention.</li>
-				<li><strong>No SEO foundation</strong> — the site was effectively invisible to search.</li>
-			</ul>
-			<p class="project-prose">The numbers reflected it:</p>
-			<ul class="project-metrics project-metrics-baseline">
-				{baseline.map((b) => (
-					<li class="project-metric project-metric-baseline">
-						<span class="project-metric-value">{b.value}</span>
-						<span class="project-metric-label">{b.label}</span>
-					</li>
-				))}
-			</ul>
 
+			<div class="project-challenge">
+				<!-- Old homepage -->
+				<div class="project-challenge-row">
+					<figure class="project-shot">
+						<div class="project-shot-frame">
+							<img
+								class="project-shot-img"
+								src="/images/milkyway-old-home.png"
+								alt="Original Milkyway Glass homepage with overloaded navigation, a promo banner, and dark category tiles"
+								loading="lazy"
+								onerror="this.remove()"
+							/>
+							<span class="project-shot-ph" aria-hidden="true">Old site · Home</span>
+						</div>
+						<figcaption class="project-shot-caption">
+							Homepage: an overloaded Shop menu, a promo-driven CTA with
+							unclear intent, and dark category tiles that were hard to read.
+						</figcaption>
+					</figure>
+					<ul class="project-list">
+						<li><strong>Complicated navigation.</strong> The Shop menu repeated the same categories, padding every path to a product.</li>
+						<li><strong>Unclear calls to action.</strong> It wasn't obvious what would happen when a user clicked.</li>
+						<li><strong>Outdated visuals</strong> with poor legibility, especially on smaller screens.</li>
+					</ul>
+				</div>
+
+				<!-- Old shop / listing page -->
+				<div class="project-challenge-row">
+					<figure class="project-shot">
+						<div class="project-shot-frame">
+							<img
+								class="project-shot-img"
+								src="/images/milkyway-old-shop.png"
+								alt="Original Milkyway Glass shop page with a long filter sidebar and product cards without reviews"
+								loading="lazy"
+								onerror="this.remove()"
+							/>
+							<span class="project-shot-ph" aria-hidden="true">Old site · Shop</span>
+						</div>
+						<figcaption class="project-shot-caption">
+							Shop: a long, non-collapsible filter that broke down on mobile,
+							beside product cards with no reviews or ratings.
+						</figcaption>
+					</figure>
+					<ul class="project-list">
+						<li><strong>Complex product filters</strong> with no collapsible, mobile-friendly behaviour.</li>
+						<li><strong>Sparse product information.</strong> Reviews and ratings were missing entirely.</li>
+					</ul>
+				</div>
+
+				<!-- Old product detail page -->
+				<div class="project-challenge-row">
+					<figure class="project-shot">
+						<div class="project-shot-frame">
+							<img
+								class="project-shot-img"
+								src="/images/milkyway-old-product.png"
+								alt="Original Milkyway Glass product page with competing buttons and minimal supporting content"
+								loading="lazy"
+								onerror="this.remove()"
+							/>
+							<span class="project-shot-ph" aria-hidden="true">Old site · Product</span>
+						</div>
+						<figcaption class="project-shot-caption">
+							Product page: competing buttons with no clear hierarchy by
+							purpose, and little supporting content to drive a decision.
+						</figcaption>
+					</figure>
+					<ul class="project-list">
+						<li><strong>Disorganized layout</strong> with too many buttons fighting for attention.</li>
+						<li><strong>No SEO foundation.</strong> Beyond the UX, the site was effectively invisible to search.</li>
+					</ul>
+				</div>
+			</div>
 			<h2 class="project-h2" id="process">Process</h2>
 			<p class="project-prose">
 				To avoid designing on gut, I anchored the work in three research
@@ -209,7 +282,7 @@ const related = [
 			<ul class="project-list">
 				<li>
 					<strong>Heat maps and scroll maps</strong> to see where users
-					actually clicked and how far they scrolled — separating
+					actually clicked and how far they scrolled, separating
 					real attention from assumed attention.
 				</li>
 				<li>
@@ -218,7 +291,7 @@ const related = [
 				</li>
 				<li>
 					<strong>Marketing coordinator collaboration</strong> to pull
-					traffic sources, campaign data, and competitive context — so
+					traffic sources, campaign data, and competitive context, so
 					design decisions stayed aligned with where customers were
 					actually coming from.
 				</li>
@@ -240,7 +313,7 @@ const related = [
 					<span class="project-figure-tag">Heat map · scroll depth · journey</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Research artifacts — heat maps and scroll-depth maps revealed
+					Research artifacts: heat maps and scroll-depth maps revealed
 					how shallow most sessions actually were on the original site.
 				</figcaption>
 			</figure>
@@ -251,7 +324,7 @@ const related = [
 			</p>
 			<ul class="project-list">
 				<li>How might we <strong>simplify navigation</strong> to reduce friction for users?</li>
-				<li>How might we <strong>strengthen customer connection</strong> through engaging content — loyalty, UGC, influencer collaboration?</li>
+				<li>How might we <strong>strengthen customer connection</strong> through engaging content like loyalty, UGC, and influencer collaboration?</li>
 				<li>How might we <strong>optimize the experience</strong> for mobile, where most shopping actually happens?</li>
 			</ul>
 
@@ -289,7 +362,7 @@ const related = [
 					<span class="project-figure-tag">Homepage · combo creator · product filter</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Key screens from the rebuild — homepage hierarchy reset, the
+					Key screens from the rebuild: homepage hierarchy reset, the
 					new Combo Creator, and the streamlined product filter.
 				</figcaption>
 			</figure>
@@ -308,7 +381,7 @@ const related = [
 			<h2 class="project-h2" id="outcomes">Outcomes</h2>
 			<p class="project-prose">
 				The redesign moved Milkyway from a static brand showcase to a
-				measurable growth surface — and the wins compounded across four
+				measurable growth surface, and the wins compounded across four
 				fronts:
 			</p>
 
@@ -321,16 +394,16 @@ const related = [
 								<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
 							</linearGradient>
 						</defs>
-						<!-- Baseline (before) — flat dashed -->
+						<!-- Baseline (before) - flat dashed -->
 						<path d="M 0 100 L 320 96" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
-						<!-- Growth curve (after) — rising solid + filled area -->
+						<!-- Growth curve (after) - rising solid + filled area -->
 						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18 L 320 140 L 0 140 Z" fill="url(#mk-line-fill)"/>
 						<path d="M 0 105 C 60 100, 120 80, 180 55 S 280 25, 320 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 					</svg>
 					<span class="project-figure-tag">Revenue · visitors · engagement</span>
 				</div>
 				<figcaption class="project-figure-caption">
-					Post-launch trends — sustained monthly growth across revenue,
+					Post-launch trends: sustained monthly growth across revenue,
 					traffic, and engagement, not a single-week spike.
 				</figcaption>
 			</figure>
@@ -352,6 +425,7 @@ const related = [
 				<p class="project-toc-label">On this page</p>
 				<ul class="project-toc-list">
 					<li><a href="#overview" class="project-toc-link" data-toc-link>Overview</a></li>
+					<li><a href="#problem" class="project-toc-link" data-toc-link>The problem</a></li>
 					<li><a href="#challenge" class="project-toc-link" data-toc-link>The challenge</a></li>
 					<li><a href="#process" class="project-toc-link" data-toc-link>Process</a></li>
 					<li><a href="#hmw" class="project-toc-link" data-toc-link>How might we</a></li>
@@ -422,7 +496,7 @@ const related = [
 	.project-title {
 		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: clamp(40px, 5vw, 64px);
-		font-weight: 700;
+		font-weight: 600;
 		line-height: 1.05;
 		letter-spacing: -0.03em;
 		color: var(--text-primary);
@@ -469,7 +543,7 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Metric pills — same shape but accent-tinted */
+	/* Metric pills - same shape but accent-tinted */
 	.project-metrics {
 		list-style: none;
 		padding: 0;
@@ -500,7 +574,7 @@ const related = [
 		color: var(--text-secondary);
 	}
 
-	/* Baseline metrics — muted, reflects "before" numbers in body */
+	/* Baseline metrics - muted, reflects "before" numbers in body */
 	.project-metrics-baseline {
 		margin: 16px 0 24px;
 	}
@@ -728,7 +802,134 @@ const related = [
 		font-weight: 600;
 	}
 
-	/* Figure / visual placeholder blocks — break up text-heavy sections.
+	/* Emphasised problem callout */
+	.project-callout {
+		position: relative;
+		margin: 8px 0 24px;
+		padding: 22px 26px;
+		border-radius: 16px;
+		border: 1px solid color-mix(in srgb, var(--text-accent) 32%, transparent);
+		border-left: 4px solid var(--text-accent);
+		background-color: color-mix(in srgb, var(--text-accent) 8%, transparent);
+	}
+
+	.project-callout-label {
+		display: block;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--text-accent);
+		margin-bottom: 10px;
+	}
+
+	.project-callout-text {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-lg);
+		font-weight: 500;
+		line-height: 1.5;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	/* Baseline ("before") numbers reuse the impact cards but stay neutral,
+	   not accent, so they don't read as wins */
+	.project-impact-card--baseline {
+		margin-top: 4px;
+	}
+
+	.project-impact-card--baseline .project-impact-value {
+		color: var(--text-primary);
+	}
+
+	/* Old-site screenshots used to illustrate each challenge */
+	.project-shot {
+		margin: 24px 0 16px;
+	}
+
+	.project-shot-frame {
+		position: relative;
+		min-height: 120px;
+		border-radius: 14px;
+		overflow: hidden;
+		border: 1px solid var(--border);
+		background-color: var(--bg-secondary);
+	}
+
+	/* Challenge: compact two-column zigzag (screenshot + bullets) */
+	.project-challenge {
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+		margin: 24px 0 8px;
+	}
+
+	.project-challenge-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 32px;
+		align-items: center;
+	}
+
+	/* Zigzag: on even rows the screenshot moves to the right column */
+	.project-challenge-row:nth-child(even) .project-shot {
+		order: 2;
+	}
+
+	.project-challenge-row .project-shot {
+		margin: 0;
+	}
+
+	.project-challenge-row .project-list {
+		margin: 0;
+	}
+
+	/* Mobile: stack each row, screenshot first then bullets */
+	@media (max-width: 768px) {
+		.project-challenge-row {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+
+		.project-challenge-row:nth-child(even) .project-shot {
+			order: 0;
+		}
+	}
+
+	.project-shot-img {
+		display: block;
+		width: 100%;
+		height: auto;
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Placeholder shown until the real screenshot file is added (img onerror removes itself) */
+	.project-shot-ph {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
+	.project-shot-caption {
+		margin-top: 12px;
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+		font-size: var(--text-body-sm);
+		color: var(--text-muted);
+		line-height: 1.5;
+	}
+
+	/* Figure / visual placeholder blocks - break up text-heavy sections.
 	   Each frame is a styled illustration of what real artwork would live there. */
 	.project-figure {
 		margin: 32px 0 8px;
@@ -776,7 +977,7 @@ const related = [
 		text-align: center;
 	}
 
-	/* Research figure — abstract heat-spot dots */
+	/* Research figure - abstract heat-spot dots */
 	.project-figure-grid {
 		position: relative;
 		width: 100%;
@@ -820,7 +1021,7 @@ const related = [
 		background: radial-gradient(circle, #EAB308 0%, transparent 70%);
 	}
 
-	/* Solution figure — three mini "screens" side by side */
+	/* Solution figure - three mini "screens" side by side */
 	.project-figure-screens {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -872,7 +1073,7 @@ const related = [
 		background-color: var(--bg-secondary);
 	}
 
-	/* Results figure — rising line chart */
+	/* Results figure - rising line chart */
 	.project-figure-chart {
 		width: 100%;
 		height: 100%;
@@ -890,7 +1091,7 @@ const related = [
 		}
 	}
 
-	/* Feature grid — 2 columns with numbered items */
+	/* Feature grid - 2 columns with numbered items */
 	.project-feature-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
