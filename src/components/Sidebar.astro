@@ -222,6 +222,7 @@ const isActive = (href: string) => {
 	   they crossfade in place (no layout swap) as the sidebar collapses. */
 	.sidebar-identity {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		align-items: center;
 		padding: 4px 10px;
 		text-decoration: none;
@@ -257,7 +258,10 @@ const isActive = (href: string) => {
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
+		/* Pinned at the same x in both states (cancels the identity's left
+		   padding) so it lands centered in the collapsed rail without sliding */
 		justify-self: start;
+		margin-left: -11px;
 		border-radius: 11px;
 		background: var(--accent-gradient, linear-gradient(to bottom, #F99E67, #FAB771));
 		color: #FFFFFF;
@@ -271,7 +275,6 @@ const isActive = (href: string) => {
 
 	:global([data-sidebar="collapsed"]) .sidebar-monogram {
 		opacity: 1;
-		justify-self: center;
 	}
 
 	.sidebar-logo {
