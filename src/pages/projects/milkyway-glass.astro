@@ -606,8 +606,10 @@ const related = [
 		position: relative;
 		aspect-ratio: 3750 / 4906;
 		max-width: 90%;
-		max-height: 115%;
-		transform: translateY(60px);
+		/* Scaled up + shifted so the screen sits centred in the frame and the
+		   keyboard is cropped out (translateY % is relative to the mockup). */
+		max-height: 175%;
+		transform: translateY(27%);
 	}
 
 	.project-hero-mockup-frame {
@@ -1201,12 +1203,6 @@ const related = [
 		}
 	}
 
-	@media (max-width: 768px) {
-		.project-hero-mockup {
-			max-height: 100%;
-			transform: translateY(20px);
-		}
-	}
 </style>
 
 <script>
