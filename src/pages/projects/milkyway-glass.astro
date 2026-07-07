@@ -604,12 +604,10 @@ const related = [
 
 	.project-hero-mockup {
 		position: relative;
-		aspect-ratio: 3750 / 4906;
-		max-width: 90%;
-		/* Scaled up + shifted so the screen sits centred in the frame and the
-		   keyboard is cropped out (translateY % is relative to the mockup). */
-		max-height: 175%;
-		transform: translateY(27%);
+		/* Screen-only laptop mockup (keyboard + hinge cropped from the PNG) */
+		aspect-ratio: 3750 / 2290;
+		max-width: 92%;
+		max-height: 100%;
 	}
 
 	.project-hero-mockup-frame {
@@ -625,10 +623,10 @@ const related = [
 	.project-hero-mockup-video {
 		position: absolute;
 		z-index: 2;
-		top: 1.5%;
+		top: 3.2%;
 		left: 7%;
 		width: 86%;
-		height: 43.5%;
+		height: 93%;
 		object-fit: cover;
 		display: block;
 		border-radius: 4px;
